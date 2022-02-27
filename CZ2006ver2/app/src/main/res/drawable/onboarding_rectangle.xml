@@ -7,5 +7,5 @@
         android:topRightRadius="68dp" />
     <size
         android:width="400dp"
-        android:height="435dp" />
+        android:height="465dp" />
 </shape>
