@@ -28,7 +28,7 @@
         android:layout_marginTop="104dp"
         android:layout_marginEnd="70dp"
         android:layout_marginBottom="374dp"
-        android:src="@drawable/output_onlinepngtools__3__removebg_preview"
+        android:src="@drawable/grandma"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
