@@ -68,10 +68,10 @@
         android:layout_marginTop="-110dp"/>
 
     <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/login"
+        android:id="@+id/signuptext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Log In"
+        android:text="Sign Up"
         android:textColor="@color/dBrown"
         android:textSize="35dp"
         app:layout_constraintBottom_toBottomOf="parent"
