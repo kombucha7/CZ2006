@@ -11,7 +11,7 @@
         android:id="@+id/bottom_background"
         android:layout_width="match_parent"
         android:layout_height="530dp"
-        android:src="@drawable/bottom_background"
+        android:src="@drawable/onboarding_rectangle"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
