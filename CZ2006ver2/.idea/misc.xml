@@ -20,10 +20,11 @@
         <entry key="app/src/main/res/drawable/onboarding_rectangle.xml" value="0.201" />
         <entry key="app/src/main/res/drawable/roundedcorners.xml" value="0.201" />
         <entry key="app/src/main/res/drawable/roundededittext.xml" value="0.1445" />
+        <entry key="app/src/main/res/layout/activity_groupselection.xml" value="0.2593443724486205" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.23192749023437498" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.21653594970703127" />
         <entry key="app/src/main/res/layout/activity_register2.xml" value="0.22604166666666667" />
-        <entry key="app/src/main/res/layout/connect_page1.xml" value="0.22100067138671864" />
+        <entry key="app/src/main/res/layout/connect_page1.xml" value="0.1747589111328125" />
       </map>
     </option>
   </component>
