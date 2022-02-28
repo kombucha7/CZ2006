@@ -10,19 +10,18 @@
     <ImageView
         android:id="@+id/bottom_background"
         android:layout_width="match_parent"
-        android:layout_height="532dp"
+        android:layout_height="0dp"
         android:src="@drawable/onboarding_rectangle"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/old_man_logo"
-        app:layout_constraintVertical_bias="1.0" />
+        />
 
     <ImageView
         android:id="@+id/old_man_logo"
         android:layout_width="match_parent"
-        android:layout_height="161dp"
+        android:layout_height="180dp"
         android:src="@drawable/grandpa"
         app:layout_constraintTop_toBottomOf="@+id/back_button"
         />
@@ -44,8 +43,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:text="Back"
+        android:textColor="@color/dBrown"
         app:layout_constraintStart_toEndOf="@+id/back_button"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        />
 
     <TextView
         android:id="@+id/connect"
@@ -56,7 +57,7 @@
         android:fontFamily="sans-serif-black"
         android:letterSpacing="0.05"
         android:text="Connect"
-        android:textColor="#6C4A4A"
+        android:textColor="@color/dBrown"
         android:textSize="35sp"
         app:layout_constraintTop_toBottomOf="@+id/old_man_logo"
         />
@@ -66,44 +67,64 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Enter group code: "
-        android:textColor="#6C4A4A"
-        android:textSize="16sp"
+        android:textColor="@color/dBrown"
+        android:textSize="18sp"
         app:layout_constraintTop_toBottomOf ="@+id/connect"
-        android:layout_marginVertical="20dp"
-        android:layout_marginLeft="40dp"
-        />
-    <EditText
-        android:id="@+id/enter_field"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf ="@+id/enter_group_code"
-        android:layout_marginVertical="10dp"
+        android:layout_marginVertical="15dp"
         android:layout_marginLeft="40dp"
         />
 
+    <EditText
+        android:id="@+id/enter_field"
+        android:layout_width="310dp"
+        android:layout_height="53dp"
+        android:layout_marginVertical="10dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight ="40dp"
+        android:background="@drawable/roundededittext"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/enter_group_code" />
+
     <Button
         android:id="@+id/enter_button"
-        android:layout_width="150dp"
+        android:layout_width="231dp"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:layout_marginVertical="30dp"
+        android:layout_marginVertical="50dp"
         android:backgroundTint="@color/button"
+        android:fontFamily="sans-serif-black"
+        android:paddingTop="13dp"
+        android:paddingBottom="13dp"
         android:text="Enter"
+        android:textSize="16dp"
+        app:cornerRadius="50dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/enter_field"
         />
 
     <TextView
+        android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Don't have a group code? Create code "
-        android:textColor="#6C4A4A"
         android:layout_marginTop="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/bottom_background"
-        app:layout_constraintTop_toBottomOf="@+id/enter_button"
-        />
+        android:text="Don't have a group code?"
+        android:paddingLeft="75dp"
+        android:textColor="@color/dBrown"
+        app:layout_constraintTop_toBottomOf="@+id/enter_button" />
+
+    <TextView
+        android:id="@+id/createCode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Create Code"
+        android:layout_marginLeft="5dp"
+        android:textColor="#BF7B71"
+        android:clickable="true"
+        app:layout_constraintStart_toEndOf="@+id/textView2"
+        app:layout_constraintTop_toBottomOf="@+id/enter_button" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
