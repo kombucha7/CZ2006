@@ -15,5 +15,10 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
         }
+
+        regbutton.setOnClickListener{
+            val regIntent = Intent(this, RegisterActivity::class.java)
+            startActivity(regIntent)
+        }
     }
 }
