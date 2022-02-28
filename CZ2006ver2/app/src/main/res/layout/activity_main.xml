@@ -18,24 +18,21 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.088"
-        />
+        app:layout_constraintVertical_bias="0.088" />
 
     <ImageView
         android:id="@+id/startpageimage"
         android:layout_width="271dp"
         android:layout_height="253dp"
-        android:layout_marginStart="60dp"
+        android:layout_marginStart="70dp"
         android:layout_marginTop="104dp"
-        android:layout_marginEnd="80dp"
+        android:layout_marginEnd="70dp"
         android:layout_marginBottom="374dp"
         android:src="@drawable/output_onlinepngtools__3__removebg_preview"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="10.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <View
         android:id="@+id/bottom_background"
@@ -44,13 +41,13 @@
         android:layout_below="@+id/hotomelogo"
         android:layout_alignParentBottom="true"
         android:layout_marginTop="400dp"
-        android:layout_marginBottom="2dp"
+        android:layout_marginBottom="0dp"
         android:background="@drawable/roundedcorners"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        android:translationZ="-50dp"/>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/loginbutton"
@@ -66,8 +63,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.672"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintVertical_bias="0.672" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/regbutton"
@@ -81,34 +77,50 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.878"
-        tools:ignore="MissingConstraints" />
-
-    <com.google.android.material.divider.MaterialDivider
-        android:id="@+id/dividerleft"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:dividerColor="@color/black"
-        app:dividerInsetEnd="128dp"
-        app:dividerInsetStart="128dp"
-        tools:layout_editor_absoluteX="-119dp"
-        tools:layout_editor_absoluteY="560dp" />
+        app:layout_constraintVertical_bias="0.878" />
 
     <com.google.android.material.divider.MaterialDivider
         android:id="@+id/dividerright"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="120dp"
+        android:layout_marginTop="562dp"
+        android:layout_marginBottom="168dp"
         app:dividerColor="@color/black"
         app:dividerInsetEnd="128dp"
         app:dividerInsetStart="128dp"
-        tools:layout_editor_absoluteX="119dp"
-        tools:layout_editor_absoluteY="560dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:translationZ="50dp" />
+
+    <com.google.android.material.divider.MaterialDivider
+        android:id="@+id/dividerleft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="562dp"
+        android:layout_marginEnd="120dp"
+        android:layout_marginBottom="168dp"
+        app:dividerColor="@color/black"
+        app:dividerInsetEnd="128dp"
+        app:dividerInsetStart="128dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:translationZ="50dp" />
 
     <com.google.android.material.textview.MaterialTextView
         android:layout_width="28dp"
         android:layout_height="30dp"
+        android:layout_marginStart="192dp"
+        android:layout_marginTop="549dp"
+        android:layout_marginEnd="192dp"
+        android:layout_marginBottom="152dp"
         android:text="OR"
         android:textSize="20dp"
-        tools:layout_editor_absoluteX="191dp"
-        tools:layout_editor_absoluteY="549dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:translationZ="50dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
