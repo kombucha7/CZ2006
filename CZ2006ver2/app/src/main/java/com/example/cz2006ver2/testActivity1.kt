@@ -20,8 +20,8 @@ class testActivity1 : AppCompatActivity() {
             testUserName = findViewById(R.id.testEnterName)     //this is an edittext object?? need to convert to string first
             testUserPhoneNum = findViewById(R.id.testEnterPhoneNum)
 
-            val name = testUserName.toString()
-            val num = testUserName.toString()
+            val name = testUserName.text.toString()
+            val num = testUserPhoneNum.text.toString()
             saveFireStore(name,num)
         }
     }
@@ -29,7 +29,7 @@ class testActivity1 : AppCompatActivity() {
     fun saveFireStore(name: String, num: String) {
         val db = FirebaseFirestore.getInstance()
         val user: MutableMap<String, Any> = HashMap()
-        user["name"] = name
+        user["name"] = name     //it doesnt get pushed as a string in firestore
         user["number"] = num
 
         db.collection("users")
