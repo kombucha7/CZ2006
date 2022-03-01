@@ -7,138 +7,156 @@
     android:background="@color/background"
     tools:context=".RegisterActivity">
 
-    <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/onboardingViewPager"
-        android:layout_width="match_parent"
-        android:layout_height="520dp"
-        android:background="@drawable/onboarding_rectangle"
-        app:layout_constraintBottom_toBottomOf="parent"
-        tools:layout_editor_absoluteX="0dp">
-    </androidx.viewpager2.widget.ViewPager2>
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/registerbutton"
-        android:layout_width="231dp"
-        android:layout_height="63dp"
-        android:backgroundTint="@color/button"
-        android:text="Sign Up"
-        app:cornerRadius="50dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/passwordfield2"
-        android:layout_marginTop="25dp"/>
-
-    <EditText
-        android:id="@+id/emailfield"
-        android:layout_width="310dp"
-        android:layout_height="59dp"
-        android:background="@drawable/roundededittext"
-        android:padding="15dip"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/EmailText"
-        android:layout_marginTop="25dp"/>
-
-    <EditText
-        android:id="@+id/passwordfield1"
-        android:layout_width="310dp"
-        android:layout_height="59dp"
-        android:padding="15dip"
-        android:background="@drawable/roundededittext"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/PWText"
-        android:layout_marginTop="30dp"/>
-
-
-    <EditText
-        android:id="@+id/passwordfield2"
-        android:layout_width="310dp"
-        android:layout_height="59dp"
-        android:padding="15dip"
-        android:background="@drawable/roundededittext"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ConfirmPWText"
-        android:layout_marginTop="30dp"/>
-
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/signuptext"
-        android:layout_width="wrap_content"
+    <ScrollView
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Sign Up"
-        android:textColor="@color/dBrown"
-        android:textSize="35dp"
-        app:layout_constraintHorizontal_bias="0.165"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="230dp"
-        android:layout_marginLeft="40dp"/>
-
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/EmailText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Email address:"
-        android:textColor="@color/dBrown"
-        android:textSize="16dp"
-        app:layout_constraintHorizontal_bias="0.17"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/signuptext"
-        app:layout_constraintVertical_bias="0.05" />
+        tools:ignore="MissingConstraints">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
+            android:scrollbars="vertical">
+            <ImageView
+                android:id="@+id/loginpagepic"
+                android:layout_width="230dp"
+                android:layout_height="230dp"
+                android:src="@drawable/grandpa"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintHorizontal_bias="0.43"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/PWText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Password:"
-        android:textColor="@color/dBrown"
-        android:textSize="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.17"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/emailfield"
-        app:layout_constraintVertical_bias="0.03" />
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/backbtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="12dp"
+                android:layout_marginTop="16dp"
+                android:text="Back"
+                android:textColor="@color/dBrown"
+                android:textSize="16dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/ConfirmPWText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Confirm Password:"
-        android:textColor="@color/dBrown"
-        android:textSize="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.17"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/passwordfield1"
-        app:layout_constraintVertical_bias="0.03" />
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/onboardingViewPager"
+                android:layout_width="match_parent"
+                android:layout_height="520dp"
+                android:background="@drawable/onboarding_rectangle"
+                app:layout_constraintBottom_toBottomOf="parent"
+                tools:layout_editor_absoluteX="0dp">
+            </androidx.viewpager2.widget.ViewPager2>
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/backbtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="12dp"
-        android:layout_marginTop="16dp"
-        android:text="Back"
-        android:textColor="@color/dBrown"
-        android:textSize="16dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/registerbutton"
+                android:layout_width="231dp"
+                android:layout_height="63dp"
+                android:backgroundTint="@color/button"
+                android:text="Sign Up"
+                app:cornerRadius="50dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/passwordfield2"
+                android:layout_marginTop="25dp"/>
 
-    <ImageView
-        android:id="@+id/loginpagepic"
-        android:layout_width="230dp"
-        android:layout_height="230dp"
-        android:src="@drawable/grandpa"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.43"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+            <EditText
+                android:id="@+id/emailfield"
+                android:layout_width="310dp"
+                android:layout_height="59dp"
+                android:background="@drawable/roundededittext"
+                android:padding="15dip"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/EmailText"
+                android:layout_marginTop="25dp"/>
+
+            <EditText
+                android:id="@+id/passwordfield1"
+                android:layout_width="310dp"
+                android:layout_height="59dp"
+                android:padding="15dip"
+                android:background="@drawable/roundededittext"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/PWText"
+                android:layout_marginTop="30dp"/>
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <EditText
+                android:id="@+id/passwordfield2"
+                android:layout_width="310dp"
+                android:layout_height="59dp"
+                android:padding="15dip"
+                android:background="@drawable/roundededittext"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/ConfirmPWText"
+                android:layout_marginTop="30dp"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/signuptext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sign Up"
+                android:textColor="@color/dBrown"
+                android:textSize="35dp"
+                app:layout_constraintHorizontal_bias="0.165"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginTop="230dp"
+                android:layout_marginLeft="40dp"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/EmailText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Email address:"
+                android:textColor="@color/dBrown"
+                android:textSize="16dp"
+                app:layout_constraintHorizontal_bias="0.17"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/signuptext"
+                app:layout_constraintVertical_bias="0.05" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/PWText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Password:"
+                android:textColor="@color/dBrown"
+                android:textSize="16dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintHorizontal_bias="0.17"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/emailfield"
+                app:layout_constraintVertical_bias="0.03" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/ConfirmPWText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Confirm Password:"
+                android:textColor="@color/dBrown"
+                android:textSize="16dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintHorizontal_bias="0.17"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/passwordfield1"
+                app:layout_constraintVertical_bias="0.03" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
