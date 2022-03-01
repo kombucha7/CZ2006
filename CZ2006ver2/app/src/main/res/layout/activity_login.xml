@@ -8,7 +8,7 @@
     tools:context=".LoginActivity">
 
     <ImageView
-        android:id="@+id/back_button"
+        android:id="@+id/loginPageBackBtn"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_marginLeft="30dp"
