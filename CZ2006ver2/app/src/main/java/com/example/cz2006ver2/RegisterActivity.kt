@@ -24,6 +24,11 @@ class RegisterActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register2)
 
+        regPageBackBtn.setOnClickListener{
+            val backBtnIntent = Intent(this, testActivity1::class.java)
+            startActivity(backBtnIntent)
+        }
+
         registerbutton.setOnClickListener {auth = FirebaseAuth.getInstance()
 
             emailEt = findViewById(R.id.emailfield)
