@@ -27,7 +27,7 @@
                 app:tint="@color/dBrown" />
 
             <TextView
-                android:id="@+id/back_button_word"
+                android:id="@+id/regPageBackBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="21dp"
