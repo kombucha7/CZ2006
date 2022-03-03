@@ -60,35 +60,30 @@
         android:lineSpacingExtra="5dp"
         app:layout_constraintTop_toBottomOf="@+id/grouppagepic" />
 
-    <ImageView
-    android:id="@+id/maleprofile"
-    android:layout_width="wrap_content"
-    android:layout_height="100dp"
-    android:src="@drawable/maleprofile"
-    android:layout_marginTop="25dp"
-    android:layout_marginRight="50dp"
-    app:layout_constraintRight_toRightOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/groupSelect" />
-
-    <ImageView
-        android:id="@+id/femaleprofile"
-        android:layout_width="wrap_content"
-        android:layout_height="100dp"
-        android:src="@drawable/femaleprofile"
-        android:layout_marginTop="25dp"
-        android:layout_marginLeft="50dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/groupSelect" />
-
     <TextView
-        android:id="@+id/emailAddress"
+        android:id="@+id/gs_group1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginVertical="20dp"
+        android:layout_marginVertical="40dp"
         android:layout_centerVertical = "true"
-        android:text="Email address:"
+        android:text="Group 1"
         android:textColor="@color/dBrown"
         android:textSize="16dp"
-        app:layout_constraintTop_toBottomOf="@id/femaleprofile"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/groupSelect"/>
+
+    <TextView
+        android:id="@+id/gs_group2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="30dp"
+        android:layout_centerVertical = "true"
+        android:text="Group 2"
+        android:textColor="@color/dBrown"
+        android:textSize="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/gs_group1"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
