@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CZ2006ver2">
         <activity
+            android:name=".calendar_main"
+            android:exported="false" />
+        <activity
             android:name=".YourCodePageActivity"
             android:exported="false" />
         <activity
