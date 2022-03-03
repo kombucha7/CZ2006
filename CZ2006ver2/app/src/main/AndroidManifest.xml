@@ -13,6 +13,9 @@
             android:name=".CalendarMainActivity"
             android:exported="false" />
         <activity
+            android:name=".HomePage1"
+            android:exported="false" />
+        <activity
             android:name=".YourCodePageActivity"
             android:exported="false" />
         <activity
