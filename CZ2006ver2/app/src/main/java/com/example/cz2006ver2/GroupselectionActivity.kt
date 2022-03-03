@@ -30,6 +30,9 @@ class GroupselectionActivity : AppCompatActivity() {
     fun getFirestore(){
         val cr1 = findViewById<TextView>(R.id.gs_group1)
         val cr2 = findViewById<TextView>(R.id.gs_group2)
+        val cr3 = findViewById<TextView>(R.id.gs_group3)
+        val cr4 = findViewById<TextView>(R.id.gs_group4)
+        val cr5 = findViewById<TextView>(R.id.gs_group5)
         val currentFirebaseUser = FirebaseAuth.getInstance().currentUser    //getting the user id value
         val userID = currentFirebaseUser!!.uid
         val TAG = "myLogTag"
@@ -41,6 +44,9 @@ class GroupselectionActivity : AppCompatActivity() {
                  //Log.d(TAG, "Our data: ${document.data}")
                     cr1.text = document.getString("careRecipient1")
                     cr2.text = document.getString("careRecipient2")
+                    cr3.text = document.getString("careRecipient3")
+                    cr4.text = document.getString("careRecipient4")
+                    cr5.text = document.getString("careRecipient5")
                 }
             }
             .addOnFailureListener { exception ->
