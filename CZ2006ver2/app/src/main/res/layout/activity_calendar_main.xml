@@ -7,6 +7,7 @@
     android:background="@color/background"
     tools:context=".CalendarMainActivity">
 
+    <!--                start of topbar code                 -->
     <ImageView
         android:id="@+id/calendar_main_header"
         android:layout_width="match_parent"
@@ -26,6 +27,7 @@
         android:textAlignment="center"
         app:layout_constraintTop_toTopOf="@id/calendar_main_header"
         app:layout_constraintBottom_toBottomOf="@id/calendar_main_header"/>
+    <!--                end of topbar code                 -->
 
     <TextView
         android:id="@+id/calendarHeader"
@@ -163,7 +165,7 @@
         android:id="@+id/transport_page2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginVertical="5dp"
+        android:layout_marginVertical="4dp"
         android:fontFamily="@font/lato"
         android:text="Transport"
         android:textColor="@color/dBrown"
@@ -188,7 +190,7 @@
         android:id="@+id/account_page2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginVertical="7dp"
+        android:layout_marginVertical="6dp"
         android:fontFamily="@font/lato"
         android:text="Account"
         android:textColor="@color/dBrown"
@@ -198,7 +200,6 @@
         app:layout_constraintStart_toStartOf="@id/accounticon_page2"
         app:layout_constraintEnd_toEndOf="@id/accounticon_page2"
         app:layout_constraintTop_toBottomOf="@+id/accounticon_page2" />
-
     <!--               end of navbar code                 -->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
