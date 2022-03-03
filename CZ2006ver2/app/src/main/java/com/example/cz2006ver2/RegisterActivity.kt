@@ -25,7 +25,7 @@ class RegisterActivity : AppCompatActivity() {
         setContentView(R.layout.activity_register2)
 
         regPageBackBtn.setOnClickListener{
-            val backBtnIntent = Intent(this, testActivity1::class.java)
+            val backBtnIntent = Intent(this, MainActivity::class.java)
             startActivity(backBtnIntent)
         }
 
