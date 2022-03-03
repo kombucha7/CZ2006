@@ -7,5 +7,7 @@ class GroupNamePageActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_group_name_page)
+
+
     }
 }
