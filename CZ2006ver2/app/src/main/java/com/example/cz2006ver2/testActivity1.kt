@@ -29,7 +29,7 @@ class testActivity1 : AppCompatActivity() {
     fun saveFireStore(name: String, num: String) {
         val db = FirebaseFirestore.getInstance()
         val user: MutableMap<String, Any> = HashMap()
-        user["name"] = name     //it doesnt get pushed as a string in firestore
+        user["name"] = name
         user["number"] = num
 
         db.collection("users")
