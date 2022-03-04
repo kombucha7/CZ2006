@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CZ2006ver2">
         <activity
+            android:name=".HomePage2"
+            android:exported="false" />
+        <activity
             android:name=".ViewProfileActivity"
             android:exported="false" />
         <activity
