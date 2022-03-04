@@ -7,24 +7,25 @@
     tools:context=".HomePage1"
     android:background="@color/background">
 
-    <TextView
+    <ImageView
         android:id="@+id/home1hotomelogo"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:background="@drawable/topbar"
+        android:layout_height="wrap_content"
+        android:src="@drawable/topbar"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="HOTOME"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        android:textColor="@color/white"
         android:fontFamily="sans-serif-black"
-        android:gravity="center"
-        android:text="H O T O M E"
-        android:textColor="@android:color/white"
-        android:textSize="34dp"
-        android:typeface="normal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
-    </TextView>
+        android:letterSpacing="0.5"
+        android:textAlignment="center"
+        app:layout_constraintTop_toTopOf="@id/home1hotomelogo"
+        app:layout_constraintBottom_toBottomOf="@id/home1hotomelogo"/>
 
     <TextView
         android:id="@+id/home1introtext"
