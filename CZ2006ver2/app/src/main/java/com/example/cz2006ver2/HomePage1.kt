@@ -10,6 +10,21 @@ class HomePage1 : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home_page1)
+
+        home1_addbutton.setOnClickListener{
+            val intent = Intent(this, HomePage2::class.java)
+            startActivity(intent)
+        }
+
+        home1_editbutton.setOnClickListener{
+            val intent = Intent(this, HomePage2::class.java)
+            startActivity(intent)
+        }
+
+        home1_deletebutton.setOnClickListener{
+            val intent = Intent(this, HomePage4::class.java)
+            startActivity(intent)
+        }
     }
 
     fun HomeClick_page1(view: View) {
