@@ -10,6 +10,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CZ2006ver2">
         <activity
+            android:name=".LogoutActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ChangePasswordActivity"
+            android:exported="false" />
+        <activity
+            android:name=".GroupDetailsActivity"
+            android:exported="false"
+            android:label="@string/title_activity_group_details"
+            android:theme="@style/Theme.CZ2006ver2.NoActionBar" />
+        <activity
             android:name=".ViewProfileActivity"
             android:exported="false" />
         <activity
