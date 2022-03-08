@@ -19,14 +19,14 @@ class GroupselectionActivity : AppCompatActivity() {
 
         getFirestore()
         //back button to the landing page
-        back_button_word.setOnClickListener{
+        back_button_word.setOnClickListener {
             val groupSelectBackBtn = Intent(this, LoginActivity::class.java)
             startActivity(groupSelectBackBtn)
         }
     }
 
 
-    fun getFirestore(){
+    fun getFirestore() {
         var cr1 = findViewById<TextView>(R.id.gs_group1)
         val cr2 = findViewById<TextView>(R.id.gs_group2)
         val cr3 = findViewById<TextView>(R.id.gs_group3)
@@ -34,7 +34,8 @@ class GroupselectionActivity : AppCompatActivity() {
         val cr5 = findViewById<TextView>(R.id.gs_group5)
 
 
-        val currentFirebaseUser = FirebaseAuth.getInstance().currentUser    //getting the user id value
+        val currentFirebaseUser =
+            FirebaseAuth.getInstance().currentUser    //getting the user id value
         val userID = currentFirebaseUser!!.uid
         val TAG = "myLogTag"
         val db = FirebaseFirestore.getInstance()
@@ -50,7 +51,35 @@ class GroupselectionActivity : AppCompatActivity() {
                     var s3: String = ""
                     var s4: String = ""
                     var s5: String = ""
-                    assignVal(list,s1,s2,s3,s4,s5)
+                    val size = list.size
+                    when (size) {
+                        1 -> s1 = list.get(0)
+                        2 -> {
+                            s1 = list.get(0)
+                            s2 = list.get(1)
+                        }
+                        3 -> {
+                            s1 = list.get(0)
+                            s2 = list.get(1)
+                            s3 = list.get(2)
+                        }
+                        4 -> {
+                            s1 = list.get(0)
+                            s2 = list.get(1)
+                            s3 = list.get(2)
+                            s4 = list.get(3)
+                        }
+                        5 -> {
+                            s1 = list.get(0)
+                            s2 = list.get(1)
+                            s3 = list.get(2)
+                            s4 = list.get(3)
+                            s5 = list.get(4)
+                        }
+                        else -> {
+                            print("x is neither 1 nor 2")
+                        }
+                    }
 
                     cr1.text = s1
                     cr2.text = s2
@@ -64,20 +93,23 @@ class GroupselectionActivity : AppCompatActivity() {
                 Log.d(TAG, "get failed with ", exception)
             }
     }
-
-    fun assignVal(list: ArrayList<String>, s1: String, s2: String, s3: String, s4: String, s5: String) {
-        val size = list.size
-
-        when (size) {
-            1 -> print("x == 1")
-            2 -> print("x == 2")
-            3 -> print("x == 2")
-            4 -> print("x == 2")
-            5 -> print("x == 2")
-            else -> {
-                print("x is neither 1 nor 2")
+    fun getElderlyName(elderUID: String) {        //function for getting stuff
+        val currentFirebaseUser = FirebaseAuth.getInstance().currentUser    //getting the user id value
+        val userID = currentFirebaseUser!!.uid
+        val TAG = "myLogTag"
+        val db = FirebaseFirestore.getInstance()
+        val docRef = db.collection("elderly").document(elderUID)
+        docRef.get()
+            .addOnSuccessListener { document ->
+                if (document != null) {
+                    document.getString("name")
+                } else {
+                    Log.d(TAG, "No such document")
+                }
             }
-        }
+            .addOnFailureListener { exception ->
+                Log.d(TAG, "get failed with ", exception)
+            }
     }
 
 }
