@@ -28,9 +28,12 @@
         <entry key="app/src/main/res/drawable/roundedcorners.xml" value="0.201" />
         <entry key="app/src/main/res/drawable/topbar.xml" value="0.1445" />
         <entry key="app/src/main/res/layout/activity_account_main.xml" value="0.2549132201048704" />
-        <entry key="app/src/main/res/layout/activity_calendar_main.xml" value="0.11759033203125005" />
+        <entry key="app/src/main/res/layout/activity_calendar_day.xml" value="0.1647124144408079" />
+        <entry key="app/src/main/res/layout/activity_calendar_main.xml" value="0.24072265625000006" />
         <entry key="app/src/main/res/layout/activity_groupselection.xml" value="0.2451202392578125" />
         <entry key="app/src/main/res/layout/activity_home_page1.xml" value="0.22972869873046875" />
+        <entry key="app/src/main/res/layout/activity_home_page2.xml" value="0.1954954954954955" />
+        <entry key="app/src/main/res/layout/activity_home_page3.xml" value="0.1954954954954955" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.23870849609375017" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.21653594970703127" />
         <entry key="app/src/main/res/layout/activity_register2.xml" value="0.212188720703125" />
