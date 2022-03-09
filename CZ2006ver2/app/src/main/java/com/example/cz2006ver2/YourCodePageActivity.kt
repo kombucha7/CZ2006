@@ -23,9 +23,9 @@ class YourCodePageActivity : AppCompatActivity() {
 
         yourCodeNextButton.setOnClickListener{
             Log.d(TAG, "Key" + elderKey)    //for testing if match DB UID
-            val backBtnIntent = Intent(this, GroupNamePageActivity::class.java)
-            backBtnIntent.putExtra("key", elderKey)
-            startActivity(backBtnIntent)
+            val intent = Intent(this, GroupNamePageActivity::class.java)
+            intent.putExtra("key", elderKey)
+            startActivity(intent)
         }
 
 
