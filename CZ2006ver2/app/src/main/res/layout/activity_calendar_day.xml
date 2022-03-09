@@ -138,5 +138,105 @@
         android:textStyle="bold"
         app:layout_constraintTop_toBottomOf="@+id/cal_name_box" />
 
+    <ScrollView
+        android:id="@+id/cal_scroll"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:background="@drawable/cal_tasks_box"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.49"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cal_tasks"
+        app:layout_constraintVertical_bias="0.2"
+        android:layout_marginLeft="45dp"
+        android:layout_marginRight="45dp"
+        android:scrollbars="vertical"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <CheckBox
+                android:id="@+id/calcheck1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:text="Bring Ah Ma to the Polyclinic"
+                android:textSize="20sp"
+                android:textColor="@color/dBrown"
+                android:paddingLeft="10dp"
+                android:paddingTop="15dp"
+                android:lineSpacingExtra="5dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+            </CheckBox>
+
+            <CheckBox
+                android:id="@+id/calcheck2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:text="Give Ah Ma Medication (Afternoon)"
+                android:textSize="20sp"
+                android:paddingTop="15dp"
+                android:lineSpacingExtra="5dp"
+                android:textColor="@color/dBrown"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/calcheck1">
+            </CheckBox>
+
+            <CheckBox
+                android:id="@+id/calcheck3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:text="Bring Ah Ma to the Polyclinic"
+                android:textSize="20sp"
+                android:paddingTop="15dp"
+                android:lineSpacingExtra="5dp"
+                android:textColor="@color/dBrown"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/calcheck2">
+
+            </CheckBox>
+
+            <CheckBox
+                android:id="@+id/calcheck4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:text="Bring Ah Ma to the Polyclinic"
+                android:textSize="20sp"
+                android:paddingTop="15dp"
+                android:lineSpacingExtra="5dp"
+                android:textColor="@color/dBrown"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/calcheck3">
+
+            </CheckBox>
+
+            <CheckBox
+                android:id="@+id/calcheck5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:text="Bring Ah Ma to the Polyclinic"
+                android:textSize="20sp"
+                android:paddingTop="15dp"
+                android:lineSpacingExtra="5dp"
+                android:textColor="@color/dBrown"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/calcheck4">
+
+            </CheckBox>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
