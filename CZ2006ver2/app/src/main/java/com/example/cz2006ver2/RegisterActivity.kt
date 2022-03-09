@@ -10,6 +10,7 @@ import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_register2.*
 
 class RegisterActivity : AppCompatActivity() {
@@ -18,6 +19,11 @@ class RegisterActivity : AppCompatActivity() {
     private lateinit var emailEt: EditText
     private lateinit var passwordEt: EditText
 
+    data class userInfo(        //data that we are passing in, add on to userInfo if want to ask for more
+        val name: String? = null,
+        val num: String? = null,
+        val careArray: Array<String>? = null,
+    )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         auth = FirebaseAuth.getInstance()
@@ -25,7 +31,7 @@ class RegisterActivity : AppCompatActivity() {
         setContentView(R.layout.activity_register2)
 
         regPageBackBtn.setOnClickListener{
-            val backBtnIntent = Intent(this, MainActivity::class.java)
+            val backBtnIntent = Intent(this, HomePage1::class.java)
             startActivity(backBtnIntent)
         }
 
@@ -46,6 +52,7 @@ class RegisterActivity : AppCompatActivity() {
                         if(task.isSuccessful){
                             Toast.makeText(this, "Successfully Registered", Toast.LENGTH_LONG).show()
                             val intent = Intent(this, ConnectPageActivity::class.java)
+                            saveFireStore(email,password)
                             startActivity(intent)
                             finish()
                         }else {
@@ -55,6 +62,24 @@ class RegisterActivity : AppCompatActivity() {
                 }
             }
         }
-
     }
+
+    fun saveFireStore(name: String, num: String) {      //function for posting stuff
+        val currentFirebaseUser = FirebaseAuth.getInstance().currentUser
+        val userID = currentFirebaseUser!!.uid
+        //Toast.makeText(this, "" + currentFirebaseUser!!.uid, Toast.LENGTH_SHORT).show()   just for testing
+        val db = FirebaseFirestore.getInstance()
+
+        val data = testActivity1.userInfo(name, num)
+
+        db.collection("users").document(userID).set(data)
+            .addOnSuccessListener {
+                Toast.makeText(this@RegisterActivity, "record added successfully ", Toast.LENGTH_SHORT ).show()
+            }
+
+            .addOnFailureListener{
+                Toast.makeText(this@RegisterActivity, "record Failed to add ", Toast.LENGTH_SHORT ).show()
+            }
+    }
+
 }
