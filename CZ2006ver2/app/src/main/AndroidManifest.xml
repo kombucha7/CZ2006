@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CZ2006ver2">
         <activity
+            android:name=".CalendarCaretakerActivity"
+            android:exported="false" />
+        <activity
             android:name=".CalendarDayActivity"
             android:exported="false" />
         <activity
