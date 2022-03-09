@@ -13,8 +13,8 @@ class ConnectPageActivity : AppCompatActivity() {
 
         //this is for when they do not have an account
         createCode.setOnClickListener{
-            val backBtnIntent = Intent(this, YourCodePageActivity::class.java)
-            startActivity(backBtnIntent)
+            val intent = Intent(this, YourCodePageActivity::class.java)
+            startActivity(intent)
         }
     }
 
