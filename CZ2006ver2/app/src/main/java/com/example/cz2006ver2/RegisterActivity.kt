@@ -16,12 +16,12 @@ import kotlinx.android.synthetic.main.activity_register2.*
 class RegisterActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
 
+    private lateinit var nameEt: EditText
     private lateinit var emailEt: EditText
-    private lateinit var passwordEt: EditText
 
     data class userInfo(        //data that we are passing in, add on to userInfo if want to ask for more
         val name: String? = null,
-        val num: String? = null,
+        val email: String? = null,
         val careArray: Array<String>? = null,
     )
 
@@ -37,22 +37,23 @@ class RegisterActivity : AppCompatActivity() {
 
         registerbutton.setOnClickListener {auth = FirebaseAuth.getInstance()
 
+            nameEt = findViewById(R.id.namefield)
             emailEt = findViewById(R.id.emailfield)
-            passwordEt = findViewById(R.id.passwordfield1)
+
 
 
             registerbutton.setOnClickListener{
+                var name: String = nameEt.text.toString()
                 var email: String = emailEt.text.toString()
-                var password: String = passwordEt.text.toString()
 
-                if(TextUtils.isEmpty(email) || TextUtils.isEmpty(password)) {
+                if(TextUtils.isEmpty(email) || TextUtils.isEmpty(name)) {
                     Toast.makeText(this, "Please fill all the fields", Toast.LENGTH_LONG).show()
                 } else{
-                    auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this, OnCompleteListener{ task ->
+                    auth.createUserWithEmailAndPassword(email, name).addOnCompleteListener(this, OnCompleteListener{ task ->
                         if(task.isSuccessful){
                             Toast.makeText(this, "Successfully Registered", Toast.LENGTH_LONG).show()
                             val intent = Intent(this, ConnectPageActivity::class.java)
-                            saveFireStore(email,password)
+                            saveFireStore(name,email)
                             startActivity(intent)
                             finish()
                         }else {
@@ -64,13 +65,13 @@ class RegisterActivity : AppCompatActivity() {
         }
     }
 
-    fun saveFireStore(name: String, num: String) {      //function for posting stuff
+    fun saveFireStore(name: String, email: String) {      //function for posting stuff
         val currentFirebaseUser = FirebaseAuth.getInstance().currentUser
         val userID = currentFirebaseUser!!.uid
         //Toast.makeText(this, "" + currentFirebaseUser!!.uid, Toast.LENGTH_SHORT).show()   just for testing
         val db = FirebaseFirestore.getInstance()
 
-        val data = testActivity1.userInfo(name, num)
+        val data = userInfo(name, email)
 
         db.collection("users").document(userID).set(data)
             .addOnSuccessListener {
