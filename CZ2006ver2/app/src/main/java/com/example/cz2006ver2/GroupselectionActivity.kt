@@ -32,7 +32,11 @@ class GroupselectionActivity : AppCompatActivity() {
         val cr3 = findViewById<TextView>(R.id.gs_group3)
         val cr4 = findViewById<TextView>(R.id.gs_group4)
         val cr5 = findViewById<TextView>(R.id.gs_group5)
-
+        var s1: String = " "
+        var s2: String = " "
+        var s3: String = " "
+        var s4: String = " "
+        var s5: String = " "
 
         val currentFirebaseUser =
             FirebaseAuth.getInstance().currentUser    //getting the user id value
@@ -46,14 +50,11 @@ class GroupselectionActivity : AppCompatActivity() {
                 if (documentSnapshot != null) {
                     val list = documentSnapshot.get("careArray") as ArrayList<String>
 
-                    var s1: String = ""
-                    var s2: String = ""
-                    var s3: String = ""
-                    var s4: String = ""
-                    var s5: String = ""
                     val size = list.size
-                    when (size) {
-                        1 -> s1 = list.get(0)
+                    when (size) {       //convert this into a function
+                        1 -> {
+                            s1 = list.get(0)
+                        }
                         2 -> {
                             s1 = list.get(0)
                             s2 = list.get(1)
@@ -76,33 +77,31 @@ class GroupselectionActivity : AppCompatActivity() {
                             s4 = list.get(3)
                             s5 = list.get(4)
                         }
-                        else -> {
-                            print("x is neither 1 nor 2")
-                        }
                     }
 
-                    cr1.text = s1
-                    cr2.text = s2
-                    cr3.text = s3
-                    cr4.text = s4
-                    cr5.text = s5
-
+                    getElderlyName(s1,cr1)
+                    getElderlyName(s2,cr2)
+                    getElderlyName(s3,cr3)
+                    getElderlyName(s4,cr4)
+                    getElderlyName(s5,cr5)
                 }
             }
             .addOnFailureListener { exception ->
                 Log.d(TAG, "get failed with ", exception)
             }
     }
-    fun getElderlyName(elderUID: String) {        //function for getting stuff
-        val currentFirebaseUser = FirebaseAuth.getInstance().currentUser    //getting the user id value
-        val userID = currentFirebaseUser!!.uid
+    fun getElderlyName(elderUID: String, setText: TextView) {        //function for getting stuff
         val TAG = "myLogTag"
+        val test = " "
         val db = FirebaseFirestore.getInstance()
-        val docRef = db.collection("elderly").document(elderUID)
+        val docRef = db.collection("careRecipient").document(elderUID)
         docRef.get()
             .addOnSuccessListener { document ->
                 if (document != null) {
-                    document.getString("name")
+                    val test  = document.get("name").toString()
+                    Log.d(TAG,":${test}")
+                    if (test != "null"){
+                        setText.text = test}
                 } else {
                     Log.d(TAG, "No such document")
                 }
@@ -113,12 +112,3 @@ class GroupselectionActivity : AppCompatActivity() {
     }
 
 }
-
-
-//                    val arrayElderlyUID = document.get("careArray").toString()
-//                    Log.d(TAG, "Our data: ${arrayElderlyUID}")    //check code
-//
-//                    //clean up code (can help to figure out how to get values from array so we can skip this step)
-//                    val arrayElderUIDRemove = removeUnnecessary(arrayElderlyUID)
-//                    Log.d(TAG, "Our data: ${arrayElderUIDRemove}")    //check code
-//Log.d(TAG, "Our data: ${test}")
