@@ -18,7 +18,6 @@ class HomePage1 : AppCompatActivity() {
 
         displayUserName(home1introtext)
 
-
         home1_addbutton.setOnClickListener{
             val intent = Intent(this, HomePage2::class.java)
             startActivity(intent)
@@ -33,30 +32,24 @@ class HomePage1 : AppCompatActivity() {
             val intent = Intent(this, HomePage4::class.java)
             startActivity(intent)
         }
-    }
 
-    fun HomeClick_page1(view: View) {
         homeicon_page1.setOnClickListener{
-            val intent = Intent(this, LoginActivity::class.java)
+            val intent = Intent(this, HomePage1::class.java)
             startActivity(intent)
         }
-    }
 
-    fun CalendarClick_page1(view: View) {
         calendaricon_page1.setOnClickListener{
-            val intent = Intent(this, LoginActivity::class.java)
+            val intent = Intent(this, CalendarMainActivity::class.java)
             startActivity(intent)
         }
-    }
-    fun TransportClick_page1(view: View) {
+
         transporticon_page1.setOnClickListener{
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
         }
-    }
-    fun AccountClick_page1(view: View) {
+
         accounticon_page1.setOnClickListener{
-            val intent = Intent(this, LoginActivity::class.java)
+            val intent = Intent(this, AccountMainActivity::class.java)
             startActivity(intent)
         }
     }
@@ -91,7 +84,7 @@ class HomePage1 : AppCompatActivity() {
         docRef.get()
             .addOnSuccessListener { document ->
                 if (document != null) {
-                    setText.text = "Hello " + document.get("name").toString()
+                    setText.text = "Hello, " + document.get("name").toString()
                     Log.d(TAG, "Our data: ${document.data}")
                 } else {
                     Log.d(TAG, "No such document")
