@@ -1,9 +1,12 @@
 <resources>
     <string name="app_name">CZ2006ver2</string>
     <string-array name="yes_no">
-        <item>-</item>
+        <item>- Select -</item>
         <item>Yes</item>
         <item>No</item>
     </string-array>
 
+    <string name="select">
+        <item>Selected</item>
+    </string>
 </resources>
