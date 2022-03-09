@@ -15,6 +15,12 @@
             android:name=".TestTransportAPI"
             android:exported="false" />
         <activity
+            android:name=".CalendarCaretakerActivity2"
+            android:exported="false" />
+        <activity
+            android:name=".CalendarCaretakerActivity"
+            android:exported="false" />
+        <activity
             android:name=".CalendarDayActivity"
             android:exported="false" />
         <activity
@@ -46,28 +52,35 @@
             android:exported="false" />
         <activity
             android:name=".YourCodePageActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.CZ2006ver2HOTOME" />
         <activity
             android:name=".GroupNamePageActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.CZ2006ver2HOTOME" />
         <activity
             android:name=".ConnectPageActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.CZ2006ver2HOTOME" />
         <activity
             android:name=".GroupselectionActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.CZ2006ver2HOTOME" />
         <activity
             android:name=".RegisterActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.CZ2006ver2HOTOME" />
         <activity
             android:name=".testActivity1"
             android:exported="false" />
         <activity
             android:name=".LoginActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.CZ2006ver2HOTOME" />
         <activity
             android:name=".MainActivity"
-            android:exported="true">
+            android:exported="true"
+            android:theme="@style/Theme.CZ2006ver2HOTOME">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
