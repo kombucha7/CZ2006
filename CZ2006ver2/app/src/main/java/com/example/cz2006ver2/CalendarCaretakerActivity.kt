@@ -16,5 +16,10 @@ class CalendarCaretakerActivity : AppCompatActivity() {
             val cal2BackBtn = Intent(this, CalendarDayActivity::class.java)
             startActivity(cal2BackBtn)
         }
+        // confirm btn
+        cal_caretaker_changebtn.setOnClickListener{
+            val calConfirmBtn = Intent(this, CalendarCaretakerActivity2::class.java)
+            startActivity(calConfirmBtn)
+        }
     }
 }

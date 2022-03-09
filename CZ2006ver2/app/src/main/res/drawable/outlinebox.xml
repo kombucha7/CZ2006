@@ -3,10 +3,7 @@
     <solid android:color="@color/backgroundpre" />
     <stroke
         android:width="4dp"
-        android:color="@color/dBrown" />
+        android:color="@color/button" />
     <corners
-        android:topLeftRadius="68dp"
-        android:topRightRadius="68dp"
-        android:bottomLeftRadius="68dp"
-        android:bottomRightRadius="68dp"/>
+        android:radius="30dp"/>
 </shape>
