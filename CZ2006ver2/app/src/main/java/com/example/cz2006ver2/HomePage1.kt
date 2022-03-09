@@ -91,7 +91,7 @@ class HomePage1 : AppCompatActivity() {
         docRef.get()
             .addOnSuccessListener { document ->
                 if (document != null) {
-                    setText.text = document.get("name").toString()
+                    setText.text = "Hello " + document.get("name").toString()
                     Log.d(TAG, "Our data: ${document.data}")
                 } else {
                     Log.d(TAG, "No such document")
