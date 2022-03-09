@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CZ2006ver2">
         <activity
+            android:name=".CalendarCaretakerActivity2"
+            android:exported="false" />
+        <activity
             android:name=".CalendarCaretakerActivity"
             android:exported="false" />
         <activity
@@ -44,35 +47,35 @@
             android:exported="false" />
         <activity
             android:name=".YourCodePageActivity"
-            android:theme="@style/Theme.CZ2006ver2HOTOME"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.CZ2006ver2HOTOME" />
         <activity
             android:name=".GroupNamePageActivity"
-            android:theme="@style/Theme.CZ2006ver2HOTOME"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.CZ2006ver2HOTOME" />
         <activity
             android:name=".ConnectPageActivity"
-            android:theme="@style/Theme.CZ2006ver2HOTOME"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.CZ2006ver2HOTOME" />
         <activity
             android:name=".GroupselectionActivity"
-            android:theme="@style/Theme.CZ2006ver2HOTOME"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.CZ2006ver2HOTOME" />
         <activity
             android:name=".RegisterActivity"
-            android:theme="@style/Theme.CZ2006ver2HOTOME"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.CZ2006ver2HOTOME" />
         <activity
             android:name=".testActivity1"
             android:exported="false" />
         <activity
             android:name=".LoginActivity"
-            android:theme="@style/Theme.CZ2006ver2HOTOME"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.CZ2006ver2HOTOME" />
         <activity
             android:name=".MainActivity"
-            android:theme="@style/Theme.CZ2006ver2HOTOME"
-            android:exported="true">
+            android:exported="true"
+            android:theme="@style/Theme.CZ2006ver2HOTOME">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
