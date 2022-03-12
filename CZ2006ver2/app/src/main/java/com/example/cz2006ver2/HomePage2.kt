@@ -9,6 +9,7 @@ import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_home_page2.*
+import org.w3c.dom.Text
 import java.util.*
 
 
@@ -19,6 +20,14 @@ class HomePage2 : AppCompatActivity() {
 
         home2_login_button.setOnClickListener {
             val intent = Intent(this, HomePage3::class.java)
+            val descview = findViewById<TextView>(R.id.home2_desc_edit)
+            val timeview = findViewById<TextView>(R.id.home2_time_text)
+            val dateview = findViewById<TextView>(R.id.home2_date_text)
+            val spincon = findViewById<Spinner>(R.id.home2_event_spinner)
+            intent.putExtra("desc", descview.text)
+            intent.putExtra("time", timeview.text)
+            intent.putExtra("date", dateview.text)
+            //intent.putExtra("spin", spincon.text)
             startActivity(intent)
         }
 
