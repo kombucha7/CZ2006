@@ -71,21 +71,21 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/home4_delete_header"
         app:layout_constraintStart_toStartOf="parent"
-        android:fontFamily="@font/lato"
         android:text="Which task do you want to delete?"
         android:lineSpacingExtra="3dp"
         android:textColor="@color/dBrown"
         android:textSize="16dp"
+        android:textStyle="bold"
         android:letterSpacing="0.05"
         android:gravity="center_horizontal"
-        android:layout_marginTop="15dp">
+        android:layout_marginTop="20dp">
     </TextView>
 
     <ScrollView
         android:id="@+id/home4scroll"
         android:layout_width="match_parent"
         android:layout_height="300dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="20dp"
         android:layout_marginLeft="45dp"
         android:layout_marginRight="45dp"
         android:background="@drawable/homemiddlebox"
