@@ -18,7 +18,7 @@ class HomePage2 : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home_page2)
 
-        home2_login_button.setOnClickListener {
+        home2_create_button.setOnClickListener {
             val intent = Intent(this, HomePage3::class.java)
             val descview = findViewById<TextView>(R.id.home2_desc_edit)
             val timeview = findViewById<TextView>(R.id.home2_time_text)
