@@ -213,7 +213,7 @@
     </Spinner>
 
     <Button
-        android:id="@+id/home2_login_button"
+        android:id="@+id/home2_create_button"
         android:layout_width="231dp"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/button"
