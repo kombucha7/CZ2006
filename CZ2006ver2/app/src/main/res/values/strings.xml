@@ -5,5 +5,7 @@
         <item>Yes</item>
         <item>No</item>
     </string-array>
+    <string name="title_activity_show_current_location">showCurrentLocation</string>
+    <string name="title_activity_ftransport_page">fTransportPage</string>
 
 </resources>
