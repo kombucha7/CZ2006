@@ -68,28 +68,28 @@
 
     <!--                start of calendar code                 -->
 
-<!--    <ImageView-->
-<!--        android:id="@+id/calendar_background"-->
-<!--        android:layout_width="0dp"-->
-<!--        android:layout_height="0dp"-->
-<!--        android:src="@drawable/calendar_bg"-->
-<!--        android:layout_marginTop="15dp"-->
-<!--        android:layout_marginBottom="20dp"-->
-<!--        app:layout_constraintStart_toStartOf="@id/calendarView"-->
-<!--        app:layout_constraintEnd_toEndOf="@id/calendarView"-->
-<!--        app:layout_constraintBottom_toBottomOf="@id/calendarView"-->
-<!--        app:layout_constraintTop_toBottomOf="@id/calendar_divider"/>-->
+    <ImageView
+        android:id="@+id/calendar_background"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:src="@drawable/calendar_bg"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintStart_toStartOf="@id/calendarView"
+        app:layout_constraintEnd_toEndOf="@id/calendarView"
+        app:layout_constraintBottom_toBottomOf="@id/calendarView"
+        app:layout_constraintTop_toBottomOf="@id/calendar_divider"/>
 
-<!--    <CalendarView-->
-<!--        android:id="@+id/calendarView"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:theme="@style/CalenderViewCustom"-->
-<!--        android:weekDayTextAppearance="@style/CalenderViewDateCustomText"-->
-<!--        android:layout_marginTop="15dp"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@id/calendar_divider" />-->
+    <CalendarView
+        android:id="@+id/calendarView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:theme="@style/CalenderViewCustom"
+        android:weekDayTextAppearance="@style/CalenderViewDateCustomText"
+        android:layout_marginTop="15dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/calendar_divider" />
 
     <!--                start of navbar code                 -->
     <ImageView
