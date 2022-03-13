@@ -20,14 +20,14 @@ class HomePage2 : AppCompatActivity() {
 
         home2_create_button.setOnClickListener {
             val intent = Intent(this, HomePage3::class.java)
-            val descview = findViewById<TextView>(R.id.home2_desc_edit)
+            val descview = findViewById<EditText>(R.id.home2_desc_edit)
             val timeview = findViewById<TextView>(R.id.home2_time_text)
             val dateview = findViewById<TextView>(R.id.home2_date_text)
             val spincon = findViewById<Spinner>(R.id.home2_event_spinner)
-            intent.putExtra("desc", descview.text)
+            intent.putExtra("desc", descview.text.toString())
             intent.putExtra("time", timeview.text)
             intent.putExtra("date", dateview.text)
-            //intent.putExtra("spin", spincon.text)
+            intent.putExtra("spin", spincon.selectedItem.toString())
             startActivity(intent)
         }
 
