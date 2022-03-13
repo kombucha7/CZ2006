@@ -1,5 +1,6 @@
 package com.example.cz2006ver2
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.content.pm.PackageManager
@@ -16,6 +17,7 @@ import com.example.cz2006ver2.databinding.ActivityTrans1Binding
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.model.Marker
+import kotlinx.android.synthetic.main.activity_home_page1.*
 
 class trans1 : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerClickListener{
 
