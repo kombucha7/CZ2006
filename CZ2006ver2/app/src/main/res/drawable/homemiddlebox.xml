@@ -2,8 +2,5 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
     <solid android:color="@color/backgroundpre" />
     <corners
-        android:topLeftRadius="68dp"
-        android:topRightRadius="68dp"
-        android:bottomLeftRadius="68dp"
-        android:bottomRightRadius="68dp"/>
+        android:radius="30dp"/>
 </shape>

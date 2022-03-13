@@ -72,6 +72,7 @@
         android:backgroundTint="@color/button"
         android:text="Register"
         android:textStyle="bold"
+        android:textColor="@color/white"
         app:cornerRadius="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"

@@ -3,6 +3,7 @@ package com.example.cz2006ver2
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_connect_page.*
 import kotlinx.android.synthetic.main.activity_your_code_page.*
@@ -14,13 +15,17 @@ class YourCodePageActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_your_code_page)
         val TAG = "myLogTag"
+        val elderKey = getRandomString(8)   //pass this to the next page to add to firestore as UID for elderly
+
+        var cr1 = findViewById<TextView>(R.id.yourCodeGeneratedCode)
+        cr1.text = elderKey
+
 
         yourCodeNextButton.setOnClickListener{
-            val elderKey = getRandomString(8)   //pass this to the next page to add to firestore as UID for elderly
             Log.d(TAG, "Key" + elderKey)    //for testing if match DB UID
-            val backBtnIntent = Intent(this, GroupNamePageActivity::class.java)
-            backBtnIntent.putExtra("key", elderKey)
-            startActivity(backBtnIntent)
+            val intent = Intent(this, GroupNamePageActivity::class.java)
+            intent.putExtra("key", elderKey)
+            startActivity(intent)
         }
 
 
