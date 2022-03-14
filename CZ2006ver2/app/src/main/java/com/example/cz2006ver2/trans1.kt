@@ -61,6 +61,11 @@ class trans1 : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerClickL
                 placeMarkerOnMap(currentLatLong)
                 mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(currentLatLong, 12f))
             }
+            else {
+                val place = LatLng(1.3521, 103.8198)
+                mMap.addMarker(MarkerOptions().position(place).title("Singapore"))
+                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(place, 15f))
+            }
         }
 
     }
