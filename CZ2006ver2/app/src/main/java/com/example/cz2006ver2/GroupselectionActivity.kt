@@ -12,7 +12,11 @@ import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_login.back_button_word
 
 class GroupselectionActivity : AppCompatActivity() {
-
+    var s1: String = " "
+    var s2: String = " "
+    var s3: String = " "
+    var s4: String = " "
+    var s5: String = " "
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
@@ -23,21 +27,35 @@ class GroupselectionActivity : AppCompatActivity() {
             val intent = Intent(this, HomePage1::class.java)
             startActivity(intent)
         }
-        gs_group1.setOnClickListener{
+        gs_group1.setOnClickListener{       //for the first name only. need to make for remaining fields
             val intent = Intent(this, HomePage1::class.java)
-            intent.putExtra("key", gs_group1.text.toString())
+            intent.putExtra("key", s1)
             startActivity(intent)
         }
-
+        gs_group2.setOnClickListener{
+            val intent = Intent(this, HomePage1::class.java)
+            intent.putExtra("key", s2)
+            startActivity(intent)
+        }
+        gs_group3.setOnClickListener{
+            val intent = Intent(this, HomePage1::class.java)
+            intent.putExtra("key", s3)
+            startActivity(intent)
+        }
+        gs_group4.setOnClickListener{
+            val intent = Intent(this, HomePage1::class.java)
+            intent.putExtra("key", s4)
+            startActivity(intent)
+        }
+        gs_group5.setOnClickListener{
+            val intent = Intent(this, HomePage1::class.java)
+            intent.putExtra("key", s5)
+            startActivity(intent)
+        }
     }
 
 
     fun getFirestore() {
-        var s1: String = " "
-        var s2: String = " "
-        var s3: String = " "
-        var s4: String = " "
-        var s5: String = " "
         var cr1 = findViewById<TextView>(R.id.gs_group1)
         val cr2 = findViewById<TextView>(R.id.gs_group2)
         val cr3 = findViewById<TextView>(R.id.gs_group3)
