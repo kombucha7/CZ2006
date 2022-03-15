@@ -1,22 +1,34 @@
 package com.example.cz2006ver2
 
 import android.app.DatePickerDialog
-import android.app.PendingIntent.getActivity
 import android.app.TimePickerDialog
+import android.content.ContentValues.TAG
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.*
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_home_page2.*
-import org.w3c.dom.Text
 import java.util.*
 
 
 class HomePage2 : AppCompatActivity() {
+
+    data class taskInfo(
+        val datetimeTask: String,
+        val description: String,
+        val name: String
+    )
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home_page2)
+        val elderUID = intent.getStringExtra("key").toString()      //pass UID to this page
+        Log.d(TAG,"home page 2 suck my dick" + elderUID)
 
         home2_create_button.setOnClickListener {
             val intent = Intent(this, HomePage3::class.java)
@@ -28,7 +40,17 @@ class HomePage2 : AppCompatActivity() {
             intent.putExtra("time", timeview.text)
             intent.putExtra("date", dateview.text)
             intent.putExtra("spin", spincon.selectedItem.toString())
+
+            //adding data to database//
+            val uniqueID = UUID.randomUUID().toString()
+            val db = FirebaseFirestore.getInstance()
+            val taskUpload = taskInfo(dateview.text.toString() + timeview.text.toString(), descview.text.toString(), descview.text.toString())
+            db.collection("careRecipient").document(elderUID).collection("task").document(uniqueID).set(taskUpload)
+
+
+            intent.putExtra("key", elderUID)   //pass uid to next page
             startActivity(intent)
+
         }
 
         home2_back_button_word.setOnClickListener {

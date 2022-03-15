@@ -1,8 +1,10 @@
 package com.example.cz2006ver2
 
+import android.content.ContentValues
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.TextView
 import kotlinx.android.synthetic.main.activity_home_page3.*
 import kotlinx.android.synthetic.main.activity_main.*
@@ -12,9 +14,13 @@ class HomePage3 : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home_page3)
+        val elderUID = intent.getStringExtra("key").toString()//get uid from other page
+
+        Log.d(ContentValues.TAG,"home3" + elderUID)
 
         home3_returnbutton.setOnClickListener{
             val intent = Intent(this, HomePage1::class.java)
+            intent.putExtra("key", elderUID) //return back to first page again???
             startActivity(intent)
         }
 

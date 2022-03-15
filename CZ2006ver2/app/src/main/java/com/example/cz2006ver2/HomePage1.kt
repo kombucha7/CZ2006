@@ -14,6 +14,7 @@ class HomePage1 : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home_page1)
+
         val elderUID = intent.getStringExtra("key")
         val LOG = "testies "
         Log.d(LOG, "PENIS " + elderUID)
@@ -22,6 +23,7 @@ class HomePage1 : AppCompatActivity() {
 
         home1_addbutton.setOnClickListener{
             val intent = Intent(this, HomePage2::class.java)
+            intent.putExtra("key", elderUID)
             startActivity(intent)
         }
 
