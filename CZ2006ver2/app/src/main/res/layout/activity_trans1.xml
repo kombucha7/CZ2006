@@ -10,8 +10,8 @@
     <fragment
         android:id="@+id/map"
         android:name="com.google.android.gms.maps.SupportMapFragment"
-        android:layout_width="409dp"
-        android:layout_height="304dp"
+        android:layout_width="413dp"
+        android:layout_height="366dp"
         app:layout_constraintBottom_toTopOf="@+id/calendar_toolbar_background"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -184,7 +184,7 @@ app:layout_constraintBottom_toBottomOf="@id/calendar_main_header"/>
         android:layout_width="196dp"
         android:layout_height="32dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="216dp"
+        android:layout_marginTop="224dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/searchbtn" />
@@ -193,7 +193,7 @@ app:layout_constraintBottom_toBottomOf="@id/calendar_main_header"/>
         android:id="@+id/imageView9"
         android:layout_width="196dp"
         android:layout_height="32dp"
-        android:layout_marginTop="216dp"
+        android:layout_marginTop="224dp"
         android:layout_marginEnd="12dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -201,20 +201,20 @@ app:layout_constraintBottom_toBottomOf="@id/calendar_main_header"/>
 
     <ImageView
         android:id="@+id/imageView10"
-        android:layout_width="90dp"
-        android:layout_height="17dp"
+        android:layout_width="95dp"
+        android:layout_height="23dp"
         android:layout_marginStart="68dp"
-        android:layout_marginTop="224dp"
+        android:layout_marginTop="228dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/searchtranstxt" />
 
     <ImageView
         android:id="@+id/imageView11"
-        android:layout_width="116dp"
-        android:layout_height="17dp"
-        android:layout_marginTop="224dp"
-        android:layout_marginEnd="56dp"
+        android:layout_width="120dp"
+        android:layout_height="22dp"
+        android:layout_marginTop="228dp"
+        android:layout_marginEnd="48dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/favtranstxt" />
