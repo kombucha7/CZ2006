@@ -18,6 +18,7 @@ import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.model.Marker
 import kotlinx.android.synthetic.main.activity_home_page1.*
+import kotlinx.android.synthetic.main.activity_trans1.*
 
 class trans1 : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerClickListener{
 
@@ -36,6 +37,42 @@ class trans1 : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerClickL
             .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
+
+        homeicon_page2.setOnClickListener{
+            val hmpage = Intent(this, HomePage1::class.java)
+            startActivity(hmpage)
+        }
+
+        calendaricon_page2.setOnClickListener{
+            val calst = Intent(this, CalendarMainActivity::class.java)
+            startActivity(calst)
+        }
+
+        transporticon_page2.setOnClickListener{
+            val transp1 = Intent(this, trans1::class.java)
+            startActivity(transp1)
+        }
+
+        accounticon_page2.setOnClickListener{
+            val accnt = Intent(this, AccountMainActivity::class.java)
+            startActivity(accnt)
+        }
+        imageView6.setOnClickListener{
+            val searchpage = Intent(this, transport2::class.java)
+            startActivity(searchpage)
+        }
+        imageView10.setOnClickListener{
+            val searchpage1 = Intent(this, transport2::class.java)
+            startActivity(searchpage1)
+        }
+        imageView9.setOnClickListener{
+            val favpage = Intent(this, transport4::class.java)
+            startActivity(favpage)
+        }
+        imageView11.setOnClickListener{
+            val favpage1 = Intent(this, transport4::class.java)
+            startActivity(favpage1)
+        }
     }
 
     override fun onMapReady(googleMap: GoogleMap) {
