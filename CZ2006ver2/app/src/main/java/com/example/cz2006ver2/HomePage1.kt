@@ -15,6 +15,8 @@ class HomePage1 : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home_page1)
         val elderUID = intent.getStringExtra("key")
+        val LOG = "testies "
+        Log.d(LOG, "PENIS " + elderUID)
 
         displayUserName(home1introtext)
 
