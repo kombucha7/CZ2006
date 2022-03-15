@@ -1,5 +1,6 @@
 package com.example.cz2006ver2
 
+import android.content.ContentValues.TAG
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -20,6 +21,7 @@ class HomePage1 : AppCompatActivity() {
         Log.d(LOG, "PENIS " + elderUID)
 
         displayUserName(home1introtext)
+        displayTaskList(elderUID.toString())
 
         home1_addbutton.setOnClickListener{
             val intent = Intent(this, HomePage2::class.java)
@@ -98,4 +100,20 @@ class HomePage1 : AppCompatActivity() {
                 Log.d(TAG, "get failed with ", exception)
             }
     }
+
+    fun displayTaskList(elderUID: String) {
+        val db = FirebaseFirestore.getInstance()
+        db.collection("careRecipient").document(elderUID).collection("task")
+            .whereEqualTo("name", "hotomi1")
+            .get()
+            .addOnSuccessListener { documents ->
+                for (document in documents) {
+                    Log.d(TAG, "${document.id} => ${document.data}")
+                }
+            }
+            .addOnFailureListener { exception ->
+                Log.w(TAG, "Error getting documents: ", exception)
+            }
+    }
+
 }
