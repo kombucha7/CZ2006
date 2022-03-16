@@ -21,4 +21,11 @@ class MainActivity : AppCompatActivity() {
             startActivity(regIntent)
         }
     }
+
+    /**
+     * a function to test inherited functions
+     */
+    fun afunction(input: String){
+
+    }
 }

@@ -8,6 +8,12 @@ plugins {
 
 apply plugin: 'com.google.gms.google-services'
 
+tasks.withType(dokkaHtml.getClass()).configureEach {
+    pluginsMapConfiguration.set(
+            ["org.jetbrains.dokka.base.DokkaBase": """{ "separateInheritedMembers": true}"""]
+    )
+}
+
 android {
     compileSdk 31
 
