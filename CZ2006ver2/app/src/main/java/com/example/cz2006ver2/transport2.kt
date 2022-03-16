@@ -6,8 +6,15 @@ import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_trans1.*
 import kotlinx.android.synthetic.main.activity_transport2.*
 
+/**
+ * Class to search for bus stop and bus number information.
+ */
 class transport2 : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
+        /**
+         * Method used to start default activity. Link back to main Transport Page.
+         * @param savedInstanceState to get prior version. If no data is supplies, then NULL.
+         */
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_transport2)
         back_btn_cal2.setOnClickListener {

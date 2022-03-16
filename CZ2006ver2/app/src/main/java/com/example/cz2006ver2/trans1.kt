@@ -1,5 +1,8 @@
 package com.example.cz2006ver2
 
+/**
+ * Importing Relevant Dependencies for Google Maps API
+ */
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -20,6 +23,10 @@ import com.google.android.gms.maps.model.Marker
 import kotlinx.android.synthetic.main.activity_home_page1.*
 import kotlinx.android.synthetic.main.activity_trans1.*
 
+/**
+ * This is the primary Transport Class which shows the User's Current Location.
+ * User has option to search for bus routes/carpark and also go to favourites.
+ */
 class trans1 : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerClickListener{
 
     private lateinit var mMap: GoogleMap
@@ -29,6 +36,11 @@ class trans1 : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerClickL
     companion object {
         private const val LOCATION_REQUEST_CODE = 1
     }
+
+    /**
+     * Method used to start default activity. Link to other pages.
+     * @param savedInstanceState to get prior version. If no data is supplies, then NULL.
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityTrans1Binding.inflate(layoutInflater)
@@ -75,12 +87,21 @@ class trans1 : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerClickL
         }
     }
 
+    /**
+     * Method to set up Google Maps API. Calls setUpMap() method.
+     * @param googleMap
+     */
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
         mMap.uiSettings.isZoomControlsEnabled = true
         mMap.setOnMarkerClickListener(this)
         setUpMap()
     }
+
+    /**
+     * Method to request permission and get current location.
+     * Invokes the placeMarkerOnMap() method.
+     */
     private fun setUpMap() {
         if (ActivityCompat.checkSelfPermission(
                 this,
@@ -104,13 +125,20 @@ class trans1 : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerClickL
                 mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(place, 15f))
             }
         }
-
     }
+
+    /**
+     * Method used to place marker on the passed coordinates in Google Maps.
+     * @param currentLatLong
+     */
     private fun placeMarkerOnMap(currentLatLong: LatLng) {
         val markerOptions = MarkerOptions().position(currentLatLong)
         markerOptions.title("$currentLatLong")
         mMap.addMarker(markerOptions)
     }
 
+    /**
+     * Method for default behaviour.
+     */
     override fun onMarkerClick(p0: Marker) = false
 }
