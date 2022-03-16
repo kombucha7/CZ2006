@@ -13,18 +13,45 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_register2.*
 
+/**
+ * Class for RegisterPage
+ * Includes functionalities to verify and create new account to firebase server
+ */
 class RegisterActivity : AppCompatActivity() {
+
+    /**
+     * FirebaseAuth object for authentication with firebase server
+     */
     private lateinit var auth: FirebaseAuth
 
+    /**
+     * EditText Field for input of name attribute for new account
+     */
     private lateinit var nameEt: EditText
+
+    /**
+     * EditText Field for input of email attribute for new account
+     */
     private lateinit var emailEt: EditText
 
+    /**
+     * Object to store attributes of an account for registration
+     *
+     * @property name for registering new account
+     * @property email for registering of new account
+     * @property careArray Array of care recipients that a caretaker provides care to limited to 5 per caretaker
+     */
     data class userInfo(        //data that we are passing in, add on to userInfo if want to ask for more
         val name: String? = null,
         val email: String? = null,
         val careArray: Array<String>? = null,
     )
 
+    /**
+     * Main Function for registration page and activities
+     *
+     * @param savedInstanceState
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         auth = FirebaseAuth.getInstance()
         super.onCreate(savedInstanceState)
@@ -65,6 +92,12 @@ class RegisterActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * Function to save attributes of newly registered account to firestore
+     *
+     * @param name name attribute of new account
+     * @param email email attribute of new account
+     */
     fun saveFireStore(name: String, email: String) {      //function for posting stuff
         val currentFirebaseUser = FirebaseAuth.getInstance().currentUser
         val userID = currentFirebaseUser!!.uid

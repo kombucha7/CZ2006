@@ -5,8 +5,19 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_main.*
 
-
+/**
+ * Class for main landing page of App
+ *
+ */
 class MainActivity : AppCompatActivity() {
+
+    /**
+     * Main Function for App
+     * Includes a button to move to Register Page
+     * And another button to move to Login Page
+     *
+     * @param savedInstanceState
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
