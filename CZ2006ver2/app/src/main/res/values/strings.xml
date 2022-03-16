@@ -2,8 +2,10 @@
     <string name="app_name">CZ2006ver2</string>
     <string-array name="yes_no">
         <item>- Select -</item>
-        <item>Yes</item>
         <item>No</item>
+        <item>Yes, Daily</item>
+        <item>Yes, Weekly</item>
+        <item>Yes, Monthly</item>
     </string-array>
 
     <string name="select">

@@ -41,6 +41,21 @@
             android:exported="false"
             android:label="@string/title_activity_trans1" />
         <activity
+            android:name=".SwitchGroupActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CalendarTaskActivity"
+            android:exported="false" />
+        <activity
+            android:name=".TestTransportAPI"
+            android:exported="false" />
+        <activity
+            android:name=".CalendarCaretakerActivity2"
+            android:exported="false" />
+        <activity
+            android:name=".CalendarCaretakerActivity"
+            android:exported="false" />
+        <activity
             android:name=".CalendarDayActivity"
             android:exported="false" />
         <activity
