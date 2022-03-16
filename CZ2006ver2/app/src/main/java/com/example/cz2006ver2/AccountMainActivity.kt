@@ -7,12 +7,12 @@ import kotlinx.android.synthetic.main.activity_account_main.*
 import kotlinx.android.synthetic.main.activity_calendar_main.*
 
 /**
- * This class allows users to View Profile, View Group Details, Create Group and Logout
+ * This class allows user to View Profile, View Group Details, Create Group and Logout
  */
 
 class AccountMainActivity : AppCompatActivity() {
     /**
-     * Method used to start default activity. Link back to main Transport Page.
+     * Method allows users to View Profile, View Group Details, Create Group and Logout
      * @param savedInstanceState to get prior version. If no data is supplies, then NULL.
      */
     override fun onCreate(savedInstanceState: Bundle?) {

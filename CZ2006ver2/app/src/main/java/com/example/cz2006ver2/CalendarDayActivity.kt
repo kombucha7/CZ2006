@@ -13,7 +13,7 @@ import kotlinx.android.synthetic.main.activity_login.*
  */
 class CalendarDayActivity : AppCompatActivity() {
     /**
-     * Method used to start default activity. Link back to main Transport Page.
+     * Method used to start default activity. Edit caretaker button and Edit tasks button are for users to edit accordingly
      * @param savedInstanceState to get prior version. If no data is supplies, then NULL.
      */
     override fun onCreate(savedInstanceState: Bundle?) {

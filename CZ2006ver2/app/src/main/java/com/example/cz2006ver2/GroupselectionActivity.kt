@@ -22,7 +22,7 @@ class GroupselectionActivity : AppCompatActivity() {
     var s5: String = " "
 
     /**
-     * Method used to start default activity. Link back to main Transport Page.
+     * Method used to start default activity. Allows acesss to different care recipients
      * @param savedInstanceState to get prior version. If no data is supplies, then NULL.
      */
     override fun onCreate(savedInstanceState: Bundle?) {

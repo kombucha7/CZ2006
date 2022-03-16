@@ -12,7 +12,7 @@ import kotlinx.android.synthetic.main.activity_home_page5.*
  */
 class CalendarCaretakerActivity2 : AppCompatActivity() {
     /**
-     * Method used to start default activity. Link back to main Transport Page.
+     * Method obtains the date in order to display in the page
      * @param savedInstanceState to get prior version. If no data is supplies, then NULL.
      */
     override fun onCreate(savedInstanceState: Bundle?) {

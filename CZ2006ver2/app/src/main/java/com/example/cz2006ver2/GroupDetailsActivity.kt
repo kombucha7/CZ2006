@@ -8,7 +8,7 @@ import android.os.Bundle
  */
 class GroupDetailsActivity : AppCompatActivity() {
     /**
-     * Method used to start default activity. Link back to main Transport Page.
+     * Method used to start default activity
      * @param savedInstanceState to get prior version. If no data is supplies, then NULL.
      */
     override fun onCreate(savedInstanceState: Bundle?) {
