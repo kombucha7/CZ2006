@@ -15,20 +15,37 @@ import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_home_page2.*
 import java.util.*
 
-
+/**
+ * Class for homepage2
+ *
+ */
 class HomePage2 : AppCompatActivity() {
 
+    /**
+     * Class that represents a Task for the app
+     *
+     * @property datetimeTask date and time of the Task
+     * @property description Description of the task
+     * @property name Name of the task
+     */
     data class taskInfo(
         val datetimeTask: String,
         val description: String,
         val name: String
     )
 
+    /**
+     * Main class for HomePage2
+     *
+     * @param savedInstanceState
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home_page2)
         val elderUID = intent.getStringExtra("key").toString()      //pass UID to this page
-        Log.d(TAG,"home page 2 suck my dick" + elderUID)
+        Log.d(TAG,"home page 2 " + elderUID)
+
+
 
         home2_create_button.setOnClickListener {
             val intent = Intent(this, HomePage3::class.java)
@@ -63,9 +80,15 @@ class HomePage2 : AppCompatActivity() {
         dateclick()
     }
 
+
+    /**
+     * class to show a spinner prompt
+     * items in spinner sourced from recurring string array in string file
+     *
+     */
     private fun spinclick()
     {
-        val languages = resources.getStringArray(R.array.yes_no)
+        val languages = resources.getStringArray(R.array.recurring)
 
         // access the spinner
         val spinner = findViewById<Spinner>(R.id.home2_event_spinner)
@@ -90,6 +113,11 @@ class HomePage2 : AppCompatActivity() {
         }
     }
 
+    /**
+     * Function to show TimePickerDialog to select time for task creation
+     * Time will be added to text view in Hour:Minute format
+     *
+     */
     private fun timeclick()
     {
         var picker: TimePickerDialog
@@ -107,6 +135,11 @@ class HomePage2 : AppCompatActivity() {
         })
     }
 
+    /**
+     * Function to show DatePickerDialog
+     * returns Year, Month and Day as separate values
+     *
+     */
     private fun dateclick()
     {
         val tvw = findViewById<TextView>(R.id.home2_date_text)

@@ -11,7 +11,19 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_home_page1.*
 
+/**
+ * Class for Homepage1
+ *
+ */
 class HomePage1 : AppCompatActivity() {
+
+    /**
+     * main function for HomePage1
+     * includes buttons for navigation bar
+     * includes buttons for back button
+     *
+     * @param savedInstanceState
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home_page1)
@@ -60,6 +72,13 @@ class HomePage1 : AppCompatActivity() {
         }
     }
 
+    /**
+     * Function to return name of caretakee from Firebase
+     *
+     * @param elderUID ID of the caretakee
+     * @param setText TextView to output the name in
+     * @return A string representing the Caretakee's Name
+     */
     fun getElderlyName(elderUID: String, setText: TextView) {        //function for getting stuff
         val TAG = "myLogTag"
         val test = " "
@@ -81,6 +100,11 @@ class HomePage1 : AppCompatActivity() {
             }
     }
 
+    /**
+     * Function to show the UserName of the caretaker
+     *
+     * @param setText TextView to output the Username in
+     */
     fun displayUserName(setText: TextView) {        //function for getting stuff
         val currentFirebaseUser = FirebaseAuth.getInstance().currentUser    //getting the user id value
         val userID = currentFirebaseUser!!.uid
@@ -101,6 +125,11 @@ class HomePage1 : AppCompatActivity() {
             }
     }
 
+    /**
+     * Displays the List of tasks tagged to a specific caretakee
+     *
+     * @param elderUID ID of the specific caretakee
+     */
     fun displayTaskList(elderUID: String) {
         val db = FirebaseFirestore.getInstance()
         db.collection("careRecipient").document(elderUID).collection("task")
