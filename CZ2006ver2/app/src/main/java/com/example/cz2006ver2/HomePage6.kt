@@ -6,7 +6,19 @@ import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_home_page4.*
 import kotlinx.android.synthetic.main.activity_home_page6.*
 
+/**
+ * Class for Home Page 6
+ * Page to select task to edit
+ */
 class HomePage6 : AppCompatActivity() {
+
+    /**
+     * Main Function for HomePage6
+     * Includes back button to return to the previous page
+     * Includes confirm button to confirm editing of selected task
+     *
+     * @param savedInstanceState
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home_page6)

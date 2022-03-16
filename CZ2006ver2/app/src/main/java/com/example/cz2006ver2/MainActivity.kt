@@ -6,12 +6,17 @@ import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_main.*
 
 /**
- * This class is the starting activity for the application. Asks users for registration or to login
+ * Class for main landing page of App
+ *
  */
 class MainActivity : AppCompatActivity() {
+
     /**
-     * Method used to start default activity. Link back to main Transport Page.
-     * @param savedInstanceState to get prior version. If no data is supplies, then NULL.
+     * Main Function for App
+     * Includes a button to move to Register Page
+     * And another button to move to Login Page
+     *
+     * @param savedInstanceState
      */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

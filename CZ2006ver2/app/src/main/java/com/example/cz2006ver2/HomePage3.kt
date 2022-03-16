@@ -10,7 +10,17 @@ import kotlinx.android.synthetic.main.activity_home_page3.*
 import kotlinx.android.synthetic.main.activity_main.*
 import org.w3c.dom.Text
 
+/**
+ * Class for HomePage3
+ *
+ */
 class HomePage3 : AppCompatActivity() {
+
+    /**
+     * Main function for HomePage3 Logic
+     * Page to display and confirm inputs from HomePage2
+     * @param savedInstanceState
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home_page3)
@@ -29,6 +39,11 @@ class HomePage3 : AppCompatActivity() {
 
     }
 
+    /**
+     * Function to display text added to intent from HomePage2
+     * Text strings will be updated in respective TextViews
+     *
+     */
     fun displaytext()
     {
         val desc = intent.getStringExtra("desc")

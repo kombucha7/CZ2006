@@ -13,7 +13,21 @@ import com.google.firebase.firestore.Query
 import kotlinx.android.synthetic.main.activity_connect_page.*
 import kotlinx.android.synthetic.main.activity_register2.*
 
+/**
+ * Class for ConnectPage
+ * Includes functionality to join an existing group with a connect code
+ * and functionality to create a new group and connect code
+ */
 class ConnectPageActivity : AppCompatActivity() {
+
+    /**
+     * Main Function for ConnectPage class
+     * Includes back button to return to previous page
+     * Includes Enter button to initiate joining of existing group
+     * Includes create button to initiate creating of a new group
+     *
+     * @param savedInstanceState
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_connect_page)
@@ -31,7 +45,14 @@ class ConnectPageActivity : AppCompatActivity() {
             startActivity(intent)
         }
     }
-    
+
+    /**
+     * Function to join an existing group
+     * Includes functionality to verify authenticity of code
+     * Verification is done against saved data on firebase
+     *
+     * @param groupCode
+     */
     //As for people that just registered and have a group code as well
     fun enterGroupCode(groupCode: String) {
         //verify if the code exists
@@ -58,6 +79,12 @@ class ConnectPageActivity : AppCompatActivity() {
             }
     }
 
+    /**
+     * Function to add care recipient to a group
+     * Data is uploaded unto firebase
+     *
+     * @param elderKey
+     */
     fun addElderKeyToUser(elderKey : String) {      //function for posting stuff
         val currentFirebaseUser = FirebaseAuth.getInstance().currentUser
         val userID = currentFirebaseUser!!.uid

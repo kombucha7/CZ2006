@@ -12,13 +12,38 @@ import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_main.*
 
+/**
+ * Main Class for LoginPage and associated Functions
+ *
+ */
 class LoginActivity : AppCompatActivity() {
 
+    /**
+     * FirebaseAuth Object for firebase authentication
+     */
     private lateinit var auth: FirebaseAuth
+
+    /**
+     * EditText Field for entering Email address for login
+     */
     private lateinit var emailEt: EditText
+
+    /**
+     * EditText field for entering password for login
+     */
     private lateinit var passwordEt: EditText
 
+    /**
+     * Button to initiate login process
+     */
     private lateinit var loginBtn: Button
+
+    /**
+     * Main Function for Login Process
+     * Process includes authentication with Firebase for verification
+     *
+     * @param savedInstanceState
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
