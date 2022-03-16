@@ -201,20 +201,20 @@ app:layout_constraintBottom_toBottomOf="@id/calendar_main_header"/>
 
     <ImageView
         android:id="@+id/imageView10"
-        android:layout_width="95dp"
-        android:layout_height="23dp"
+        android:layout_width="92dp"
+        android:layout_height="15dp"
         android:layout_marginStart="68dp"
-        android:layout_marginTop="228dp"
+        android:layout_marginTop="232dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/searchtranstxt" />
 
     <ImageView
         android:id="@+id/imageView11"
-        android:layout_width="120dp"
-        android:layout_height="22dp"
-        android:layout_marginTop="228dp"
-        android:layout_marginEnd="48dp"
+        android:layout_width="108dp"
+        android:layout_height="15dp"
+        android:layout_marginTop="232dp"
+        android:layout_marginEnd="56dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/favtranstxt" />
