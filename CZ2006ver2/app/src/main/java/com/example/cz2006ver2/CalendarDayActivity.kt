@@ -8,7 +8,14 @@ import kotlinx.android.synthetic.main.activity_calendar_day.*
 import kotlinx.android.synthetic.main.activity_home_page1.*
 import kotlinx.android.synthetic.main.activity_login.*
 
+/**
+ * This class displays the tasks and the caretaker in charge for the a certain day. It also provides options to change the caretaker and edit tasks.
+ */
 class CalendarDayActivity : AppCompatActivity() {
+    /**
+     * Method used to start default activity. Link back to main Transport Page.
+     * @param savedInstanceState to get prior version. If no data is supplies, then NULL.
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_calendar_day)

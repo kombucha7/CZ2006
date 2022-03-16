@@ -8,7 +8,14 @@ import kotlinx.android.synthetic.main.activity_calendar_caretaker2.*
 import kotlinx.android.synthetic.main.activity_calendar_day.*
 import kotlinx.android.synthetic.main.activity_calendar_task.*
 
+/**
+ * This class allows creating, editing and deleting of tasks for the day.
+ */
 class CalendarTaskActivity : AppCompatActivity() {
+    /**
+     * Method used to start default activity. Link back to main Transport Page.
+     * @param savedInstanceState to get prior version. If no data is supplies, then NULL.
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_calendar_task)

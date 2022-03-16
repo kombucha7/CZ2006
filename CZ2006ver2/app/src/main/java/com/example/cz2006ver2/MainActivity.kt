@@ -5,8 +5,14 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_main.*
 
-
+/**
+ * This class is the starting activity for the application. Asks users for registration or to login
+ */
 class MainActivity : AppCompatActivity() {
+    /**
+     * Method used to start default activity. Link back to main Transport Page.
+     * @param savedInstanceState to get prior version. If no data is supplies, then NULL.
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -22,10 +28,4 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    /**
-     * a function to test inherited functions
-     */
-    fun afunction(input: String){
-
-    }
 }

@@ -13,6 +13,9 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_register2.*
 
+/**
+ * This class allows new users to register an account and provide their particulars.
+ */
 class RegisterActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
 
@@ -24,6 +27,11 @@ class RegisterActivity : AppCompatActivity() {
         val email: String? = null,
         val careArray: Array<String>? = null,
     )
+
+    /**
+     * Method used to start default activity. Link back to main Transport Page.
+     * @param savedInstanceState to get prior version. If no data is supplies, then NULL.
+     */
 
     override fun onCreate(savedInstanceState: Bundle?) {
         auth = FirebaseAuth.getInstance()
@@ -64,7 +72,11 @@ class RegisterActivity : AppCompatActivity() {
             }
         }
     }
-
+    /**
+     * Used to store user's information such as name and email into FireStore
+     * @param name Represents User's name
+     * @param email Represents User's email
+     */
     fun saveFireStore(name: String, email: String) {      //function for posting stuff
         val currentFirebaseUser = FirebaseAuth.getInstance().currentUser
         val userID = currentFirebaseUser!!.uid

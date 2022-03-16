@@ -7,7 +7,14 @@ import kotlinx.android.synthetic.main.activity_calendar_caretaker.*
 import kotlinx.android.synthetic.main.activity_calendar_caretaker2.*
 import kotlinx.android.synthetic.main.activity_home_page5.*
 
+/**
+ * This class displays the confirmation of caretaker changes and the date.
+ */
 class CalendarCaretakerActivity2 : AppCompatActivity() {
+    /**
+     * Method used to start default activity. Link back to main Transport Page.
+     * @param savedInstanceState to get prior version. If no data is supplies, then NULL.
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_calendar_caretaker2)

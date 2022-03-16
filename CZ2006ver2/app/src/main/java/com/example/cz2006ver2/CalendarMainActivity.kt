@@ -13,11 +13,17 @@ import kotlinx.android.synthetic.main.activity_login.*
 import android.widget.Toast
 import java.text.DateFormat
 
+/**
+ * This class allows users to view the calendar along with which caretakers are on duty for certain dates. User can click on every date for more information.
+ */
 class CalendarMainActivity : AppCompatActivity() {
 
 //    private lateinit var calendarView: CalendarView
 //    private lateinit var myDate: TextView
-
+    /**
+     * Method used to start default activity. Link back to main Transport Page.
+     * @param savedInstanceState to get prior version. If no data is supplies, then NULL.
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_calendar_main)
@@ -44,7 +50,9 @@ class CalendarMainActivity : AppCompatActivity() {
         getDate()
 
     }
-
+    /**
+     * Method used to transition to the CalendarDayActivity page for any particular date that user chose.
+     */
     fun getDate() {
         val calendar1 = Calendar.getInstance()
         val year = calendar1.get(Calendar.YEAR)

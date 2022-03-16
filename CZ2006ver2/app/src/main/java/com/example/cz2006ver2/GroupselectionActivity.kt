@@ -11,12 +11,20 @@ import kotlinx.android.synthetic.main.activity_groupselection.*
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_login.back_button_word
 
+/**
+ * This class allows users to select which care recipients group they want to access. Users can create new groups as well.
+ */
 class GroupselectionActivity : AppCompatActivity() {
     var s1: String = " "
     var s2: String = " "
     var s3: String = " "
     var s4: String = " "
     var s5: String = " "
+
+    /**
+     * Method used to start default activity. Link back to main Transport Page.
+     * @param savedInstanceState to get prior version. If no data is supplies, then NULL.
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
@@ -54,7 +62,9 @@ class GroupselectionActivity : AppCompatActivity() {
         }
     }
 
-
+    /**
+     * sample firestore to create group collection
+     */
     fun getFirestore() {
         var cr1 = findViewById<TextView>(R.id.gs_group1)
         val cr2 = findViewById<TextView>(R.id.gs_group2)
@@ -115,6 +125,12 @@ class GroupselectionActivity : AppCompatActivity() {
                 Log.d(TAG, "get failed with ", exception)
             }
     }
+
+    /**
+     * Gets the elderly name from the firebase database for display on the page.
+     * @param elderUID Unique ID assigned to the elderly in firebase cloud
+     * @param setText A placeholder to display elderly's name
+     */
     fun getElderlyName(elderUID: String, setText: TextView) {        //function for getting stuff
         val TAG = "myLogTag"
         val test = " "
