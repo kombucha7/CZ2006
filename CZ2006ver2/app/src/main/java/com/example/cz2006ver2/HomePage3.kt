@@ -28,7 +28,12 @@ class HomePage3 : AppCompatActivity() {
 
         Log.d(ContentValues.TAG,"home3" + elderUID)
 
-        home3return(elderUID)
+        home3_returnbutton.setOnClickListener{
+            val intent = Intent(this, HomePage1::class.java)
+            intent.putExtra("key", elderUID) //return back to first page again???
+            startActivity(intent)
+        }
+
 
         displaytext()
 
@@ -58,17 +63,4 @@ class HomePage3 : AppCompatActivity() {
         tvspin.text = spin
     }
 
-    /**
-     * Function to complete and confirm creation of new task
-     *
-     * @param elderUID elderUID of the care recipient to link the newly created task to
-     */
-    fun home3return(elderUID:String)
-    {
-        home3_returnbutton.setOnClickListener{
-            val intent = Intent(this, HomePage1::class.java)
-            intent.putExtra("key", elderUID) //return back to first page again???
-            startActivity(intent)
-        }
-    }
 }
