@@ -148,12 +148,15 @@ class HomePage2 : AppCompatActivity() {
             val yy = calendar[Calendar.YEAR]
             val mm = calendar[Calendar.MONTH]
             val dd = calendar[Calendar.DAY_OF_MONTH]
+
             val datePicker = DatePickerDialog(this@HomePage2,
                 { _, year, monthOfYear, dayOfMonth ->
                     val date = "$year-$monthOfYear-$dayOfMonth"
                     tvw.text = date
                 }, yy, mm, dd
             )
+            datePicker.datePicker.minDate = calendar.timeInMillis
+
             datePicker.show()  })
 
     }
