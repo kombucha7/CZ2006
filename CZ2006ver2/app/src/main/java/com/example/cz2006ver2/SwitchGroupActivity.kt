@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_account_main.*
+import kotlinx.android.synthetic.main.activity_group_details.*
 import kotlinx.android.synthetic.main.activity_switch_group.*
 import java.security.acl.Group
 
@@ -19,6 +20,11 @@ class SwitchGroupActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_switch_group)
 
+        // back btn
+        switchGroup_BackText.setOnClickListener {
+            val intent = Intent(this, GroupDetailsActivity::class.java)
+            startActivity(intent)
+        }
         switchGroup_ConfirmButton.setOnClickListener {
             val intent = Intent(this, GroupDetailsActivity::class.java)
             startActivity(intent)

@@ -44,8 +44,12 @@ class AccountMainActivity : AppCompatActivity() {
             val intent = Intent(this, GroupDetailsActivity::class.java)
             startActivity(intent)
         }
+        create_grp_btn.setOnClickListener{
+            val intent = Intent(this, JoinCreateGrpActivity::class.java)
+            startActivity(intent)
+        }
         logout_btn.setOnClickListener{
-            val intent = Intent(this, MainActivity::class.java)
+            val intent = Intent(this, LogoutActivity::class.java)
             startActivity(intent)
         }
 

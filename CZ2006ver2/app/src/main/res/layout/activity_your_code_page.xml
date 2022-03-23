@@ -67,12 +67,14 @@
         android:id="@+id/yourCodeShareCodeText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Share this code with other family members \n to collaborate on the same schedule."
+        android:text="Share this code with other family members to collaborate on the same schedule."
+        android:letterSpacing="0.05"
         android:textColor="@color/dBrown"
         android:textSize="16dp"
         app:layout_constraintTop_toBottomOf ="@+id/yourCodeText"
         android:layout_marginVertical="30dp"
         android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
         />
 
     <Button
