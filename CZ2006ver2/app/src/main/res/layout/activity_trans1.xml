@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
-    tools:context=".CalendarMainActivity">
+    tools:context=".Calendar.CalendarMainActivity">
 
     <fragment
         android:id="@+id/map"
@@ -15,7 +15,7 @@
         app:layout_constraintBottom_toTopOf="@+id/calendar_toolbar_background"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:context=".trans1" />
+        tools:context=".Transport.trans1" />
 <ImageView
 android:id="@+id/calendar_main_header"
 android:layout_width="match_parent"
