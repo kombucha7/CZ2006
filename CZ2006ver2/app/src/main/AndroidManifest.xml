@@ -106,27 +106,34 @@
             android:name=".HomePage.HomePage1"
             android:exported="false" />
         <activity
+            android:theme="@style/Theme.CZ2006ver2HOTOME"
             android:name=".ConnectGroup.YourCodePageActivity"
             android:exported="false" />
         <activity
+            android:theme="@style/Theme.CZ2006ver2HOTOME"
             android:name=".ConnectGroup.GroupNamePageActivity"
             android:exported="false" />
         <activity
+            android:theme="@style/Theme.CZ2006ver2HOTOME"
             android:name=".ConnectGroup.ConnectPageActivity"
             android:exported="false" />
         <activity
+            android:theme="@style/Theme.CZ2006ver2HOTOME"
             android:name=".ConnectGroup.GroupselectionActivity"
             android:exported="false" />
         <activity
+            android:theme="@style/Theme.CZ2006ver2HOTOME"
             android:name=".LoginRegister.RegisterActivity"
             android:exported="false" />
         <activity
             android:name=".testActivity1"
             android:exported="false" />
         <activity
+            android:theme="@style/Theme.CZ2006ver2HOTOME"
             android:name=".LoginRegister.LoginActivity"
             android:exported="false" />
         <activity
+            android:theme="@style/Theme.CZ2006ver2HOTOME"
             android:name=".LoginRegister.MainActivity"
             android:exported="true">
             <intent-filter>
