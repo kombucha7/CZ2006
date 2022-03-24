@@ -67,7 +67,7 @@ class GroupNamePageActivity : AppCompatActivity() {
                 addElderToUser(elderUID)
             }
             val intent = Intent(this, HomePage1::class.java)
-            intent.putExtra("key", "B6Rd%n(L")
+            intent.putExtra("key", elderUID)
 
             startActivity(intent)
         }
@@ -77,7 +77,7 @@ class GroupNamePageActivity : AppCompatActivity() {
 
 
 
-    fun saveElderInfo(elderName: String,elderKey : String) {      //function for posting stuff
+    fun saveElderInfo(elderName: String,elderKey : String) {
         val currentFirebaseUser = FirebaseAuth.getInstance().currentUser
         val userID = currentFirebaseUser!!.uid
         //Toast.makeText(this, "" + currentFirebaseUser!!.uid, Toast.LENGTH_SHORT).show()   just for testing
