@@ -14,6 +14,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_home_page1.*
 
+<<<<<<< Updated upstream:CZ2006ver2/app/src/main/java/com/example/cz2006ver2/HomePage/HomePage1.kt
 /**
  * Class for Homepage1
  *
@@ -27,6 +28,9 @@ class HomePage1 : AppCompatActivity() {
      *
      * @param savedInstanceState
      */
+=======
+class HomePage1 : AppCompatActivity() { //must tag user to elderly. when we create their profile then we assign user to them?
+>>>>>>> Stashed changes:CZ2006ver2/app/src/main/java/com/example/cz2006ver2/HomePage1.kt
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home_page1)
@@ -36,7 +40,23 @@ class HomePage1 : AppCompatActivity() {
         Log.d(LOG, "PENIS " + elderUID)
 
         displayUserName(home1introtext)
-        displayTaskList(elderUID.toString())
+        //displayTaskList(elderUID.toString())
+
+        ////////////////////get specific task based on ---//////////////////////////////////
+        val db = FirebaseFirestore.getInstance()
+        db.collection("careRecipient").document(elderUID.toString()).collection("task")
+            .whereEqualTo("date", "2022-2-31")
+            .get()
+            .addOnSuccessListener { documents ->
+                for (document in documents) {
+                    Log.d(TAG, "${document.id} => ${document.data}")
+                }
+            }
+            .addOnFailureListener { exception ->
+                Log.w(TAG, "Error getting documents: ", exception)
+            }
+        ////////////////////////////////////////////////////////////////////////////////////////
+
 
         home1_addbutton.setOnClickListener{
             val intent = Intent(this, HomePage2::class.java)
@@ -128,6 +148,7 @@ class HomePage1 : AppCompatActivity() {
             }
     }
 
+<<<<<<< Updated upstream:CZ2006ver2/app/src/main/java/com/example/cz2006ver2/HomePage/HomePage1.kt
     /**
      * Displays the List of tasks tagged to a specific caretakee
      *
@@ -147,5 +168,9 @@ class HomePage1 : AppCompatActivity() {
                 Log.w(TAG, "Error getting documents: ", exception)
             }
     }
+=======
+    fun readData(myCallback: (List<String>) -> Unit) {
+>>>>>>> Stashed changes:CZ2006ver2/app/src/main/java/com/example/cz2006ver2/HomePage1.kt
 
+    }
 }
