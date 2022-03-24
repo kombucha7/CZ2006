@@ -35,6 +35,11 @@ class RegisterActivity : AppCompatActivity() {
     private lateinit var emailEt: EditText
 
     /**
+     * EditText Field for input of password attribute for new account
+     */
+    private lateinit var passEt: EditText
+
+    /**
      * Object to store attributes of an account for registration
      *
      * @property name for registering new account
@@ -63,20 +68,22 @@ class RegisterActivity : AppCompatActivity() {
         }
 
         registerbutton.setOnClickListener {auth = FirebaseAuth.getInstance()
-
             nameEt = findViewById(R.id.namefield)
+            passEt = findViewById(R.id.passwordfield1)
             emailEt = findViewById(R.id.emailfield)
 
 
 
             registerbutton.setOnClickListener{
-                var name: String = nameEt.text.toString()
+                var password: String = passEt.text.toString()
                 var email: String = emailEt.text.toString()
+                var name: String = nameEt.text.toString()
 
-                if(TextUtils.isEmpty(email) || TextUtils.isEmpty(name)) {
+
+                if(TextUtils.isEmpty(email) || TextUtils.isEmpty(password)) {
                     Toast.makeText(this, "Please fill all the fields", Toast.LENGTH_LONG).show()
                 } else{
-                    auth.createUserWithEmailAndPassword(email, name).addOnCompleteListener(this, OnCompleteListener{ task ->
+                    auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this, OnCompleteListener{ task ->
                         if(task.isSuccessful){
                             Toast.makeText(this, "Successfully Registered", Toast.LENGTH_LONG).show()
                             val intent = Intent(this, ConnectPageActivity::class.java)
