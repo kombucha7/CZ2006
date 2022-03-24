@@ -3,6 +3,7 @@ package com.example.cz2006ver2.LoginRegister
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.cz2006ver2.HomePage.HomePage1
 import com.example.cz2006ver2.R
 import kotlinx.android.synthetic.main.activity_main.*
 

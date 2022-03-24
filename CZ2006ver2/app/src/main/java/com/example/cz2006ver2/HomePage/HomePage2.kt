@@ -42,12 +42,8 @@ class HomePage2 : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home_page2)
         val elderUID = intent.getStringExtra("key").toString()      //pass UID to this page
-<<<<<<< Updated upstream:CZ2006ver2/app/src/main/java/com/example/cz2006ver2/HomePage/HomePage2.kt
         Log.d(TAG,"home page 2 " + elderUID)
 
-
-=======
->>>>>>> Stashed changes:CZ2006ver2/app/src/main/java/com/example/cz2006ver2/HomePage2.kt
 
         home2_create_button.setOnClickListener {
             val intent = Intent(this, HomePage3::class.java)

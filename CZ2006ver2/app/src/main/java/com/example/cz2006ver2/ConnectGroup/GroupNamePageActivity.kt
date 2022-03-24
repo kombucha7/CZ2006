@@ -8,6 +8,7 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.cz2006ver2.HomePage.HomePage1
+import com.example.cz2006ver2.LoginRegister.MainActivity
 import com.example.cz2006ver2.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.DocumentReference
@@ -44,7 +45,7 @@ class GroupNamePageActivity : AppCompatActivity() {
                 if (document != null) {
                     println("persons name " + document.get("name").toString())
                     var personname = document.get("name".toString()).toString()
-                    addUserToElderSubCol(elderUID,personname)
+                    addUserToElderSubCol(elderUID,personname)   //saving the caretaker data to elderly subcollection
                 } else {
                     Log.d(TAG, "No such document")
                 }
@@ -57,8 +58,7 @@ class GroupNamePageActivity : AppCompatActivity() {
 
 
 
-
-
+        //direct them to homepage after registering
         groupnameNextButton.setOnClickListener{
             elderName = findViewById(R.id.groupNameField)
             val elderNameString = elderName.text.toString()     //convert to string at this stage
@@ -67,6 +67,8 @@ class GroupNamePageActivity : AppCompatActivity() {
                 addElderToUser(elderUID)
             }
             val intent = Intent(this, HomePage1::class.java)
+            intent.putExtra("key", "B6Rd%n(L")
+
             startActivity(intent)
         }
 
@@ -132,7 +134,6 @@ class GroupNamePageActivity : AppCompatActivity() {
     }
 
 
-    //function to get user name
     fun displayUserName(){        //function for getting stuff
         val currentFirebaseUser = FirebaseAuth.getInstance().currentUser    //getting the user id value
         val userID = currentFirebaseUser!!.uid
