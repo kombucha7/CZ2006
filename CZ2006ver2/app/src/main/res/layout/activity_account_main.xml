@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/account_main_const"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background"
-    tools:context=".AccountMainActivity">
+    android:orientation="vertical"
+    android:scrollbars="vertical"
+    android:background="@color/background" >
 
     <!--                start of topbar code                 -->
     <ImageView
@@ -13,22 +16,21 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:src="@drawable/topbar"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="HOTOME"
-        android:textSize="25dp"
-        android:textStyle="bold"
-        android:textColor="@color/white"
         android:fontFamily="sans-serif-black"
         android:letterSpacing="0.5"
+        android:text="HOTOME"
         android:textAlignment="center"
-        app:layout_constraintTop_toTopOf="@id/account_main_header"
-        app:layout_constraintBottom_toBottomOf="@id/account_main_header"/>
+        android:textColor="@color/white"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/account_main_header"
+        app:layout_constraintTop_toTopOf="@id/account_main_header" />
     <!--                end of topbar code                 -->
-
     <ImageView
         android:id="@+id/account_pic"
         android:layout_width="match_parent"
@@ -41,29 +43,29 @@
         android:id="@+id/account_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Name"
-        android:textColor="@color/dBrown"
-        android:textSize="25dp"
         android:layout_marginVertical="8dp"
         android:fontFamily="sans-serif-black"
         android:letterSpacing="0.05"
-        app:layout_constraintStart_toStartOf="parent"
+        android:text="Name"
+        android:textColor="@color/dBrown"
+        android:textSize="25dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/account_pic" />
 
     <Button
         android:id="@+id/view_profile_btn"
         android:layout_width="260dp"
         android:layout_height="wrap_content"
+        android:layout_marginVertical="30dp"
         android:backgroundTint="@color/backgroundpre"
+        android:fontFamily="sans-serif-black"
         android:paddingTop="13dp"
         android:paddingBottom="13dp"
         android:text="View Profile"
-        android:textSize="16sp"
         android:textColor="@color/dBrown"
-        android:fontFamily="sans-serif-black"
+        android:textSize="16sp"
         app:cornerRadius="20dp"
-        android:layout_marginVertical="30dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/account_name"
@@ -73,15 +75,15 @@
         android:id="@+id/grp_details_btn"
         android:layout_width="260dp"
         android:layout_height="wrap_content"
+        android:layout_marginVertical="25dp"
         android:backgroundTint="@color/backgroundpre"
+        android:fontFamily="sans-serif-black"
         android:paddingTop="13dp"
         android:paddingBottom="13dp"
         android:text="Group Details"
-        android:textSize="16sp"
         android:textColor="@color/dBrown"
-        android:fontFamily="sans-serif-black"
+        android:textSize="16sp"
         app:cornerRadius="20dp"
-        android:layout_marginVertical="25dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/view_profile_btn"
@@ -91,15 +93,15 @@
         android:id="@+id/create_grp_btn"
         android:layout_width="260dp"
         android:layout_height="wrap_content"
+        android:layout_marginVertical="25dp"
         android:backgroundTint="@color/backgroundpre"
+        android:fontFamily="sans-serif-black"
         android:paddingTop="13dp"
         android:paddingBottom="13dp"
-        android:text="Create Group"
-        android:textSize="16sp"
+        android:text="Join/Create Group"
         android:textColor="@color/dBrown"
-        android:fontFamily="sans-serif-black"
+        android:textSize="16sp"
         app:cornerRadius="20dp"
-        android:layout_marginVertical="25dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/grp_details_btn"
@@ -109,27 +111,28 @@
         android:id="@+id/logout_btn"
         android:layout_width="260dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="60dp"
         android:backgroundTint="@color/backgroundpre"
+        android:fontFamily="sans-serif-black"
         android:paddingTop="13dp"
         android:paddingBottom="13dp"
         android:text="Logout"
-        android:textSize="16sp"
         android:textColor="@color/dBrown"
-        android:fontFamily="sans-serif-black"
+        android:textSize="16sp"
         app:cornerRadius="20dp"
-        android:layout_marginVertical="25dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/create_grp_btn"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintTop_toBottomOf="@+id/create_grp_btn" />
 
     <!--                start of navbar code                 -->
+
     <ImageView
         android:id="@+id/account_toolbar_background"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:src="@drawable/bottombar"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        app:layout_constraintBottom_toBottomOf="@+id/account_main_const" />
 
     <ImageView
         android:id="@+id/homeicon_page3"
@@ -231,5 +234,4 @@
         app:layout_constraintEnd_toEndOf="@id/accounticon_page3"
         app:layout_constraintTop_toBottomOf="@+id/accounticon_page3" />
     <!--               end of navbar code                 -->
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>

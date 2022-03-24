@@ -2,10 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.cz2006ver2">
 
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
+        android:usesCleartextTraffic="true"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -13,13 +15,25 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CZ2006ver2">
         <activity
-            android:name=".transport2"
+            android:name=".ConnectGroup.JoinCreateGrpActivity"
             android:exported="false" />
         <activity
-            android:name=".transport4"
+            android:name=".ConnectGroup.JoinCreateGrp2Activity"
             android:exported="false" />
         <activity
-            android:name=".transport3"
+            android:name=".HomePage.HomePage8"
+            android:exported="false" />
+        <activity
+            android:name=".HomePage.HomePage7"
+            android:exported="false" />
+        <activity
+            android:name=".Transport.transport2"
+            android:exported="false" />
+        <activity
+            android:name=".Transport.transport4"
+            android:exported="false" />
+        <activity
+            android:name=".Transport.transport3"
             android:exported="false" />
         <!--
              TODO: Before you run your application, you need a Google Maps API key.
@@ -37,77 +51,83 @@
             android:value="AIzaSyCNoR7AIF4jdZf373KbA1K_St9Eyy09GmA" />
 
         <activity
-            android:name=".trans1"
+            android:name=".Transport.trans1"
             android:exported="false"
             android:label="@string/title_activity_trans1" />
         <activity
-            android:name=".SwitchGroupActivity"
+            android:name=".Account.GroupDetailsActivity"
             android:exported="false" />
         <activity
-            android:name=".CalendarTaskActivity"
+            android:name=".LoginRegister.LogoutActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Account.SwitchGroupActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Calendar.CalendarTaskActivity"
             android:exported="false" />
         <activity
             android:name=".TestTransportAPI"
             android:exported="false" />
         <activity
-            android:name=".CalendarCaretakerActivity2"
+            android:name=".Calendar.CalendarCaretakerActivity2"
             android:exported="false" />
         <activity
-            android:name=".CalendarCaretakerActivity"
+            android:name=".Calendar.CalendarCaretakerActivity"
             android:exported="false" />
         <activity
-            android:name=".CalendarDayActivity"
+            android:name=".Calendar.CalendarDayActivity"
             android:exported="false" />
         <activity
-            android:name=".HomePage5"
+            android:name=".HomePage.HomePage5"
             android:exported="false" />
         <activity
-            android:name=".HomePage6"
+            android:name=".HomePage.HomePage6"
             android:exported="false" />
         <activity
-            android:name=".HomePage4"
+            android:name=".HomePage.HomePage4"
             android:exported="false" />
         <activity
-            android:name=".HomePage3"
+            android:name=".HomePage.HomePage3"
             android:exported="false" />
         <activity
-            android:name=".HomePage2"
+            android:name=".HomePage.HomePage2"
             android:exported="false" />
         <activity
-            android:name=".ViewProfileActivity"
+            android:name=".Account.ViewProfileActivity"
             android:exported="false" />
         <activity
-            android:name=".AccountMainActivity"
+            android:name=".Account.AccountMainActivity"
             android:exported="false" />
         <activity
-            android:name=".CalendarMainActivity"
+            android:name=".Calendar.CalendarMainActivity"
             android:exported="false" />
         <activity
-            android:name=".HomePage1"
+            android:name=".HomePage.HomePage1"
             android:exported="false" />
         <activity
-            android:name=".YourCodePageActivity"
+            android:name=".ConnectGroup.YourCodePageActivity"
             android:exported="false" />
         <activity
-            android:name=".GroupNamePageActivity"
+            android:name=".ConnectGroup.GroupNamePageActivity"
             android:exported="false" />
         <activity
-            android:name=".ConnectPageActivity"
+            android:name=".ConnectGroup.ConnectPageActivity"
             android:exported="false" />
         <activity
-            android:name=".GroupselectionActivity"
+            android:name=".ConnectGroup.GroupselectionActivity"
             android:exported="false" />
         <activity
-            android:name=".RegisterActivity"
+            android:name=".LoginRegister.RegisterActivity"
             android:exported="false" />
         <activity
             android:name=".testActivity1"
             android:exported="false" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".LoginRegister.LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".LoginRegister.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
