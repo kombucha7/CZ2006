@@ -48,10 +48,10 @@ class AccountMainActivity : AppCompatActivity() {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
-
-
-
-
+        create_grp_btn.setOnClickListener{
+            val intent = Intent(this, YourCodePageActivity::class.java)
+            startActivity(intent)
+        }
 
     }
 
