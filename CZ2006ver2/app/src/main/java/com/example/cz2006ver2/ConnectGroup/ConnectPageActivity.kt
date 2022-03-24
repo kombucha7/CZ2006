@@ -48,7 +48,7 @@ class ConnectPageActivity : AppCompatActivity() {
             enterGroupCode(groupCode.toString()) //in this func, we direct to same page if unsuccessful. look at func below
 
 
-            addElderToUser(groupCode.toString())//adding the elderly to the user's array
+            addElderToUser(groupCode.toString())//adding the elderly to the user's array i dont know if this function is needed i think i wrote an extra one
 
             ///////////////////async function so we cant implement as normal func///////////////////////////////////////
             val docRef = db.collection("users").document(userID)
