@@ -5,10 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
-import android.widget.ArrayAdapter
-import android.widget.EditText
-import android.widget.ListView
-import android.widget.Toast
+import android.widget.*
 import com.android.volley.Response
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
@@ -45,6 +42,9 @@ class transport2 : AppCompatActivity() {
 
                         val services: JSONArray = response.getJSONArray("Services")
                         val list: MutableList<String> = ArrayList()
+
+                        //this dropdown is for the bus numbers on that particular busstop
+                        //if dropdown is to show the available bus stop codes instead, then need another for loop
                         for (i in 0 until services.length()) {
                             val busNum = services.getJSONObject(i).getString("ServiceNo")
                             list.add(busNum)
@@ -52,6 +52,15 @@ class transport2 : AppCompatActivity() {
 
                         val arrayadapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, list)
                         listView.adapter = arrayadapter
+
+                        listView.setOnItemClickListener { parent, view, position, id ->
+                            val element = parent.getItemAtPosition(position) // The item that was clicked
+                            val intent = Intent(this, transport3::class.java)
+//                            Toast.makeText(this@transport2, element.toString() + position, Toast.LENGTH_LONG).show()
+                            intent.putExtra("BusStopCode", busStopCode)
+                            intent.putExtra("BusJSONObjectNum", position.toString())
+                            startActivity(intent)
+                        }
 
 //                        val test3: JSONObject = services.getJSONObject(0)
 //                        val test4: String = test3.getString("ServiceNo")
