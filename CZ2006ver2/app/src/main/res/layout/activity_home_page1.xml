@@ -31,7 +31,6 @@
         android:id="@+id/home1introtext"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="hello"
         android:textSize="25dp"
         android:textColor="@color/dBrown"
         android:fontFamily="sans-serif-black"
