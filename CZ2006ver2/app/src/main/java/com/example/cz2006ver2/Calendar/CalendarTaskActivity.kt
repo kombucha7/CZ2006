@@ -28,10 +28,10 @@ class CalendarTaskActivity : AppCompatActivity() {
             startActivity(calDayBackBtn)
         }
         // confirm button
-        cal_task_btn.setOnClickListener {
-            val intent = Intent(this, CalendarDayActivity::class.java)
-            intent.putExtra("scheduled_date",curr_date)
-            startActivity(intent)
-        }
+//        cal_task_btn.setOnClickListener {
+//            val intent = Intent(this, CalendarDayActivity::class.java)
+//            intent.putExtra("scheduled_date",curr_date)
+//            startActivity(intent)
+//        }
     }
 }
