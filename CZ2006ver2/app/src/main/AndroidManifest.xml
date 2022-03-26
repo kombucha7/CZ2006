@@ -27,6 +27,7 @@
             android:name=".HomePage.HomePage7"
             android:exported="false" />
         <activity
+            android:windowSoftInputMode="adjustPan"
             android:name=".Transport.transport2"
             android:exported="false" />
         <activity
