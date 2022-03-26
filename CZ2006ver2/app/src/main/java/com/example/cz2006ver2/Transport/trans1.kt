@@ -121,12 +121,25 @@ class trans1 : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerClickL
                 lastLocation = location
                 val currentLatLong = LatLng(location.latitude, location.longitude)
                 placeMarkerOnMap(currentLatLong)
-                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(currentLatLong, 12f))
+                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(currentLatLong, 17f))
             }
             else {
-                val place = LatLng(1.3521, 103.8198)
-                mMap.addMarker(MarkerOptions().position(place).title("Singapore"))
-                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(place, 15f))
+                val place = LatLng(1.3471, 103.6808)
+                mMap.addMarker(MarkerOptions().position(place).title("North Spine"))
+                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(place, 17f))
+                val lwn = LatLng(1.3479980428579894, 103.6806107143307)
+                val blk2 = LatLng(1.348021140452294, 103.68026415440096)
+                val carparka = LatLng(1.3450051246657206, 103.68081444821753)
+                val lwnlib = MarkerOptions().position(lwn)
+                val blkmar = MarkerOptions().position(blk2)
+                val carmark = MarkerOptions().position(carparka)
+                blkmar.title("Buses: 199")
+                mMap.addMarker(blkmar)
+                lwnlib.title("Buses: 179, 179A")
+                mMap.addMarker(lwnlib)
+                carmark.title("NTU Carpark A")
+                mMap.addMarker(carmark)
+
             }
         }
     }
@@ -137,8 +150,20 @@ class trans1 : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerClickL
      */
     private fun placeMarkerOnMap(currentLatLong: LatLng) {
         val markerOptions = MarkerOptions().position(currentLatLong)
+        val lwn = LatLng(1.3479980428579894, 103.6806107143307)
+        val blk2 = LatLng(1.348021140452294, 103.68026415440096)
+        val carparka = LatLng(1.3450051246657206, 103.68081444821753)
+        val lwnlib = MarkerOptions().position(lwn)
+        val blkmar = MarkerOptions().position(blk2)
+        val carmark = MarkerOptions().position(carparka)
         markerOptions.title("$currentLatLong")
         mMap.addMarker(markerOptions)
+        blkmar.title("Buses: 199")
+        mMap.addMarker(blkmar)
+        lwnlib.title("Buses: 179, 179A")
+        mMap.addMarker(lwnlib)
+        carmark.title("NTU Carpark A")
+        mMap.addMarker(carmark)
     }
 
     /**
