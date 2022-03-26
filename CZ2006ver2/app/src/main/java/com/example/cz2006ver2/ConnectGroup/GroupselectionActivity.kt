@@ -6,6 +6,8 @@ import android.util.Log
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.cz2006ver2.HomePage.HomePage1
+import com.example.cz2006ver2.LoginRegister.LoginActivity
+import com.example.cz2006ver2.LoginRegister.MainActivity
 import com.example.cz2006ver2.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -33,7 +35,7 @@ class GroupselectionActivity : AppCompatActivity() {
         getFirestore()
         //back button to the landing page
         back_button_word.setOnClickListener {
-            val intent = Intent(this, HomePage1::class.java)
+            val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
         }
         gs_group1.setOnClickListener{       //for the first name only. need to make for remaining fields
