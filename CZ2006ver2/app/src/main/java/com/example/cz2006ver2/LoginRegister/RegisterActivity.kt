@@ -74,29 +74,28 @@ class RegisterActivity : AppCompatActivity() {
 
 
 
-            registerbutton.setOnClickListener{
-                var password: String = passEt.text.toString()
-                var email: String = emailEt.text.toString()
-                var name: String = nameEt.text.toString()
+            var password: String = passEt.text.toString()
+            var email: String = emailEt.text.toString()
+            var name: String = nameEt.text.toString()
 
 
-                if(TextUtils.isEmpty(email) || TextUtils.isEmpty(password)) {
-                    Toast.makeText(this, "Please fill all the fields", Toast.LENGTH_LONG).show()
-                } else{
-                    auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this, OnCompleteListener{ task ->
-                        if(task.isSuccessful){
-                            Toast.makeText(this, "Successfully Registered", Toast.LENGTH_LONG).show()
-                            val intent = Intent(this, ConnectPageActivity::class.java)
-                            saveFireStore(name,email)
-                            startActivity(intent)
-                            finish()
-                        }else {
-                            Toast.makeText(this, "Registration Failed", Toast.LENGTH_LONG).show()
-                        }
-                    })
-                }
+            if(TextUtils.isEmpty(email) || TextUtils.isEmpty(password)) {
+                Toast.makeText(this, "Please fill all the fields", Toast.LENGTH_LONG).show()
+            } else{
+                auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this, OnCompleteListener{ task ->
+                    if(task.isSuccessful){
+                        Toast.makeText(this, "Successfully Registered", Toast.LENGTH_LONG).show()
+                        val intent = Intent(this, ConnectPageActivity::class.java)
+                        saveFireStore(name,email)
+                        startActivity(intent)
+                        finish()
+                    }else {
+                        Toast.makeText(this, "Registration Failed", Toast.LENGTH_LONG).show()
+                    }
+                })
             }
         }
+
     }
 
     /**

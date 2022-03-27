@@ -2,21 +2,22 @@ package com.example.cz2006ver2.HomePage
 
 import android.content.ContentValues.TAG
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import com.example.cz2006ver2.Account.AccountMainActivity
 import com.example.cz2006ver2.Calendar.CalendarMainActivity
 import com.example.cz2006ver2.R
 import com.example.cz2006ver2.Transport.trans1
+import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.QuerySnapshot
 import kotlinx.android.synthetic.main.activity_home_page1.*
 
 
-
-    /**
+/**
      * main function for HomePage1
      * includes buttons for navigation bar
      * includes buttons for back button
@@ -30,6 +31,7 @@ class HomePage1 : AppCompatActivity() { //must tag user to elderly. when we crea
             setContentView(R.layout.activity_home_page1)
 
             val elderUID = intent.getStringExtra("key")
+            var testList: MutableList<String> = ArrayList()
             val LOG = " "
             Log.d(LOG, "this is the elderly key " + elderUID)
 
@@ -51,6 +53,12 @@ class HomePage1 : AppCompatActivity() { //must tag user to elderly. when we crea
                 }
             //////////////////////////////////////////////////////////////////////////////////////
 
+            ///////////////////testing///////////
+            displayDocumentID(elderUID.toString(),testList)
+            println(testList)
+            print("hahahaha")
+            println(testList.toString())
+            ////////////////////////////////////
 
             home1_addbutton.setOnClickListener {
                 val intent = Intent(this, HomePage2::class.java)
@@ -167,6 +175,25 @@ class HomePage1 : AppCompatActivity() { //must tag user to elderly. when we crea
                     Log.w(TAG, "Error getting documents: ", exception)
                 }
         }
+
+        fun displayDocumentID(elderUID: String, list: MutableList<String>) { //func to test if can pull names of doc id
+            val db = FirebaseFirestore.getInstance()
+            db.collection("careRecipient").document(elderUID).collection("task").get()
+                .addOnCompleteListener(OnCompleteListener<QuerySnapshot?> { task ->
+                    if (task.isSuccessful) {
+                        for (document in task.result) {
+                            list.add(document.id)
+                        }
+                        Log.d(TAG, list.toString())
+                    } else {
+                        Log.d(TAG, "Error getting documents: ", task.exception)
+                    }
+                })
+            
+        }
+
+
+        //func for deleting of ddocuments by ID under task (to be done aft recyclerview finish)
 
 
 
