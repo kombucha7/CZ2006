@@ -6,8 +6,11 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.cz2006ver2.Account.AccountMainActivity
 import com.example.cz2006ver2.Calendar.CalendarMainActivity
+import com.example.cz2006ver2.Home1Recyclerr
 import com.example.cz2006ver2.R
 import com.example.cz2006ver2.Transport.trans1
 import com.google.android.gms.tasks.OnCompleteListener
@@ -26,6 +29,10 @@ import kotlinx.android.synthetic.main.activity_home_page1.*
      */
 
 class HomePage1 : AppCompatActivity() { //must tag user to elderly. when we create their profile then we assign user to them?
+
+        private var layoutManager: RecyclerView.LayoutManager? = null
+        private var adapter: RecyclerView.Adapter<Home1Recyclerr.ViewHolder>? = null
+
         override fun onCreate(savedInstanceState: Bundle?) {
             super.onCreate(savedInstanceState)
             setContentView(R.layout.activity_home_page1)
@@ -59,6 +66,15 @@ class HomePage1 : AppCompatActivity() { //must tag user to elderly. when we crea
             print("hahahaha")
             println(testList.toString())
             ////////////////////////////////////
+
+
+            ///////////////recycler////////////////////
+            layoutManager = LinearLayoutManager(this)
+            home1scroll.layoutManager = layoutManager
+            adapter = Home1Recyclerr()
+            home1scroll.adapter = adapter
+            //////////////////////////////////////////
+
 
             home1_addbutton.setOnClickListener {
                 val intent = Intent(this, HomePage2::class.java)

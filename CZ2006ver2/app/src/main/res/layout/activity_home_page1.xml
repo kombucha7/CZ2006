@@ -80,183 +80,25 @@
 
     </TextView>
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/home1uncompletedbutton"
-        android:layout_width="148dp"
-        android:layout_height="43dp"
-        app:cornerRadius="50dp"
-        android:backgroundTint="@color/button"
-        android:layout_marginLeft="40dp"
-        android:layout_marginTop="10dp"
-        android:text="Uncompleted"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/home1explaintext">
 
-    </com.google.android.material.button.MaterialButton>
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/home1completedbutton"
-        android:layout_width="148dp"
-        android:layout_height="43dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="40dp"
-        android:backgroundTint="@color/background"
-        android:text="Completed"
-        android:textColor="@color/button"
-        app:strokeColor="@color/button"
-        app:strokeWidth="2dp"
-        app:cornerRadius="50dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/home1explaintext">
-    </com.google.android.material.button.MaterialButton>
-
-    <ScrollView
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/home1scroll"
         android:layout_width="match_parent"
-        android:layout_height="250dp"
+        android:layout_height="300dp"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
         android:background="@drawable/homemiddlebox"
-        app:layout_constraintTop_toBottomOf="@+id/home1uncompletedbutton"
+        app:layout_constraintTop_toBottomOf="@+id/home1explaintext"
         android:scrollbars="vertical"
         android:paddingTop="15dp"
         android:paddingBottom="15dp"
         android:paddingLeft="10dp"
-        android:paddingRight="10dp">
+        android:paddingRight="10dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+    </androidx.recyclerview.widget.RecyclerView>
 
-            <CheckBox
-                android:id="@+id/home1check1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Bring Ah Ma to the Polyclinic"
-                android:textSize="16sp"
-                android:layout_marginLeft="10dp"
-                android:paddingLeft="10dp"
-                android:lineSpacingExtra="5dp"
-                android:letterSpacing="0.05"
-                android:textColor="@color/dBrown"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-            </CheckBox>
-
-            <CheckBox
-                android:id="@+id/home1check2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingLeft="10dp"
-                android:layout_marginLeft="10dp"
-                android:text="Give Ah Ma Medication (Afternoon)"
-                android:textSize="16sp"
-                android:lineSpacingExtra="5dp"
-                android:letterSpacing="0.05"
-                android:textColor="@color/dBrown"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/home1check1">
-            </CheckBox>
-
-            <CheckBox
-                android:id="@+id/home1check3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingLeft="10dp"
-                android:layout_marginLeft="10dp"
-                android:text="Bring Ah Ma to the Polyclinic"
-                android:textSize="16sp"
-                android:lineSpacingExtra="5dp"
-                android:letterSpacing="0.05"
-                android:textColor="@color/dBrown"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/home1check2">
-
-            </CheckBox>
-
-            <CheckBox
-                android:id="@+id/home1check4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingLeft="10dp"
-                android:layout_marginLeft="10dp"
-                android:text="Bring Ah Ma to the Polyclinic"
-                android:textSize="16sp"
-                android:lineSpacingExtra="5dp"
-                android:letterSpacing="0.05"
-                android:textColor="@color/dBrown"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/home1check3">
-
-            </CheckBox>
-
-            <CheckBox
-                android:id="@+id/home1check5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingLeft="10dp"
-                android:layout_marginLeft="10dp"
-                android:text="Bring Ah Ma to the Polyclinic"
-                android:textSize="16sp"
-                android:lineSpacingExtra="5dp"
-                android:letterSpacing="0.05"
-                android:textColor="@color/dBrown"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/home1check4">
-
-            </CheckBox>
-
-            <CheckBox
-                android:id="@+id/home1check6"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingLeft="10dp"
-                android:layout_marginLeft="10dp"
-                android:text="Bring Ah Ma to the Polyclinic"
-                android:textSize="16sp"
-                android:lineSpacingExtra="5dp"
-                android:letterSpacing="0.05"
-                android:textColor="@color/dBrown"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/home1check5">
-
-            </CheckBox>
-
-            <CheckBox
-                android:id="@+id/home1check7"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingLeft="10dp"
-                android:layout_marginLeft="10dp"
-                android:text="Bring Ah Ma to the Polyclinic"
-                android:textSize="16sp"
-                android:lineSpacingExtra="5dp"
-                android:letterSpacing="0.05"
-                android:textColor="@color/dBrown"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/home1check6">
-
-            </CheckBox>
-
-            <CheckBox
-                android:id="@+id/home1check8"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingLeft="10dp"
-                android:layout_marginLeft="10dp"
-                android:text="Bring Ah Ma to the Polyclinic"
-                android:textSize="16sp"
-                android:lineSpacingExtra="5dp"
-                android:letterSpacing="0.05"
-                android:textColor="@color/dBrown"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/home1check7">
-
-            </CheckBox>
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </ScrollView>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/home1_addbutton"
