@@ -13,4 +13,5 @@
     <color name = "button">#BF7B71</color>
     <color name ="backgroundpre">#F9ECE3</color>
     <color name="grey">#DAD2D2</color>
+    <color name="underline">#D8D6D6</color>
 </resources>

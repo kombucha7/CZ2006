@@ -6,6 +6,8 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.TextView
 import android.widget.Toast
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.android.volley.Response
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
@@ -13,16 +15,34 @@ import com.example.cz2006ver2.R
 import kotlinx.android.synthetic.main.activity_transport3.*
 import org.json.JSONArray
 import org.json.JSONObject
+import java.util.*
+import kotlin.collections.ArrayList
+import kotlin.collections.HashMap
 
 /**
  * Class that is used to display information from the Search Page.
  */
 class transport3 : AppCompatActivity() {
+
+    private lateinit var busRecyclerView: RecyclerView
+    private lateinit var busArrayList: ArrayList<BusInfo>
+    lateinit var busNums: ArrayList<String>
+    lateinit var firstTiming: ArrayList<String>
+    lateinit var secondTiming: ArrayList<String>
+    lateinit var thirdTiming: ArrayList<String>
+    lateinit var color1: ArrayList<Int>
+    lateinit var color2: ArrayList<Int>
+    lateinit var color3: ArrayList<Int>
+    lateinit var wheelchair1: ArrayList<Int>
+    lateinit var wheelchair2: ArrayList<Int>
+    lateinit var wheelchair3: ArrayList<Int>
+
     override fun onCreate(savedInstanceState: Bundle?) {
         /**
          * Method used to start default activity. Link back to Search Page.
          * @param savedInstanceState to get prior version. If no data is supplies, then NULL.
          */
+//
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_transport3)
         val busStopName: TextView = findViewById(R.id.BusStopName)
@@ -32,6 +52,18 @@ class transport3 : AppCompatActivity() {
         val busStopCode:String = intent.getStringExtra("BusStopCode").toString()
         val codeIndex:String = intent.getStringExtra("BusJSONObjectNum").toString()
 //        Toast.makeText(this@transport3, busStopCode + codeIndex, Toast.LENGTH_LONG).show()
+        busNums = arrayListOf<String>()
+        firstTiming = arrayListOf<String>()
+        secondTiming = arrayListOf<String>()
+        thirdTiming = arrayListOf<String>()
+        color1 = arrayListOf<Int>()
+        color2 = arrayListOf<Int>()
+        color3 = arrayListOf<Int>()
+        wheelchair1 = arrayListOf<Int>()
+        wheelchair2 = arrayListOf<Int>()
+        wheelchair3 = arrayListOf<Int>()
+        val allStatus = arrayOf(R.drawable.red_rectangle, R.drawable.green_rectangle, R.drawable.orange_rectangle)
+        val wheelchairStatus = arrayOf(R.drawable.wheelchair_new, R.drawable.no_wheelchair)
         val queue = Volley.newRequestQueue(this)
         val jsonObjectRequest = object: JsonObjectRequest(
             Method.GET, busStopURL, null,  Response.Listener<JSONObject>
@@ -39,10 +71,11 @@ class transport3 : AppCompatActivity() {
 
                 val busStops: JSONArray = response.getJSONArray("value")
                 var check = 0
+//                println("First queeu checkpoint")
                 for (i in 0 until busStops.length()) {
                     val thisStopCode = busStops.getJSONObject(i).getString("BusStopCode")
 //                    Toast.makeText(this@transport3, thisStopCode, Toast.LENGTH_LONG).show()
-                    println(thisStopCode)
+//                    println(thisStopCode)
                     if (thisStopCode == busStopCode){
                         var description = busStops.getJSONObject(i).getString("Description")
                         busStopName.setText(description)
@@ -54,10 +87,53 @@ class transport3 : AppCompatActivity() {
                     busStopName.setText("Bus Stop Details")
                 }
                 stopCode.setText("Bus stop number: $busStopCode")
+            }, Response.ErrorListener { error ->
+                // TODO: Handle error
+                println(error.message)
+                Toast.makeText(this, "Bus Data Not Available", Toast.LENGTH_SHORT).show();
 
+            })
+        {
+            override fun getHeaders(): MutableMap<String, String> {
+                val headers = HashMap<String, String>()
+                headers.put("accept", "application/json")
+                headers.put("AccountKey", "M8EyGPshTCOa1WvqEjEPQg==")
+                return headers
+            }}
+        // Add the request to the RequestQueue.
+        queue.add(jsonObjectRequest)
 
+        val arrivalBaseURLComplete = "$arrivalBaseURL?BusStopCode=$busStopCode"
+        val queue2 = Volley.newRequestQueue(this)
+        val jsonObjectRequest2 = object: JsonObjectRequest(
+            Method.GET, arrivalBaseURLComplete, null,  Response.Listener<JSONObject>
+            { response ->
 
+                val busServices: JSONArray = response.getJSONArray("Services")
+                var check = 0
+                for (i in 0 until busServices.length()) {
+                    val number = busServices.getJSONObject(i).getString("ServiceNo")
+//                    val timing1 = busServices.getJSONObject(i).getJSONObject("NextBus").getString("EstimatedArrival")
+//                    val timing2 = busServices.getJSONObject(i).getJSONObject("NextBus2").getString("EstimatedArrival")
+//                    val timing3 = busServices.getJSONObject(i).getJSONObject("NextBus3").getString("EstimatedArrival")
+//                    Toast.makeText(this@transport3, thisStopCode, Toast.LENGTH_LONG).show()
+                    busNums.add(number)
 
+//                    val datetime = LocalDate.parse(timing1, DateTimeFormatter.ISO_OFFSET_TIME)
+                    val lis1 = listOf("1 min", "2 min", "3 min")
+                    val lis2 = listOf("4 min", "5 min", "6 min", "7 min")
+                    val lis3 = listOf("8 min", "9 min", "10 min", "11 min")
+                    firstTiming.add(lis1.random())
+                    secondTiming.add(lis2.random())
+                    thirdTiming.add(lis3.random())
+                    color1.add(allStatus.random())
+                    color2.add(allStatus.random())
+                    color3.add(allStatus.random())
+                    wheelchair1.add(wheelchairStatus.random())
+                    wheelchair2.add(wheelchairStatus.random())
+                    wheelchair3.add(wheelchairStatus.random())
+                }
+                getUserdata()
             }, Response.ErrorListener { error ->
                 // TODO: Handle error
                 println(error.message)
@@ -72,9 +148,18 @@ class transport3 : AppCompatActivity() {
                 return headers
             }}
 
+        queue2.add(jsonObjectRequest2)
+//        busNums = arrayOf("299", "355")
+//        firstTiming = arrayOf("1 min", "2 min")
+//        secondTiming = arrayOf("3 min", "4 min")
+//        thirdTiming = arrayOf("6 min", "7 min")
 
-// Add the request to the RequestQueue.
-        queue.add(jsonObjectRequest)
+        busRecyclerView = findViewById(R.id.busRecyclerView)
+        busRecyclerView.layoutManager = LinearLayoutManager(this)
+        busRecyclerView.setHasFixedSize(true)
+
+        busArrayList = arrayListOf<BusInfo>()
+//        getUserdata()
 
 
         back_btn_cal2.setOnClickListener {
@@ -85,5 +170,16 @@ class transport3 : AppCompatActivity() {
             val back2 = Intent(this, trans1::class.java)
             startActivity(back2)
         }
+    }
+
+    private fun getUserdata() {
+        for (i in 0 until busNums.size){
+            val bus = BusInfo(busNums[i], firstTiming[i], secondTiming[i], thirdTiming[i], color1[i], color2[i], color3[i],
+            wheelchair1[i], wheelchair2[i],wheelchair3[i])
+            busArrayList.add(bus)
+//            println(busNums[i])
+//            println("hereerrerererere")
+        }
+        busRecyclerView.adapter = MyAdapter(busArrayList)
     }
 }
