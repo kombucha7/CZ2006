@@ -82,37 +82,30 @@
 
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/home1scroll"
+        android:id="@+id/rvTodoItems"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/homemiddlebox"
-        app:layout_constraintTop_toBottomOf="@+id/home1explaintext"
-        android:scrollbars="vertical"
-        android:paddingTop="15dp"
-        android:paddingBottom="15dp"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager">
-
-    </androidx.recyclerview.widget.RecyclerView>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/home1explaintext" />
 
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/home1_addbutton"
         android:layout_width="100dp"
         android:layout_height="43dp"
-        app:cornerRadius="50dp"
-        android:backgroundTint="@color/button"
-        app:layout_constraintTop_toBottomOf="@+id/home1scroll"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/home1_editbutton"
-        android:layout_marginTop="10dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="10dp"
-        android:text="Add">
+        android:layout_marginBottom="20dp"
+        android:backgroundTint="@color/button"
+        android:text="Add"
+        app:cornerRadius="50dp"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
+        app:layout_constraintEnd_toStartOf="@id/home1_editbutton"
+        app:layout_constraintStart_toStartOf="parent">
 
     </com.google.android.material.button.MaterialButton>
 
@@ -120,15 +113,15 @@
         android:id="@+id/home1_editbutton"
         android:layout_width="100dp"
         android:layout_height="43dp"
-        app:cornerRadius="50dp"
-        android:backgroundTint="@color/button"
-        app:layout_constraintTop_toBottomOf="@+id/home1scroll"
-        app:layout_constraintStart_toEndOf="@+id/home1_addbutton"
-        app:layout_constraintEnd_toStartOf="@id/home1_deletebutton"
-        android:layout_marginTop="10dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:text="Edit">
+        android:layout_marginBottom="20dp"
+        android:backgroundTint="@color/button"
+        android:text="Edit"
+        app:cornerRadius="50dp"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
+        app:layout_constraintEnd_toStartOf="@id/home1_deletebutton"
+        app:layout_constraintStart_toEndOf="@+id/home1_addbutton">
 
     </com.google.android.material.button.MaterialButton>
 
@@ -136,19 +129,20 @@
         android:id="@+id/home1_deletebutton"
         android:layout_width="100dp"
         android:layout_height="43dp"
-        app:cornerRadius="50dp"
-        android:backgroundTint="@color/button"
-        app:layout_constraintTop_toBottomOf="@+id/home1scroll"
-        app:layout_constraintStart_toEndOf="@id/home1_editbutton"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="10dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="20dp"
-        android:text="Delete">
+        android:layout_marginBottom="20dp"
+        android:backgroundTint="@color/button"
+        android:text="Delete"
+        app:cornerRadius="50dp"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/home1_editbutton">
 
     </com.google.android.material.button.MaterialButton>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -160,16 +154,16 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:src="@drawable/bottombar"
-            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/homeicon_page1"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:layout_marginLeft="43dp"
-            android:layout_marginTop="18dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="16dp"
             android:src="@drawable/home_selected"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="@id/home1_calendar_toolbar_background" />
@@ -180,13 +174,13 @@
             android:layout_height="wrap_content"
             android:layout_marginVertical="5dp"
             android:fontFamily="@font/lato"
+            android:letterSpacing="0.07"
             android:text="Home"
             android:textColor="@color/peach"
-            android:textStyle="bold"
             android:textSize="14dp"
-            android:letterSpacing="0.07"
-            app:layout_constraintStart_toStartOf="@id/homeicon_page1"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="@id/homeicon_page1"
+            app:layout_constraintStart_toStartOf="@id/homeicon_page1"
             app:layout_constraintTop_toBottomOf="@+id/homeicon_page1" />
 
         <ImageView
@@ -196,8 +190,8 @@
             android:layout_marginLeft="50dp"
             android:layout_marginTop="22dp"
             android:src="@drawable/calendar_notselected"
-            app:layout_constraintTop_toTopOf="@id/home1_calendar_toolbar_background"
-            app:layout_constraintLeft_toRightOf="@id/homeicon_page1" />
+            app:layout_constraintLeft_toRightOf="@id/homeicon_page1"
+            app:layout_constraintTop_toTopOf="@id/home1_calendar_toolbar_background" />
 
         <TextView
             android:id="@+id/calendar_page1"
@@ -205,13 +199,13 @@
             android:layout_height="wrap_content"
             android:layout_marginVertical="7dp"
             android:fontFamily="@font/lato"
+            android:letterSpacing="0.07"
             android:text="Calendar"
             android:textColor="@color/dBrown"
-            android:textStyle="bold"
             android:textSize="14dp"
-            android:letterSpacing="0.07"
-            app:layout_constraintStart_toStartOf="@id/calendaricon_page1"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="@id/calendaricon_page1"
+            app:layout_constraintStart_toStartOf="@id/calendaricon_page1"
             app:layout_constraintTop_toBottomOf="@+id/calendaricon_page1" />
 
         <ImageView
@@ -221,8 +215,8 @@
             android:layout_marginLeft="50dp"
             android:layout_marginTop="20dp"
             android:src="@drawable/transport_notselected"
-            app:layout_constraintTop_toTopOf="@id/home1_calendar_toolbar_background"
-            app:layout_constraintLeft_toRightOf="@id/calendaricon_page1" />
+            app:layout_constraintLeft_toRightOf="@id/calendaricon_page1"
+            app:layout_constraintTop_toTopOf="@id/home1_calendar_toolbar_background" />
 
         <TextView
             android:id="@+id/transport_page1"
@@ -230,13 +224,13 @@
             android:layout_height="wrap_content"
             android:layout_marginVertical="4dp"
             android:fontFamily="@font/lato"
+            android:letterSpacing="0.07"
             android:text="Transport"
             android:textColor="@color/dBrown"
-            android:textStyle="bold"
             android:textSize="14dp"
-            android:letterSpacing="0.07"
-            app:layout_constraintStart_toStartOf="@id/transporticon_page1"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="@id/transporticon_page1"
+            app:layout_constraintStart_toStartOf="@id/transporticon_page1"
             app:layout_constraintTop_toBottomOf="@+id/transporticon_page1" />
 
         <ImageView
@@ -246,8 +240,8 @@
             android:layout_marginLeft="50dp"
             android:layout_marginTop="23dp"
             android:src="@drawable/account_notselected"
-            app:layout_constraintTop_toTopOf="@id/home1_calendar_toolbar_background"
-            app:layout_constraintLeft_toRightOf="@id/transporticon_page1" />
+            app:layout_constraintLeft_toRightOf="@id/transporticon_page1"
+            app:layout_constraintTop_toTopOf="@id/home1_calendar_toolbar_background" />
 
         <TextView
             android:id="@+id/account_page1"
@@ -255,13 +249,13 @@
             android:layout_height="wrap_content"
             android:layout_marginVertical="6dp"
             android:fontFamily="@font/lato"
+            android:letterSpacing="0.07"
             android:text="Account"
             android:textColor="@color/dBrown"
-            android:textStyle="bold"
             android:textSize="14dp"
-            android:letterSpacing="0.07"
-            app:layout_constraintStart_toStartOf="@id/accounticon_page1"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="@id/accounticon_page1"
+            app:layout_constraintStart_toStartOf="@id/accounticon_page1"
             app:layout_constraintTop_toBottomOf="@+id/accounticon_page1" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -40,9 +40,9 @@ class HomePage1 : AppCompatActivity() { //must tag user to elderly. when we crea
 
         )
 
-        private var layoutManager: RecyclerView.LayoutManager? = null
-        private var adapter: RecyclerView.Adapter<Home1Recyclerr.ViewHolder>? = null
-
+//        private var layoutManager: RecyclerView.LayoutManager? = null
+//        private var adapter: RecyclerView.Adapter<Home1Recyclerr.ViewHolder>? = null
+        private lateinit var todoAdapter: TodoAdapter
         override fun onCreate(savedInstanceState: Bundle?) {
             super.onCreate(savedInstanceState)
             setContentView(R.layout.activity_home_page1)
@@ -78,12 +78,18 @@ class HomePage1 : AppCompatActivity() { //must tag user to elderly. when we crea
             ////////////////////////////////////
 
 
-            ///////////////recycler////////////////////
-            layoutManager = LinearLayoutManager(this)
-            home1scroll.layoutManager = layoutManager
-            adapter = Home1Recyclerr()
-            home1scroll.adapter = adapter
-            //////////////////////////////////////////
+//            ///////////////recycler////////////////////
+//            layoutManager = LinearLayoutManager(this)
+//            home1scroll.layoutManager = layoutManager
+//            adapter = Home1Recyclerr()
+//            home1scroll.adapter = adapter
+//            //////////////////////////////////////////
+            // recyclerView Clarence/////////////////////////////
+            todoAdapter = TodoAdapter(arrayListOf())
+
+            rvTodoItems.adapter = todoAdapter
+            rvTodoItems.layoutManager = LinearLayoutManager(this)
+            ///////////////////////////////////////////////////
 
 
             home1_addbutton.setOnClickListener {
@@ -244,26 +250,30 @@ class HomePage1 : AppCompatActivity() { //must tag user to elderly. when we crea
         }
 
 
-        fun testFirestore(elderUID: String){
-            //define taskObject type
-            var testList: MutableList<taskObject> = ArrayList()
-            val db = FirebaseFirestore.getInstance()
-            FirebaseFirestore
-                .getInstance()
-                .collection("careRecipient").document(elderUID).collection("task")
-                .addSnapshotListener(this
-                ) { querySnapshot: QuerySnapshot?, e: FirebaseFirestoreException? ->
+    fun testFirestore(elderUID: String){
+        //define taskObject type
+        var testList: MutableList<taskObject> = ArrayList()
 
-                    if (querySnapshot != null) {
-                        for (document in querySnapshot.documents) {
-                            val myObject = document.toObject(taskObject::class.java)
-                            if (myObject != null) {
-                                testList.add(myObject)
-                            }
+        val db = FirebaseFirestore.getInstance()
+        FirebaseFirestore
+            .getInstance()
+            .collection("careRecipient").document(elderUID).collection("task")
+            .addSnapshotListener(this
+            ) { querySnapshot: QuerySnapshot?, e: FirebaseFirestoreException? ->
+
+                if (querySnapshot != null) {
+                    for (document in querySnapshot.documents) {
+                        val myObject = document.toObject(taskObject::class.java)
+                        if (myObject != null) {
+                            testList.add(myObject)
+                            val todo =  Todo(myObject.description.toString(), myObject.datetimeTask.toString())
+                            todoAdapter.addTodo(todo)
+
                         }
-                        println(testList[1].name)
-
                     }
+                    println(testList[1].name)
+
                 }
-        }
+            }
+    }
 }
