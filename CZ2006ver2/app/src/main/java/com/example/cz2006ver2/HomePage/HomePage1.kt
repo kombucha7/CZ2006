@@ -14,10 +14,13 @@ import com.example.cz2006ver2.Home1Recyclerr
 import com.example.cz2006ver2.R
 import com.example.cz2006ver2.Transport.trans1
 import com.google.android.gms.tasks.OnCompleteListener
+import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.FirebaseFirestoreException
 import com.google.firebase.firestore.QuerySnapshot
 import kotlinx.android.synthetic.main.activity_home_page1.*
+import kotlinx.android.synthetic.main.activity_test_transport_api.*
 
 
 /**
@@ -30,6 +33,13 @@ import kotlinx.android.synthetic.main.activity_home_page1.*
 
 class HomePage1 : AppCompatActivity() { //must tag user to elderly. when we create their profile then we assign user to them?
 
+        data class taskObject(
+            val name: String? = null,
+            val description: String? = null,
+            val datetimeTask: String? = null
+
+        )
+
         private var layoutManager: RecyclerView.LayoutManager? = null
         private var adapter: RecyclerView.Adapter<Home1Recyclerr.ViewHolder>? = null
 
@@ -37,13 +47,14 @@ class HomePage1 : AppCompatActivity() { //must tag user to elderly. when we crea
             super.onCreate(savedInstanceState)
             setContentView(R.layout.activity_home_page1)
 
+            var objlist: MutableList<taskObject> = ArrayList()
             val elderUID = intent.getStringExtra("key")
             var testList: MutableList<String> = ArrayList()
             val LOG = " "
             Log.d(LOG, "this is the elderly key " + elderUID)
 
             displayUserName(home1introtext)
-            displayTaskList(elderUID.toString())
+
 
             //////////////////get specific task based on ---//////////////////////////////////
             val db = FirebaseFirestore.getInstance()
@@ -62,9 +73,8 @@ class HomePage1 : AppCompatActivity() { //must tag user to elderly. when we crea
 
             ///////////////////testing///////////
             displayDocumentID(elderUID.toString(),testList)
-            println(testList)
-            print("hahahaha")
-            println(testList.toString())
+            deleteTasks(elderUID.toString(),"e363e16c-26ba-4161-bafd-7d19467ae999")
+            testFirestore(elderUID.toString()) //to see if i can convert into taskobject type
             ////////////////////////////////////
 
 
@@ -152,7 +162,7 @@ class HomePage1 : AppCompatActivity() { //must tag user to elderly. when we crea
          */
         fun displayUserName(setText: TextView) {        //function for getting stuff
             val currentFirebaseUser =
-                FirebaseAuth.getInstance().currentUser    //getting the user id value
+                FirebaseAuth.getInstance().currentUser
             val userID = currentFirebaseUser!!.uid
             val TAG = "myLogTag"
             val db = FirebaseFirestore.getInstance()
@@ -171,20 +181,18 @@ class HomePage1 : AppCompatActivity() { //must tag user to elderly. when we crea
                 }
         }
 
-
         /**
          * Displays the List of tasks tagged to a specific caretakee
          *
          * @param elderUID ID of the specific caretakee
          */
-        fun displayTaskList(elderUID: String) {
+        fun displayTaskList(elderUID: String, list: MutableList<taskObject>) {
             val db = FirebaseFirestore.getInstance()
             db.collection("careRecipient").document(elderUID).collection("task")
-                .whereEqualTo("name", "hotomi1")
                 .get()
                 .addOnSuccessListener { documents ->
                     for (document in documents) {
-                        Log.d(TAG, "${document.id} => ${document.data}")
+                        Log.d(TAG, "our task attributes " +"${document.id} => ${document.data}")
                     }
                 }
                 .addOnFailureListener { exception ->
@@ -195,22 +203,67 @@ class HomePage1 : AppCompatActivity() { //must tag user to elderly. when we crea
         fun displayDocumentID(elderUID: String, list: MutableList<String>) { //func to test if can pull names of doc id
             val db = FirebaseFirestore.getInstance()
             db.collection("careRecipient").document(elderUID).collection("task").get()
+            //db.collection("careRecipient").document(elderUID).collection("task").get()
+                .addOnCompleteListener(OnCompleteListener<QuerySnapshot?> { task ->
+                    if (task.isSuccessful) {
+                        for (document in task.result) {
+                            list.add(document.id)
+                            println(task.result)
+                        }
+                        Log.d(TAG, "the tasks we have " + list.toString())
+                        ///////////start code here to populate the fields after async call//////////
+                    } else {
+                        Log.d(TAG, "Error getting documents: ", task.exception)
+                    }
+                })
+        }
+
+        fun displayTasks(elderUID: String, list: MutableList<String>) { //func to test if can pull names of doc id
+            val db = FirebaseFirestore.getInstance()
+            db.collection("careRecipient").document(elderUID).collection("task").get()
+                //db.collection("careRecipient").document(elderUID).collection("task").get()
                 .addOnCompleteListener(OnCompleteListener<QuerySnapshot?> { task ->
                     if (task.isSuccessful) {
                         for (document in task.result) {
                             list.add(document.id)
                         }
-                        Log.d(TAG, list.toString())
+                        Log.d(TAG, "the tasks we have " + list.toString())
                     } else {
                         Log.d(TAG, "Error getting documents: ", task.exception)
                     }
                 })
-            
+        }
+
+        //func for deleting of ddocuments by ID under task (to be done aft recyclerview finish)
+        fun deleteTasks(elderUID: String, taskID: String) { //func to test if can pull names of doc id
+            val db = FirebaseFirestore.getInstance()
+            val docRef = db.collection("careRecipient").document(elderUID).collection("task").document(taskID)
+            docRef.delete().addOnSuccessListener { task ->
+                Log.w(TAG, "Deleted " )
+            }
         }
 
 
-        //func for deleting of ddocuments by ID under task (to be done aft recyclerview finish)
+        fun testFirestore(elderUID: String){
+            //define taskObject type
+            var testList: MutableList<taskObject> = ArrayList()
+            val db = FirebaseFirestore.getInstance()
+            FirebaseFirestore
+                .getInstance()
+                .collection("careRecipient").document(elderUID).collection("task")
+                .addSnapshotListener(this
+                ) { querySnapshot: QuerySnapshot?, e: FirebaseFirestoreException? ->
 
+                    if (querySnapshot != null) {
+                        for (document in querySnapshot.documents) {
+                            val myObject = document.toObject(taskObject::class.java)
+                            if (myObject != null) {
+                                testList.add(myObject)
+                            }
+                        }
+                        println(testList[1].name)
 
-
+                    }
+                }
+        }
 }
