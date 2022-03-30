@@ -11,7 +11,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.android.volley.Response
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
+import com.example.cz2006ver2.ConnectGroup.GroupNamePageActivity
 import com.example.cz2006ver2.R
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_transport3.*
 import org.json.JSONArray
 import org.json.JSONObject
@@ -23,6 +26,10 @@ import kotlin.collections.HashMap
  * Class that is used to display information from the Search Page.
  */
 class transport3 : AppCompatActivity() {
+
+    data class busStopFav(
+        val favourited: Boolean
+    )
 
     private lateinit var busRecyclerView: RecyclerView
     private lateinit var busArrayList: ArrayList<BusInfo>
@@ -42,9 +49,9 @@ class transport3 : AppCompatActivity() {
          * Method used to start default activity. Link back to Search Page.
          * @param savedInstanceState to get prior version. If no data is supplies, then NULL.
          */
-//
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_transport3)
+
         val busStopName: TextView = findViewById(R.id.BusStopName)
         val stopCode: TextView = findViewById(R.id.displayBusStopCode)
         val arrivalBaseURL = "http://datamall2.mytransport.sg/ltaodataservice/BusArrivalv2"
@@ -62,6 +69,30 @@ class transport3 : AppCompatActivity() {
         wheelchair1 = arrayListOf<Int>()
         wheelchair2 = arrayListOf<Int>()
         wheelchair3 = arrayListOf<Int>()
+
+        ///////checking if favourited based on entered code//////////&*******NEED TO GET ELDERS KEY OVER HERE*********
+        val currentFirebaseUser = FirebaseAuth.getInstance().currentUser
+        val db = FirebaseFirestore.getInstance()
+        db.collection("careRecipient").document("un5zqQK0").collection("favBusStop").document(busStopCode).get().addOnCompleteListener { task ->
+            if (task.isSuccessful) {
+                val document = task.result
+                if(document != null) {
+                    if (document.exists()) {
+                        Log.d("TAG", "Document already exists.")
+                        favouriteBusStop.isChecked = true;
+                    } else {
+                        Log.d("TAG", "Document doesn't exist.")
+                    }
+                }
+            } else {
+                Log.d("TAG", "Error: ", task.exception)
+            }
+        }
+          //////////////////////////////////////////////////////////////////
+
+
+
+
         val allStatus = arrayOf(R.drawable.red_rectangle, R.drawable.green_rectangle, R.drawable.orange_rectangle)
         val wheelchairStatus = arrayOf(R.drawable.wheelchair_new, R.drawable.no_wheelchair)
         val queue = Volley.newRequestQueue(this)
@@ -170,6 +201,38 @@ class transport3 : AppCompatActivity() {
             val back2 = Intent(this, trans1::class.java)
             startActivity(back2)
         }
+        favouriteBusStop.setOnCheckedChangeListener { checkBox, isChecked ->
+            val intent = Intent(this, transport4::class.java)
+            if (isChecked){
+                Toast.makeText(this, "Bus Stop is in Favourites", Toast.LENGTH_SHORT).show()
+                intent.putExtra("BusStopCode", busStopCode)
+                saveFavouriteBusStop("un5zqQK0", busStopCode) //NEED TO CHANGE THIS TO CURRENT UID
+            }else {
+                Toast.makeText(this, "Bus Stop removed from Favourites", Toast.LENGTH_SHORT).show()
+            }
+
+
+//                            Toast.makeText(this@transport2, element.toString() + position, Toast.LENGTH_LONG).show()
+        }
+    }
+    private fun saveFavouriteBusStop(elderKey : String, busStopCode: String){
+
+        val currentFirebaseUser = FirebaseAuth.getInstance().currentUser
+        val userID = currentFirebaseUser!!.uid
+        //Toast.makeText(this, "" + currentFirebaseUser!!.uid, Toast.LENGTH_SHORT).show()   just for testing
+        val db = FirebaseFirestore.getInstance()
+
+        val setFav = busStopFav(favourited = true)
+
+        db.collection("careRecipient").document(elderKey).collection("favBusStop").document(busStopCode).set(setFav)
+            .addOnSuccessListener {
+                Toast.makeText(this@transport3, "record added successfully ", Toast.LENGTH_SHORT ).show()
+            }
+
+            .addOnFailureListener{
+                Toast.makeText(this@transport3, "record Failed to add ", Toast.LENGTH_SHORT ).show()
+            }
+
     }
 
     private fun getUserdata() {
