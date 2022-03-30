@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
+import android.util.Log
 import android.widget.EditText
 import android.widget.Toast
 import com.example.cz2006ver2.ConnectGroup.ConnectPageActivity
@@ -40,6 +41,12 @@ class RegisterActivity : AppCompatActivity() {
     private lateinit var passEt: EditText
 
     /**
+     * EditText Field for input of email attribute for new account
+     */
+    private lateinit var passET2: EditText
+
+
+    /**
      * Object to store attributes of an account for registration
      *
      * @property name for registering new account
@@ -71,17 +78,22 @@ class RegisterActivity : AppCompatActivity() {
             nameEt = findViewById(R.id.namefield)
             passEt = findViewById(R.id.passwordfield1)
             emailEt = findViewById(R.id.emailfield)
-
-
+            passET2 = findViewById(R.id.passwordfield2)
 
             var password: String = passEt.text.toString()
             var email: String = emailEt.text.toString()
             var name: String = nameEt.text.toString()
+            var password2: String = passET2.text.toString()
 
-
-            if(TextUtils.isEmpty(email) || TextUtils.isEmpty(password)) {
+            if(TextUtils.isEmpty(email) || TextUtils.isEmpty(password) || TextUtils.isEmpty(password2) || TextUtils.isEmpty(name)) {
                 Toast.makeText(this, "Please fill all the fields", Toast.LENGTH_LONG).show()
-            } else{
+            }
+            else if ((password != password2)&& ((password.length != 0) && password2.length != 0)) {
+                println(password.length)
+                println("doesnt create")
+                Toast.makeText(this, "Passwords do not match", Toast.LENGTH_LONG).show()
+            }
+            else{
                 auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this, OnCompleteListener{ task ->
                     if(task.isSuccessful){
                         Toast.makeText(this, "Successfully Registered", Toast.LENGTH_LONG).show()
@@ -90,7 +102,8 @@ class RegisterActivity : AppCompatActivity() {
                         startActivity(intent)
                         finish()
                     }else {
-                        Toast.makeText(this, "Registration Failed", Toast.LENGTH_LONG).show()
+                        println("doesnt create")
+                        Toast.makeText(this, "Email has already been registered", Toast.LENGTH_LONG).show()
                     }
                 })
             }
