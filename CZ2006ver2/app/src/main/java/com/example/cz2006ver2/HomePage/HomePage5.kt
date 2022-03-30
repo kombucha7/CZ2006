@@ -20,9 +20,11 @@ class HomePage5 : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home_page5)
+        val elderUID = intent.getStringExtra("key").toString()
 
         home5_confirmbutton.setOnClickListener {
             val intent = Intent(this, HomePage1::class.java)
+            intent.putExtra("key", elderUID)
             startActivity(intent)
         }
     }

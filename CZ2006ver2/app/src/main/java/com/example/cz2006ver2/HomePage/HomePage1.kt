@@ -98,13 +98,9 @@ class HomePage1 : AppCompatActivity() { //must tag user to elderly. when we crea
                 startActivity(intent)
             }
 
-            home1_editbutton.setOnClickListener {
-                val intent = Intent(this, HomePage2::class.java)
-                startActivity(intent)
-            }
-
             home1_deletebutton.setOnClickListener {
                 val intent = Intent(this, HomePage4::class.java)
+                intent.putExtra("key", elderUID)
                 startActivity(intent)
             }
 
