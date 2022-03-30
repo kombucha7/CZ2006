@@ -54,7 +54,7 @@
         android:id="@+id/home1dailytasktext"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Daily Tasks"
+        android:text="DAILY TASKS"
         android:textColor="@color/dBrown"
         android:textSize="20dp"
         android:fontFamily="sans-serif-black"
@@ -97,31 +97,13 @@
         android:id="@+id/home1_addbutton"
         android:layout_width="100dp"
         android:layout_height="43dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="10dp"
+        android:layout_marginLeft="85dp"
         android:layout_marginBottom="20dp"
         android:backgroundTint="@color/button"
         android:text="Add"
         app:cornerRadius="50dp"
         app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
-        app:layout_constraintEnd_toStartOf="@id/home1_editbutton"
         app:layout_constraintStart_toStartOf="parent">
-
-    </com.google.android.material.button.MaterialButton>
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/home1_editbutton"
-        android:layout_width="100dp"
-        android:layout_height="43dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginBottom="20dp"
-        android:backgroundTint="@color/button"
-        android:text="Edit"
-        app:cornerRadius="50dp"
-        app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
-        app:layout_constraintEnd_toStartOf="@id/home1_deletebutton"
-        app:layout_constraintStart_toEndOf="@+id/home1_addbutton">
 
     </com.google.android.material.button.MaterialButton>
 
@@ -129,15 +111,13 @@
         android:id="@+id/home1_deletebutton"
         android:layout_width="100dp"
         android:layout_height="43dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
         android:layout_marginBottom="20dp"
         android:backgroundTint="@color/button"
         android:text="Delete"
         app:cornerRadius="50dp"
         app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/home1_editbutton">
+        app:layout_constraintStart_toEndOf="@+id/home1_addbutton">
 
     </com.google.android.material.button.MaterialButton>
 

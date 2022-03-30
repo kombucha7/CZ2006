@@ -50,11 +50,9 @@ class HomePage2 : AppCompatActivity() {
             val descview = findViewById<EditText>(R.id.home2_desc_edit)
             val timeview = findViewById<TextView>(R.id.home2_time_text)
             val dateview = findViewById<TextView>(R.id.home2_date_text)
-            val spincon = findViewById<Spinner>(R.id.home2_event_spinner)
             intent.putExtra("desc", descview.text.toString())
             intent.putExtra("time", timeview.text)
             intent.putExtra("date", dateview.text)
-            intent.putExtra("spin", spincon.selectedItem.toString())
 
             //adding data to database//
             val uniqueID = UUID.randomUUID().toString()
@@ -70,45 +68,12 @@ class HomePage2 : AppCompatActivity() {
 
         home2_back_button_word.setOnClickListener {
             val intent = Intent(this, HomePage1::class.java)
+            intent.putExtra("key", elderUID)
             startActivity(intent)
-        }
 
-        spinclick()
+        }
         timeclick()
         dateclick()
-    }
-
-
-    /**
-     * class to show a spinner prompt
-     * items in spinner sourced from recurring string array in string file
-     *
-     */
-    private fun spinclick()
-    {
-        val languages = resources.getStringArray(R.array.recurring)
-
-        // access the spinner
-        val spinner = findViewById<Spinner>(R.id.home2_event_spinner)
-        if (spinner != null) {
-            val adapter = ArrayAdapter(
-                this,
-                android.R.layout.simple_spinner_item, languages
-            )
-            spinner.adapter = adapter
-
-            spinner.onItemSelectedListener = object :
-                AdapterView.OnItemSelectedListener {
-                override fun onItemSelected(
-                    parent: AdapterView<*>,
-                    view: View, position: Int, id: Long
-                ) {}
-
-                override fun onNothingSelected(parent: AdapterView<*>) {
-                    // write code to perform some action
-                }
-            }
-        }
     }
 
     /**
