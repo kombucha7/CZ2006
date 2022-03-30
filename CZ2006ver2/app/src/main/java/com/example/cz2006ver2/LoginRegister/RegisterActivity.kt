@@ -93,6 +93,9 @@ class RegisterActivity : AppCompatActivity() {
                 println("doesnt create")
                 Toast.makeText(this, "Passwords do not match", Toast.LENGTH_LONG).show()
             }
+            else if (password.length <= 7){
+                Toast.makeText(this, "Password must be at least 8 characters long", Toast.LENGTH_LONG).show()
+            }
             else{
                 auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this, OnCompleteListener{ task ->
                     if(task.isSuccessful){
