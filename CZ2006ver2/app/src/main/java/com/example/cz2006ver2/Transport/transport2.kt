@@ -59,6 +59,7 @@ class transport2 : AppCompatActivity() {
 //                            Toast.makeText(this@transport2, element.toString() + position, Toast.LENGTH_LONG).show()
                             intent.putExtra("BusStopCode", busStopCode)
                             intent.putExtra("BusJSONObjectNum", position.toString())
+//                            intent.putExtra("BusStopDesc", something here)
                             startActivity(intent)
                         }
 

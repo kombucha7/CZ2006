@@ -27,10 +27,13 @@ class transport4 : AppCompatActivity() {
      * Method used to start default activity. Link back to main Transport Page.
      * @param savedInstanceState to get prior version. If no data is supplies, then NULL.
      */
+//    private lateinit var busStopCodeList: MutableList<String>
+
     override fun onCreate(savedInstanceState: Bundle?) {        /**we need to pass the elderUID into this page as intent**/
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_transport4)
         val elderUID : String = "un5zqQK0"
+//        var busStopCodeList: MutableList<String> = ArrayList()
 //        val list: MutableList<String> = ArrayList()
 //        val busStopCode:String = intent.getStringExtra("BusStopCode").toString()
 //        if (busStopCode != null) {
@@ -43,9 +46,6 @@ class transport4 : AppCompatActivity() {
 //            list.add(busNum)
 //        }
 //
-//        var busStopListView: ListView = findViewById(R.id.busStopList)
-//        val arrayAdapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, list)
-//        busStopListView.adapter = arrayAdapter
         getFavouriteBusStopCode(elderUID)
         back_btn_cal2.setOnClickListener {
             val back1 = Intent(this, trans1::class.java)
@@ -68,15 +68,16 @@ class transport4 : AppCompatActivity() {
             .addOnCompleteListener(OnCompleteListener<QuerySnapshot?> { task ->
                 if (task.isSuccessful) {
                     for (document in task.result) {
-                        busStopCodeList.add(document.id)    /**adding each document to our list as a string**/
+                        busStopCodeList.add(document.id + " (" + document["busStopLocation"] + ")")    /**adding each document to our list as a string**/
                     }
-                    Log.d(ContentValues.TAG, "the tasks we have " + busStopCodeList.toString())
+                    Log.d(ContentValues.TAG, "favourite bus stops in this list " + busStopCodeList.toString())
                     for (i in busStopCodeList){/** for testing**/
                         println("Here " + i)
                     }
                     /**start coding here**/
-
-
+                    var busStopListView: ListView = findViewById(R.id.busStopList)
+                    val arrayAdapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, busStopCodeList)
+                    busStopListView.adapter = arrayAdapter
                 } else {
                     Log.d(ContentValues.TAG, "Error getting documents: ", task.exception)
                 }
