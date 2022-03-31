@@ -44,8 +44,6 @@ class TodoAdapter(private val todos: ArrayList<Todo>) : RecyclerView.Adapter<Tod
         }
         notifyDataSetChanged()
         deleteFromDB(deletedTasks)
-
-        println(deletedTasks)
     }
 
     private fun deleteFromDB(deletedTasks : ArrayList<Todo>){
@@ -53,7 +51,7 @@ class TodoAdapter(private val todos: ArrayList<Todo>) : RecyclerView.Adapter<Tod
         for( i in 0 until deletedTasks.size){
             println("HI I WANT TO DELETE")
             println(deletedTasks.get(i).taskID)
-            var docRef = db.collection("careRecipient").document("un5zqQK0")
+            var docRef = db.collection("careRecipient").document(deletedTasks.get(i).elderUID)
                 .collection("task").document(deletedTasks.get(i).taskID)
             docRef.delete().addOnSuccessListener { task ->
                 Log.w(TAG, "Deleted1111111111")
