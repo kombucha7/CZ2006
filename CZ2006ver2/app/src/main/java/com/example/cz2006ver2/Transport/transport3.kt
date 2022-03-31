@@ -1,5 +1,6 @@
 package com.example.cz2006ver2.Transport
 
+import android.content.ContentValues
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -212,6 +213,15 @@ class transport3 : AppCompatActivity() {
                 saveFavouriteBusStop("un5zqQK0", busStopCode, busStopDesc) //NEED TO CHANGE THIS TO CURRENT UID
             }else {
                 Toast.makeText(this, "Bus Stop removed from Favourites", Toast.LENGTH_SHORT).show()
+
+                val db = FirebaseFirestore.getInstance()
+
+                    var docRef = db.collection("careRecipient").document("un5zqQK0")//add in the elderUID!
+                        .collection("favBusStop").document(busStopCode)
+                        docRef.delete().addOnSuccessListener { task ->
+                        Log.w(ContentValues.TAG, "Deleted1111111111")
+
+                }
             }
 
 
