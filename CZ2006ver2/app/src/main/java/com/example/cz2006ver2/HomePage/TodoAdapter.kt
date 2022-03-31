@@ -1,12 +1,15 @@
 package com.example.cz2006ver2.HomePage
 
+import android.content.ContentValues.TAG
 import android.graphics.Paint.STRIKE_THRU_TEXT_FLAG
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cz2006ver2.R
+import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_todo.view.*
 
 class TodoAdapter(private val todos: ArrayList<Todo>) : RecyclerView.Adapter<TodoAdapter.TodoViewHolder>() {
@@ -28,23 +31,36 @@ class TodoAdapter(private val todos: ArrayList<Todo>) : RecyclerView.Adapter<Tod
         notifyItemInserted(todos.size - 1)
     }
 
-    fun deleteDoneTodos(): String {
-        var deletedTaskID : String = ""
-        for (i in 0 until todos.size) {
-            if (todos.get(i).isChecked) {
-                deletedTaskID = todos.get(i).deadline
-                todos.remove(todos.get(i))
-                notifyDataSetChanged()
-                break
+    fun deleteDoneTodos(){
+        var deletedTasks: ArrayList<Todo> = ArrayList()
+        for( i in 0 until todos.size)
+        {
+            if(todos.get(i).isChecked){
+                deletedTasks.add(todos.get(i))
             }
         }
-        return deletedTaskID
+        todos.removeAll { todo ->
+            todo.isChecked
+        }
+        notifyDataSetChanged()
+        deleteFromDB(deletedTasks)
+
+        println(deletedTasks)
     }
-//        todos.removeAll { todo ->
-//            todo.isChecked
-//        }
-//        notifyDataSetChanged()
-//    }
+
+    private fun deleteFromDB(deletedTasks : ArrayList<Todo>){
+        val db = FirebaseFirestore.getInstance()
+        for( i in 0 until deletedTasks.size){
+            println("HI I WANT TO DELETE")
+            println(deletedTasks.get(i).taskID)
+            var docRef = db.collection("careRecipient").document("un5zqQK0")
+                .collection("task").document(deletedTasks.get(i).taskID)
+            docRef.delete().addOnSuccessListener { task ->
+                Log.w(TAG, "Deleted1111111111")
+            }
+        }
+    }
+
 
     private fun toggleStrikeThrough(tvTodoTitle: TextView, isChecked: Boolean) {
         if(isChecked) {

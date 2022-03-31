@@ -37,8 +37,7 @@ class HomePage1 : AppCompatActivity() { //must tag user to elderly. when we crea
             val name: String? = null,
             val date: String? = null,
             val time: String? = null,
-            val UID: String? = null
-
+            val uid: String? = null
         )
 
 //        private var layoutManager: RecyclerView.LayoutManager? = null
@@ -74,7 +73,7 @@ class HomePage1 : AppCompatActivity() { //must tag user to elderly. when we crea
 
             ///////////////////testing///////////
             displayDocumentID(elderUID.toString(),testList)
-            deleteTasks(elderUID.toString(),"e363e16c-26ba-4161-bafd-7d19467ae999")
+//            deleteTasks(elderUID.toString(),"e363e16c-26ba-4161-bafd-7d19467ae999")
             testFirestore(elderUID.toString()) //to see if i can convert into taskobject type
             ////////////////////////////////////
 
@@ -248,9 +247,11 @@ class HomePage1 : AppCompatActivity() { //must tag user to elderly. when we crea
                             val myObject = document.toObject(taskObject::class.java)
                             if (myObject != null) {
                                 testList.add(myObject)
-                                val todo =  Todo(myObject.name.toString(), myObject.date.toString())
+                                println("myObject taskID is" + myObject.uid)
+                                println("myObject desciption is" + myObject.name)
+                                println("myObject time is" + myObject.time)
+                                val todo =  Todo(myObject.name.toString(), myObject.time.toString() , myObject.uid.toString(), elderUID)
                                 todoAdapter.addTodo(todo)
-
                             }
                         }
                         println(testList[1].name)
