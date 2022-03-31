@@ -28,9 +28,10 @@ class HomePage2 : AppCompatActivity() {
      * @property name Name of the task
      */
     data class taskInfo(
-        val datetimeTask: String,
-        val description: String,
-        val name: String
+        val date:String,
+        val time:String,
+        val name: String,
+        val UID: String
     )
 
     /**
@@ -51,19 +52,19 @@ class HomePage2 : AppCompatActivity() {
             val timeview = findViewById<TextView>(R.id.home2_time_text)
             val dateview = findViewById<TextView>(R.id.home2_date_text)
             intent.putExtra("desc", descview.text.toString())
-            intent.putExtra("time", timeview.text)
-            intent.putExtra("date", dateview.text)
+            intent.putExtra("time", timeview.text.toString())
+            intent.putExtra("date", dateview.text.toString())
 
             //adding data to database//
-            val uniqueID = UUID.randomUUID().toString()
+            println(descview.text.toString())
+            val taskuniqueID = UUID.randomUUID().toString()
             val db = FirebaseFirestore.getInstance()
-            val taskUpload = taskInfo(dateview.text.toString() + timeview.text.toString(), descview.text.toString(), descview.text.toString())
-            db.collection("careRecipient").document(elderUID).collection("task").document(uniqueID).set(taskUpload)
+            val uploadTask = taskInfo(dateview.text.toString(),timeview.text.toString(),descview.text.toString(),taskuniqueID)
+            db.collection("careRecipient").document(elderUID).collection("task").document(taskuniqueID).set(uploadTask)
 
 
             intent.putExtra("key", elderUID)   //pass uid to next page
             startActivity(intent)
-
         }
 
         home2_back_button_word.setOnClickListener {
