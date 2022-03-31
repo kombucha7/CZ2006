@@ -123,6 +123,9 @@ class HomePage1 : AppCompatActivity() { //must tag user to elderly. when we crea
                 val intent = Intent(this, AccountMainActivity::class.java)
                 startActivity(intent)
             }
+            home1_deletebutton.setOnClickListener {
+                todoAdapter.deleteDoneTodos()
+            }
         }
 
         /**

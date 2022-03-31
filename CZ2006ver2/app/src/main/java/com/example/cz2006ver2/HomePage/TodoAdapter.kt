@@ -28,12 +28,23 @@ class TodoAdapter(private val todos: ArrayList<Todo>) : RecyclerView.Adapter<Tod
         notifyItemInserted(todos.size - 1)
     }
 
-    fun deleteDoneTodos() {
-        todos.removeAll { todo ->
-            todo.isChecked
+    fun deleteDoneTodos(): String {
+        var deletedTaskID : String = ""
+        for (i in 0 until todos.size) {
+            if (todos.get(i).isChecked) {
+                deletedTaskID = todos.get(i).deadline
+                todos.remove(todos.get(i))
+                notifyDataSetChanged()
+                break
+            }
         }
-        notifyDataSetChanged()
+        return deletedTaskID
     }
+//        todos.removeAll { todo ->
+//            todo.isChecked
+//        }
+//        notifyDataSetChanged()
+//    }
 
     private fun toggleStrikeThrough(tvTodoTitle: TextView, isChecked: Boolean) {
         if(isChecked) {
