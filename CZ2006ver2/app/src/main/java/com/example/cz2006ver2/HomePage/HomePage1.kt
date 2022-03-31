@@ -254,7 +254,6 @@ class HomePage1 : AppCompatActivity() { //must tag user to elderly. when we crea
                                 todoAdapter.addTodo(todo)
                             }
                         }
-                        println(testList[1].name)
 
                     }
                 }
