@@ -35,8 +35,9 @@ class HomePage1 : AppCompatActivity() { //must tag user to elderly. when we crea
 
         data class taskObject(
             val name: String? = null,
-            val description: String? = null,
-            val datetimeTask: String? = null
+            val date: String? = null,
+            val time: String? = null,
+            val UID: String? = null
 
         )
 
@@ -205,24 +206,6 @@ class HomePage1 : AppCompatActivity() { //must tag user to elderly. when we crea
                 }
         }
 
-        fun displayDocumentID(elderUID: String, list: MutableList<String>) { //func to test if can pull names of doc id
-            val db = FirebaseFirestore.getInstance()
-            db.collection("careRecipient").document(elderUID).collection("task").get()
-            //db.collection("careRecipient").document(elderUID).collection("task").get()
-                .addOnCompleteListener(OnCompleteListener<QuerySnapshot?> { task ->
-                    if (task.isSuccessful) {
-                        for (document in task.result) {
-                            list.add(document.id)
-                            println(task.result)
-                        }
-                        Log.d(TAG, "the tasks we have " + list.toString())
-                        ///////////start code here to populate the fields after async call//////////
-                    } else {
-                        Log.d(TAG, "Error getting documents: ", task.exception)
-                    }
-                })
-        }
-
         fun displayTasks(elderUID: String, list: MutableList<String>) { //func to test if can pull names of doc id
             val db = FirebaseFirestore.getInstance()
             db.collection("careRecipient").document(elderUID).collection("task").get()
@@ -249,30 +232,49 @@ class HomePage1 : AppCompatActivity() { //must tag user to elderly. when we crea
         }
 
 
-    fun testFirestore(elderUID: String){
-        //define taskObject type
-        var testList: MutableList<taskObject> = ArrayList()
+        fun testFirestore(elderUID: String){
+            //define taskObject type
+            var testList: MutableList<taskObject> = ArrayList()
 
-        val db = FirebaseFirestore.getInstance()
-        FirebaseFirestore
-            .getInstance()
-            .collection("careRecipient").document(elderUID).collection("task")
-            .addSnapshotListener(this
-            ) { querySnapshot: QuerySnapshot?, e: FirebaseFirestoreException? ->
+            val db = FirebaseFirestore.getInstance()
+            FirebaseFirestore
+                .getInstance()
+                .collection("careRecipient").document(elderUID).collection("task")
+                .addSnapshotListener(this
+                ) { querySnapshot: QuerySnapshot?, e: FirebaseFirestoreException? ->
 
-                if (querySnapshot != null) {
-                    for (document in querySnapshot.documents) {
-                        val myObject = document.toObject(taskObject::class.java)
-                        if (myObject != null) {
-                            testList.add(myObject)
-                            val todo =  Todo(myObject.description.toString(), myObject.datetimeTask.toString())
-                            todoAdapter.addTodo(todo)
+                    if (querySnapshot != null) {
+                        for (document in querySnapshot.documents) {
+                            val myObject = document.toObject(taskObject::class.java)
+                            if (myObject != null) {
+                                testList.add(myObject)
+                                val todo =  Todo(myObject.name.toString(), myObject.date.toString())
+                                todoAdapter.addTodo(todo)
 
+                            }
                         }
-                    }
-                    println(testList[1].name)
+                        println(testList[1].name)
 
+                    }
                 }
-            }
-    }
+        }
+
+
+        fun displayDocumentID(elderUID: String, list: MutableList<String>) { //func to test if can pull names of doc id
+            val db = FirebaseFirestore.getInstance()
+            db.collection("careRecipient").document(elderUID).collection("task").get()
+                //db.collection("careRecipient").document(elderUID).collection("task").get()
+                .addOnCompleteListener(OnCompleteListener<QuerySnapshot?> { task ->
+                    if (task.isSuccessful) {
+                        for (document in task.result) {
+                            list.add(document.id)
+                            println(task.result)
+                        }
+                        Log.d(TAG, "the tasks we have " + list.toString())
+                        ///////////start code here to populate the fields after async call//////////
+                    } else {
+                        Log.d(TAG, "Error getting documents: ", task.exception)
+                    }
+                })
+        }
 }
