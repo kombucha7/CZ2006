@@ -216,7 +216,7 @@ class transport3 : AppCompatActivity() {
 
                 val db = FirebaseFirestore.getInstance()
 
-                    var docRef = db.collection("careRecipient").document("un5zqQK0")//add in the elderUID!
+                    var docRef = db.collection("careRecipient").document(elderUID)//add in the elderUID!
                         .collection("favBusStop").document(busStopCode)
                         docRef.delete().addOnSuccessListener { task ->
                         Log.w(ContentValues.TAG, "Deleted1111111111")
