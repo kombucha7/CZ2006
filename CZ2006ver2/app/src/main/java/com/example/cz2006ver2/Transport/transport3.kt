@@ -210,6 +210,7 @@ class transport3 : AppCompatActivity() {
             if (isChecked){
                 Toast.makeText(this, "Bus Stop is in Favourites", Toast.LENGTH_SHORT).show()
                 intent.putExtra("BusStopCode", busStopCode)
+//                println("OVER HERE THE BUSSTOP CODE IS" + busStopCode)
                 saveFavouriteBusStop(elderUID, busStopCode, busStopDesc) //NEED TO CHANGE THIS TO CURRENT UID
             }else {
                 Toast.makeText(this, "Bus Stop removed from Favourites", Toast.LENGTH_SHORT).show()
@@ -239,7 +240,8 @@ class transport3 : AppCompatActivity() {
 
         db.collection("careRecipient").document(elderKey).collection("favBusStop").document(busStopCode).set(setFav)
             .addOnSuccessListener {
-                Toast.makeText(this@transport3, "record added successfully ", Toast.LENGTH_SHORT ).show()
+//                Toast.makeText(this@transport3, "record added successfully ", Toast.LENGTH_SHORT ).show()
+                println("record added successfully ")
             }
 
             .addOnFailureListener{
