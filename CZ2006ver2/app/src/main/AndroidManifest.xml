@@ -101,6 +101,9 @@
             android:name=".Account.AccountMainActivity"
             android:exported="false" />
         <activity
+            android:name=".Account.ChangePasswordActivity"
+            android:exported="false" />
+        <activity
             android:name=".Calendar.CalendarMainActivity"
             android:exported="false" />
         <activity
