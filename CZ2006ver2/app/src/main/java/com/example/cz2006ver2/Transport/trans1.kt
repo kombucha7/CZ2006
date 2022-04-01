@@ -52,7 +52,7 @@ class trans1 : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerClickL
             .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
-
+        val elderUID = intent.getStringExtra("key").toString()
         homeicon_page2.setOnClickListener{
             val hmpage = Intent(this, HomePage1::class.java)
             startActivity(hmpage)
@@ -65,6 +65,7 @@ class trans1 : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerClickL
 
         transporticon_page2.setOnClickListener{
             val transp1 = Intent(this, trans1::class.java)
+            transp1.putExtra("key", elderUID)
             startActivity(transp1)
         }
 
@@ -74,18 +75,22 @@ class trans1 : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerClickL
         }
         imageView6.setOnClickListener{
             val searchpage = Intent(this, transport2::class.java)
+            searchpage.putExtra("key", elderUID)
             startActivity(searchpage)
         }
         imageView10.setOnClickListener{
             val searchpage1 = Intent(this, transport2::class.java)
+            searchpage1.putExtra("key", elderUID)
             startActivity(searchpage1)
         }
         imageView9.setOnClickListener{
             val favpage = Intent(this, transport4::class.java)
+            favpage.putExtra("key", elderUID)
             startActivity(favpage)
         }
         imageView11.setOnClickListener{
             val favpage1 = Intent(this, transport4::class.java)
+            favpage1.putExtra("key", elderUID)
             startActivity(favpage1)
         }
     }

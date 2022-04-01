@@ -32,7 +32,7 @@ class transport4 : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {        /**we need to pass the elderUID into this page as intent**/
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_transport4)
-        val elderUID : String = "un5zqQK0"
+        val elderUID = intent.getStringExtra("key").toString()
 //        var busStopCodeList: MutableList<String> = ArrayList()
 //        val list: MutableList<String> = ArrayList()
 //        val busStopCode:String = intent.getStringExtra("BusStopCode").toString()
@@ -49,10 +49,12 @@ class transport4 : AppCompatActivity() {
         getFavouriteBusStopCode(elderUID)
         back_btn_cal2.setOnClickListener {
             val back1 = Intent(this, trans1::class.java)
+            back1.putExtra("key", elderUID)
             startActivity(back1)
         }
         back_word_cal2.setOnClickListener {
             val back2 = Intent(this, trans1::class.java)
+            back2.putExtra("key", elderUID)
             startActivity(back2)
         }
     }
