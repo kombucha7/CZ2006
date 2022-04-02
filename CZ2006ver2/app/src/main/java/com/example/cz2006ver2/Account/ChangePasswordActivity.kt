@@ -45,6 +45,7 @@ class ChangePasswordActivity : AppCompatActivity() {
 
     fun changePass():Boolean {
         var checkclear = false
+        var checky = false
         val emailadd: EditText = findViewById(R.id.changePW_CurEmail)
         val curpass: EditText = findViewById(R.id.changePW_CurPW)
         val newPass: EditText = findViewById(R.id.changePW_NewPW)
@@ -53,19 +54,26 @@ class ChangePasswordActivity : AppCompatActivity() {
         user?.reauthenticate(creds)?.addOnCompleteListener {
             checkclear = true
             }
-        if(checkclear && newPass.text.toString() != newPassConfirm.text.toString()) {
+        if(checkclear && (newPass.text.toString() != newPassConfirm.text.toString())) {
             Toast.makeText(this, "Passwords do not match", Toast.LENGTH_LONG).show()
             return false
         }
         else{
             newPassword = newPass.text.toString()
-            user!!.updatePassword(newPassword)
+            if(newPassword != "")
+            {user!!.updatePassword(newPassword)
                 .addOnCompleteListener { task ->
                     if (task.isSuccessful) {
                         Log.d(ContentValues.TAG, "User password updated.")
+                        checky = true
+                    }
+                    else {
+                        Toast.makeText(this, "Passwords update fail", Toast.LENGTH_LONG).show()
+                        finish()
                     }
                 }
-            return true
+            }
+            return checky
         }
     }
 }
