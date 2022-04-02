@@ -72,7 +72,7 @@ class HomePage1 : AppCompatActivity() { //must tag user to elderly. when we crea
             //////////////////////////////////////////////////////////////////////////////////////
 
             ///////////////////testing///////////
-            displayDocumentID(elderUID.toString(),testList)
+//            displayDocumentID(elderUID.toString(),testList)
 //            deleteTasks(elderUID.toString(),"e363e16c-26ba-4161-bafd-7d19467ae999")
             testFirestore(elderUID.toString()) //to see if i can convert into taskobject type
             ////////////////////////////////////
@@ -106,11 +106,13 @@ class HomePage1 : AppCompatActivity() { //must tag user to elderly. when we crea
 
             homeicon_page1.setOnClickListener {
                 val intent = Intent(this, HomePage1::class.java)
+                intent.putExtra("key", elderUID)
                 startActivity(intent)
             }
 
             calendaricon_page1.setOnClickListener {
                 val intent = Intent(this, CalendarMainActivity::class.java)
+                intent.putExtra("key", elderUID)
                 startActivity(intent)
             }
 
@@ -122,12 +124,15 @@ class HomePage1 : AppCompatActivity() { //must tag user to elderly. when we crea
 
             accounticon_page1.setOnClickListener {
                 val intent = Intent(this, AccountMainActivity::class.java)
+                intent.putExtra("key", elderUID)
                 startActivity(intent)
             }
             home1_deletebutton.setOnClickListener {
-                val intent = Intent(this, HomePage5::class.java)
-                startActivity(intent)
-                todoAdapter.deleteDoneTodos()
+                if(todoAdapter.deleteDoneTodos()) {
+                    val intent = Intent(this, HomePage5::class.java)
+                    intent.putExtra("key", elderUID)
+                    startActivity(intent)
+                }
             }
         }
 

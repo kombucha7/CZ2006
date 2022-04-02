@@ -24,22 +24,27 @@ class CalendarMainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_calendar_main)
+        val elderUID = intent.getStringExtra("key")
 
         //nav bar
         homeicon_page2.setOnClickListener{
             val intent = Intent(this, HomePage1::class.java)
+            intent.putExtra("key", elderUID)
             startActivity(intent)
         }
         calendaricon_page2.setOnClickListener{
             val intent = Intent(this, CalendarMainActivity::class.java)
+            intent.putExtra("key", elderUID)
             startActivity(intent)
         }
         transporticon_page2.setOnClickListener{
             val intent = Intent(this, trans1::class.java)
+            intent.putExtra("key", elderUID)
             startActivity(intent)
         }
         accounticon_page2.setOnClickListener{
             val intent = Intent(this, AccountMainActivity::class.java)
+            intent.putExtra("key", elderUID)
             startActivity(intent)
         }
 
