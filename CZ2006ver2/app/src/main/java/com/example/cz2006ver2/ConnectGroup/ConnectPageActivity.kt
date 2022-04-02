@@ -13,6 +13,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_connect_page.*
+import kotlinx.coroutines.delay
 import kotlin.random.Random
 
 /**
@@ -50,29 +51,8 @@ class ConnectPageActivity : AppCompatActivity() {
                 Toast.makeText(this@ConnectPageActivity, "Field cannot be empty.", Toast.LENGTH_SHORT ).show()
             }else {
                 enterGroupCode(groupCode.toString()) //in this func, we direct to same page if unsuccessful. look at func below
-
-
-//            addElderToUser(groupCode.toString())//adding the elderly to the user's array i dont know if this function is needed i think i wrote an extra one
-
                 ///////////////////async function so we cant implement as normal func///////////////////////////////////////
-                val docRef = db.collection("users").document(userID)
-                docRef.get()
-                    .addOnSuccessListener { document ->
-                        if (document != null) {
-                            println("persons name " + document.get("name").toString())
-                            var personName = document.get("name").toString()
-                            addUserToElderSubCol(groupCode.toString(), personName)   //saving the caretaker data to elderly subcollection
-                        } else {
-                            Log.d(ContentValues.TAG, "No such document")
-                        }
-                    }
-                    .addOnFailureListener { exception ->
-                        Log.d(ContentValues.TAG, "get failed with ", exception)
-                    }
-                ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                val intent = Intent(this,HomePage1::class.java)    //need to also implement the function to add this user to the elderly caretaker list
-                intent.putExtra("key", groupCode.toString())
-                startActivity(intent)
+
             }
         }
     }
@@ -125,8 +105,26 @@ class ConnectPageActivity : AppCompatActivity() {
 
         var userRef = db.collection("users").document(userID)
 
-// Atomically add a new region to the care array array field.
+        // Atomically add a new region to the care array array field.
         userRef.update("careArray", FieldValue.arrayUnion(elderKey))
+        val docRef = db.collection("users").document(userID)
+        docRef.get()
+            .addOnSuccessListener { document ->
+                if (document != null) {
+                    println("persons name " + document.get("name").toString())
+                    var personName = document.get("name").toString()
+                    addUserToElderSubCol(elderKey.toString(), personName)   //saving the caretaker data to elderly subcollection
+                } else {
+                    Log.d(ContentValues.TAG, "No such document")
+                }
+            }
+            .addOnFailureListener { exception ->
+                Log.d(ContentValues.TAG, "get failed with ", exception)
+            }
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        val intent = Intent(this,HomePage1::class.java)
+        intent.putExtra("key", elderKey.toString())
+        startActivity(intent)
 
     }
 
