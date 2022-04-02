@@ -53,13 +53,16 @@ class trans1 : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerClickL
         mapFragment.getMapAsync(this)
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
         val elderUID = intent.getStringExtra("key").toString()
+
         homeicon_page2.setOnClickListener{
             val hmpage = Intent(this, HomePage1::class.java)
+            hmpage.putExtra("key", elderUID)
             startActivity(hmpage)
         }
 
         calendaricon_page2.setOnClickListener{
             val calst = Intent(this, CalendarMainActivity::class.java)
+            calst.putExtra("key", elderUID)
             startActivity(calst)
         }
 
@@ -71,6 +74,7 @@ class trans1 : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerClickL
 
         accounticon_page2.setOnClickListener{
             val accnt = Intent(this, AccountMainActivity::class.java)
+            accnt.putExtra("key", elderUID)
             startActivity(accnt)
         }
         imageView6.setOnClickListener{

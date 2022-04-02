@@ -31,7 +31,7 @@ class TodoAdapter(private val todos: ArrayList<Todo>) : RecyclerView.Adapter<Tod
         notifyItemInserted(todos.size - 1)
     }
 
-    fun deleteDoneTodos(){
+    fun deleteDoneTodos(): Boolean{
         var deletedTasks: ArrayList<Todo> = ArrayList()
         for( i in 0 until todos.size)
         {
@@ -43,20 +43,25 @@ class TodoAdapter(private val todos: ArrayList<Todo>) : RecyclerView.Adapter<Tod
             todo.isChecked
         }
         notifyDataSetChanged()
-        deleteFromDB(deletedTasks)
+        return deleteFromDB(deletedTasks)
     }
 
-    private fun deleteFromDB(deletedTasks : ArrayList<Todo>){
-        val db = FirebaseFirestore.getInstance()
-        for( i in 0 until deletedTasks.size){
-            println("HI I WANT TO DELETE")
-            println(deletedTasks.get(i).taskID)
-            var docRef = db.collection("careRecipient").document(deletedTasks.get(i).elderUID)
-                .collection("task").document(deletedTasks.get(i).taskID)
-            docRef.delete().addOnSuccessListener { task ->
-                Log.w(TAG, "Deleted1111111111")
+    private fun deleteFromDB(deletedTasks : ArrayList<Todo>): Boolean{
+        if(deletedTasks.size == 0)
+            return false
+        else{
+            val db = FirebaseFirestore.getInstance()
+            for( i in 0 until deletedTasks.size){
+                var docRef = db.collection("careRecipient").document(deletedTasks.get(i).elderUID)
+                    .collection("task").document(deletedTasks.get(i).taskID)
+                println("dofref is " + docRef)
+                docRef.delete().addOnSuccessListener { task ->
+                    Log.w(TAG, "Deleted1111111111")
+                }
             }
+            return true
         }
+
     }
 
 
