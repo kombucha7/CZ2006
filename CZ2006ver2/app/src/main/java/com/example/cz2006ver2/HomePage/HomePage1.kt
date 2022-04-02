@@ -2,9 +2,11 @@ package com.example.cz2006ver2.HomePage
 
 import android.content.ContentValues.TAG
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.widget.TextView
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -21,7 +23,8 @@ import com.google.firebase.firestore.FirebaseFirestoreException
 import com.google.firebase.firestore.QuerySnapshot
 import kotlinx.android.synthetic.main.activity_home_page1.*
 import kotlinx.android.synthetic.main.activity_test_transport_api.*
-
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 
 /**
      * main function for HomePage1
@@ -43,6 +46,7 @@ class HomePage1 : AppCompatActivity() { //must tag user to elderly. when we crea
 //        private var layoutManager: RecyclerView.LayoutManager? = null
 //        private var adapter: RecyclerView.Adapter<Home1Recyclerr.ViewHolder>? = null
         private lateinit var todoAdapter: TodoAdapter
+        @RequiresApi(Build.VERSION_CODES.O)
         override fun onCreate(savedInstanceState: Bundle?) {
             super.onCreate(savedInstanceState)
             setContentView(R.layout.activity_home_page1)
@@ -69,12 +73,16 @@ class HomePage1 : AppCompatActivity() { //must tag user to elderly. when we crea
                 .addOnFailureListener { exception ->
                     Log.w(TAG, "Error getting documents: ", exception)
                 }
+            val current = LocalDateTime.now()
+            val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
+            val todaysDate = current.format(formatter).toString()
+            println(todaysDate + " todays date")
             //////////////////////////////////////////////////////////////////////////////////////
 
             ///////////////////testing///////////
 //            displayDocumentID(elderUID.toString(),testList)
 //            deleteTasks(elderUID.toString(),"e363e16c-26ba-4161-bafd-7d19467ae999")
-            testFirestore(elderUID.toString()) //to see if i can convert into taskobject type
+            testFirestore(elderUID.toString(),todaysDate) //to see if i can convert into taskobject type
             ////////////////////////////////////
 
 
@@ -213,43 +221,18 @@ class HomePage1 : AppCompatActivity() { //must tag user to elderly. when we crea
                 }
         }
 
-        fun displayTasks(elderUID: String, list: MutableList<String>) { //func to test if can pull names of doc id
-            val db = FirebaseFirestore.getInstance()
-            db.collection("careRecipient").document(elderUID).collection("task").get()
-                //db.collection("careRecipient").document(elderUID).collection("task").get()
-                .addOnCompleteListener(OnCompleteListener<QuerySnapshot?> { task ->
-                    if (task.isSuccessful) {
-                        for (document in task.result) {
-                            list.add(document.id)
-                        }
-                        Log.d(TAG, "the tasks we have " + list.toString())
-                    } else {
-                        Log.d(TAG, "Error getting documents: ", task.exception)
-                    }
-                })
-        }
-
-        //func for deleting of ddocuments by ID under task (to be done aft recyclerview finish)
-        fun deleteTasks(elderUID: String, taskID: String) { //func to test if can pull names of doc id
-            val db = FirebaseFirestore.getInstance()
-            val docRef = db.collection("careRecipient").document(elderUID).collection("task").document(taskID)
-            docRef.delete().addOnSuccessListener { task ->
-                Log.w(TAG, "Deleted " )
-            }
-        }
 
 
-        fun testFirestore(elderUID: String){
+        fun testFirestore(elderUID: String, date: String){
             //define taskObject type
             var testList: MutableList<taskObject> = ArrayList()
 
             val db = FirebaseFirestore.getInstance()
             FirebaseFirestore
                 .getInstance()
-                .collection("careRecipient").document(elderUID).collection("task")
+                .collection("careRecipient").document(elderUID).collection("task").whereEqualTo("date", date)
                 .addSnapshotListener(this
                 ) { querySnapshot: QuerySnapshot?, e: FirebaseFirestoreException? ->
-
                     if (querySnapshot != null) {
                         for (document in querySnapshot.documents) {
                             val myObject = document.toObject(taskObject::class.java)
