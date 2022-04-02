@@ -54,7 +54,7 @@ class transport3 : AppCompatActivity() {
          */
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_transport3)
-
+        val elderUID = intent.getStringExtra("key").toString()
         val busStopName: TextView = findViewById(R.id.BusStopName)
         val stopCode: TextView = findViewById(R.id.displayBusStopCode)
         val arrivalBaseURL = "http://datamall2.mytransport.sg/ltaodataservice/BusArrivalv2"
@@ -76,7 +76,7 @@ class transport3 : AppCompatActivity() {
         ///////checking if favourited based on entered code//////////&*******NEED TO GET ELDERS KEY OVER HERE*********
         val currentFirebaseUser = FirebaseAuth.getInstance().currentUser
         val db = FirebaseFirestore.getInstance()
-        db.collection("careRecipient").document("un5zqQK0").collection("favBusStop").document(busStopCode).get().addOnCompleteListener { task ->
+        db.collection("careRecipient").document(elderUID).collection("favBusStop").document(busStopCode).get().addOnCompleteListener { task ->
             if (task.isSuccessful) {
                 val document = task.result
                 if(document != null) {
@@ -210,13 +210,14 @@ class transport3 : AppCompatActivity() {
             if (isChecked){
                 Toast.makeText(this, "Bus Stop is in Favourites", Toast.LENGTH_SHORT).show()
                 intent.putExtra("BusStopCode", busStopCode)
-                saveFavouriteBusStop("un5zqQK0", busStopCode, busStopDesc) //NEED TO CHANGE THIS TO CURRENT UID
+//                println("OVER HERE THE BUSSTOP CODE IS" + busStopCode)
+                saveFavouriteBusStop(elderUID, busStopCode, busStopDesc) //NEED TO CHANGE THIS TO CURRENT UID
             }else {
                 Toast.makeText(this, "Bus Stop removed from Favourites", Toast.LENGTH_SHORT).show()
 
                 val db = FirebaseFirestore.getInstance()
 
-                    var docRef = db.collection("careRecipient").document("un5zqQK0")//add in the elderUID!
+                    var docRef = db.collection("careRecipient").document(elderUID)//add in the elderUID!
                         .collection("favBusStop").document(busStopCode)
                         docRef.delete().addOnSuccessListener { task ->
                         Log.w(ContentValues.TAG, "Deleted1111111111")
@@ -239,7 +240,8 @@ class transport3 : AppCompatActivity() {
 
         db.collection("careRecipient").document(elderKey).collection("favBusStop").document(busStopCode).set(setFav)
             .addOnSuccessListener {
-                Toast.makeText(this@transport3, "record added successfully ", Toast.LENGTH_SHORT ).show()
+//                Toast.makeText(this@transport3, "record added successfully ", Toast.LENGTH_SHORT ).show()
+                println("record added successfully ")
             }
 
             .addOnFailureListener{
