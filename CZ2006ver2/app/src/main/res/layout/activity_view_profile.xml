@@ -137,23 +137,6 @@
         app:layout_constraintTop_toBottomOf="@id/email1"/>
 
     <Button
-        android:id="@+id/edit_profile_btn"
-        android:layout_width="231dp"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/button"
-        android:paddingTop="13dp"
-        android:paddingBottom="13dp"
-        android:text="edit profile"
-        android:textSize="16dp"
-        android:fontFamily="sans-serif-black"
-        app:cornerRadius="50dp"
-        android:layout_marginVertical="50dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/account_email_box"
-        tools:ignore="MissingConstraints" />
-
-    <Button
         android:id="@+id/change_pw_btn"
         android:layout_width="231dp"
         android:layout_height="wrap_content"
@@ -164,10 +147,10 @@
         android:textSize="16dp"
         android:fontFamily="sans-serif-black"
         app:cornerRadius="50dp"
-        android:layout_marginVertical="20dp"
+        android:layout_marginTop="50dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edit_profile_btn"
+        app:layout_constraintTop_toBottomOf="@+id/account_email_box"
         tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
