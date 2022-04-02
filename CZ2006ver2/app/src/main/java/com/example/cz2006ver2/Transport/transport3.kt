@@ -58,7 +58,8 @@ class transport3 : AppCompatActivity() {
         val busStopName: TextView = findViewById(R.id.BusStopName)
         val stopCode: TextView = findViewById(R.id.displayBusStopCode)
         val arrivalBaseURL = "http://datamall2.mytransport.sg/ltaodataservice/BusArrivalv2"
-        val busStopURL = "http://datamall2.mytransport.sg/ltaodataservice/BusStops"
+        val busStopURL = "http://datamall2.mytransport.sg/ltaodataservice/BusStops?\$skip="
+        var skip = 0
         val busStopCode:String = intent.getStringExtra("BusStopCode").toString()
         val codeIndex:String = intent.getStringExtra("BusJSONObjectNum").toString()
 //        Toast.makeText(this@transport3, busStopCode + codeIndex, Toast.LENGTH_LONG).show()
@@ -99,44 +100,49 @@ class transport3 : AppCompatActivity() {
         val allStatus = arrayOf(R.drawable.red_rectangle, R.drawable.green_rectangle, R.drawable.orange_rectangle)
         val wheelchairStatus = arrayOf(R.drawable.wheelchair_new, R.drawable.no_wheelchair)
         val queue = Volley.newRequestQueue(this)
-        val jsonObjectRequest = object: JsonObjectRequest(
-            Method.GET, busStopURL, null,  Response.Listener<JSONObject>
-            { response ->
+        var check = 0
+        while (skip <= 5000) {
+            val jsonObjectRequest = object : JsonObjectRequest(
+                Method.GET, busStopURL + skip, null, Response.Listener<JSONObject>
+                { response ->
 
-                val busStops: JSONArray = response.getJSONArray("value")
-                var check = 0
+                    val busStops: JSONArray = response.getJSONArray("value")
 //                println("First queeu checkpoint")
-                for (i in 0 until busStops.length()) {
-                    val thisStopCode = busStops.getJSONObject(i).getString("BusStopCode")
+                    for (i in 0 until busStops.length()) {
+                        val thisStopCode = busStops.getJSONObject(i).getString("BusStopCode")
 //                    Toast.makeText(this@transport3, thisStopCode, Toast.LENGTH_LONG).show()
 //                    println(thisStopCode)
-                    if (thisStopCode == busStopCode){
-                        var description = busStops.getJSONObject(i).getString("Description")
-                        busStopName.setText(description)
-                        busStopDesc = description
-                        check = 1
-                        break
+                        if (thisStopCode == busStopCode) {
+                            var description = busStops.getJSONObject(i).getString("Description")
+                            busStopName.setText(description)
+                            busStopDesc = description
+                            println("After finding the bus stop description " + busStopDesc)
+                            check = 1
+                            break
+                        }
                     }
-                }
-                if (check == 0){
-                    busStopName.setText("Bus Stop Details")
-                }
-                stopCode.setText("Bus stop number: $busStopCode")
-            }, Response.ErrorListener { error ->
-                // TODO: Handle error
-                println(error.message)
-                Toast.makeText(this, "Bus Data Not Available", Toast.LENGTH_SHORT).show();
+                    if (check == 0) {
+                        busStopName.setText("Bus Stop Details")
+                    }
+                    stopCode.setText("Bus stop number: $busStopCode")
+                }, Response.ErrorListener { error ->
+                    // TODO: Handle error
+                    println(error.message)
+                    Toast.makeText(this, "Bus Data Not Available", Toast.LENGTH_SHORT).show();
 
-            })
-        {
-            override fun getHeaders(): MutableMap<String, String> {
-                val headers = HashMap<String, String>()
-                headers.put("accept", "application/json")
-                headers.put("AccountKey", "M8EyGPshTCOa1WvqEjEPQg==")
-                return headers
-            }}
-        // Add the request to the RequestQueue.
-        queue.add(jsonObjectRequest)
+                }) {
+                override fun getHeaders(): MutableMap<String, String> {
+                    val headers = HashMap<String, String>()
+                    headers.put("accept", "application/json")
+                    headers.put("AccountKey", "M8EyGPshTCOa1WvqEjEPQg==")
+                    return headers
+                }
+            }
+            // Add the request to the RequestQueue.
+            queue.add(jsonObjectRequest)
+            skip = skip + 500
+            if (check == 1) {break}
+        }
 
         val arrivalBaseURLComplete = "$arrivalBaseURL?BusStopCode=$busStopCode"
         val queue2 = Volley.newRequestQueue(this)
@@ -199,16 +205,21 @@ class transport3 : AppCompatActivity() {
 
         back_btn_cal2.setOnClickListener {
             val back1 = Intent(this, trans1::class.java)
+            back1.putExtra("key", elderUID) // <<< elderUID get from intent
             startActivity(back1)
         }
-        back_word_cal2.setOnClickListener {
+
+        back_word_cal2.setOnClickListener{
             val back2 = Intent(this, trans1::class.java)
+            back2.putExtra("key", elderUID) // <<< elderUID get from intent
             startActivity(back2)
         }
+
         favouriteBusStop.setOnCheckedChangeListener { checkBox, isChecked ->
             val intent = Intent(this, transport4::class.java)
             if (isChecked){
                 Toast.makeText(this, "Bus Stop is in Favourites", Toast.LENGTH_SHORT).show()
+                println("Bus Stop desc before passing onto saveBusStop function " + busStopDesc)
                 intent.putExtra("BusStopCode", busStopCode)
 //                println("OVER HERE THE BUSSTOP CODE IS" + busStopCode)
                 saveFavouriteBusStop(elderUID, busStopCode, busStopDesc) //NEED TO CHANGE THIS TO CURRENT UID

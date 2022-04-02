@@ -65,7 +65,7 @@ class CalendarMainActivity : AppCompatActivity() {
 
         calendarView.setOnDateChangeListener { view, day, month, year ->
             calendar1.set(year,month,day)
-            curr_date = "" + year.toString() + "/" + (month.toInt()+1).toString() + "/" + day.toString()
+            curr_date = String.format("%02d / %02d / %02d", year, month+1, day)
 
             val intent = Intent(this, CalendarDayActivity::class.java)
             intent.putExtra("scheduled_date",curr_date)

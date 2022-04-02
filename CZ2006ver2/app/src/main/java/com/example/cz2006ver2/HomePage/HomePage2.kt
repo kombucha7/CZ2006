@@ -70,7 +70,6 @@ class HomePage2 : AppCompatActivity() {
                 db.collection("careRecipient").document(elderUID).collection("task")
                     .document(taskuniqueID).set(uploadTask)
 
-
                 intent.putExtra("key", elderUID)   //pass uid to next page
                 startActivity(intent)
                 }
@@ -123,7 +122,7 @@ class HomePage2 : AppCompatActivity() {
 
             val datePicker = DatePickerDialog(this@HomePage2,
                 { _, year, monthOfYear, dayOfMonth ->
-                    val date = String.format("%04d - %02d - %02d", year, monthOfYear, dayOfMonth)
+                    val date = String.format("%04d-%02d-%02d", year, monthOfYear + 1, dayOfMonth)
                     tvw.text = date
                 }, yy, mm, dd
             )
