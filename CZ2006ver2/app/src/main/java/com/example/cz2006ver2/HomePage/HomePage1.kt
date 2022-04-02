@@ -116,6 +116,7 @@ class HomePage1 : AppCompatActivity() { //must tag user to elderly. when we crea
 
             transporticon_page1.setOnClickListener {
                 val intent = Intent(this, trans1::class.java)
+                intent.putExtra("key", elderUID)
                 startActivity(intent)
             }
 

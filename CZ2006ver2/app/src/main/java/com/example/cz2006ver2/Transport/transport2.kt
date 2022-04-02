@@ -25,6 +25,7 @@ class transport2 : AppCompatActivity() {
          */
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_transport2)
+        val elderUID = intent.getStringExtra("key").toString()
         var busStopCodeInput: EditText = findViewById(R.id.editBusStop)
         var listView: ListView = findViewById(R.id.busList)
         val baseURL = "http://datamall2.mytransport.sg/ltaodataservice/BusArrivalv2"
@@ -57,8 +58,10 @@ class transport2 : AppCompatActivity() {
                             val element = parent.getItemAtPosition(position) // The item that was clicked
                             val intent = Intent(this, transport3::class.java)
 //                            Toast.makeText(this@transport2, element.toString() + position, Toast.LENGTH_LONG).show()
+                            intent.putExtra("key", elderUID)
                             intent.putExtra("BusStopCode", busStopCode)
                             intent.putExtra("BusJSONObjectNum", position.toString())
+//                            intent.putExtra("BusStopDesc", something here)
                             startActivity(intent)
                         }
 
@@ -91,10 +94,12 @@ class transport2 : AppCompatActivity() {
 
         back_btn_cal2.setOnClickListener {
             val back1 = Intent(this, trans1::class.java)
+            back1.putExtra("key", elderUID)
             startActivity(back1)
         }
         back_word_cal2.setOnClickListener {
             val back2 = Intent(this, trans1::class.java)
+            back2.putExtra("key", elderUID)
             startActivity(back2)
         }
 

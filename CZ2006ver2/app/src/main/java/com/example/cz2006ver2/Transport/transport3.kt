@@ -1,5 +1,6 @@
 package com.example.cz2006ver2.Transport
 
+import android.content.ContentValues
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -28,7 +29,8 @@ import kotlin.collections.HashMap
 class transport3 : AppCompatActivity() {
 
     data class busStopFav(
-        val favourited: Boolean
+        val favourited: Boolean,
+        val busStopLocation: String
     )
 
     private lateinit var busRecyclerView: RecyclerView
@@ -43,6 +45,7 @@ class transport3 : AppCompatActivity() {
     lateinit var wheelchair1: ArrayList<Int>
     lateinit var wheelchair2: ArrayList<Int>
     lateinit var wheelchair3: ArrayList<Int>
+    lateinit var busStopDesc: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         /**
@@ -51,7 +54,7 @@ class transport3 : AppCompatActivity() {
          */
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_transport3)
-
+        val elderUID = intent.getStringExtra("key").toString()
         val busStopName: TextView = findViewById(R.id.BusStopName)
         val stopCode: TextView = findViewById(R.id.displayBusStopCode)
         val arrivalBaseURL = "http://datamall2.mytransport.sg/ltaodataservice/BusArrivalv2"
@@ -69,11 +72,11 @@ class transport3 : AppCompatActivity() {
         wheelchair1 = arrayListOf<Int>()
         wheelchair2 = arrayListOf<Int>()
         wheelchair3 = arrayListOf<Int>()
-
+        busStopDesc = "Description not available"
         ///////checking if favourited based on entered code//////////&*******NEED TO GET ELDERS KEY OVER HERE*********
         val currentFirebaseUser = FirebaseAuth.getInstance().currentUser
         val db = FirebaseFirestore.getInstance()
-        db.collection("careRecipient").document("un5zqQK0").collection("favBusStop").document(busStopCode).get().addOnCompleteListener { task ->
+        db.collection("careRecipient").document(elderUID).collection("favBusStop").document(busStopCode).get().addOnCompleteListener { task ->
             if (task.isSuccessful) {
                 val document = task.result
                 if(document != null) {
@@ -110,6 +113,7 @@ class transport3 : AppCompatActivity() {
                     if (thisStopCode == busStopCode){
                         var description = busStops.getJSONObject(i).getString("Description")
                         busStopName.setText(description)
+                        busStopDesc = description
                         check = 1
                         break
                     }
@@ -206,27 +210,38 @@ class transport3 : AppCompatActivity() {
             if (isChecked){
                 Toast.makeText(this, "Bus Stop is in Favourites", Toast.LENGTH_SHORT).show()
                 intent.putExtra("BusStopCode", busStopCode)
-                saveFavouriteBusStop("un5zqQK0", busStopCode) //NEED TO CHANGE THIS TO CURRENT UID
+//                println("OVER HERE THE BUSSTOP CODE IS" + busStopCode)
+                saveFavouriteBusStop(elderUID, busStopCode, busStopDesc) //NEED TO CHANGE THIS TO CURRENT UID
             }else {
                 Toast.makeText(this, "Bus Stop removed from Favourites", Toast.LENGTH_SHORT).show()
+
+                val db = FirebaseFirestore.getInstance()
+
+                    var docRef = db.collection("careRecipient").document(elderUID)//add in the elderUID!
+                        .collection("favBusStop").document(busStopCode)
+                        docRef.delete().addOnSuccessListener { task ->
+                        Log.w(ContentValues.TAG, "Deleted1111111111")
+
+                }
             }
 
 
 //                            Toast.makeText(this@transport2, element.toString() + position, Toast.LENGTH_LONG).show()
         }
     }
-    private fun saveFavouriteBusStop(elderKey : String, busStopCode: String){
+    private fun saveFavouriteBusStop(elderKey : String, busStopCode: String, busStopDesc:String){
 
         val currentFirebaseUser = FirebaseAuth.getInstance().currentUser
         val userID = currentFirebaseUser!!.uid
         //Toast.makeText(this, "" + currentFirebaseUser!!.uid, Toast.LENGTH_SHORT).show()   just for testing
         val db = FirebaseFirestore.getInstance()
 
-        val setFav = busStopFav(favourited = true)
+        val setFav = busStopFav(favourited = true, busStopLocation = busStopDesc)
 
         db.collection("careRecipient").document(elderKey).collection("favBusStop").document(busStopCode).set(setFav)
             .addOnSuccessListener {
-                Toast.makeText(this@transport3, "record added successfully ", Toast.LENGTH_SHORT ).show()
+//                Toast.makeText(this@transport3, "record added successfully ", Toast.LENGTH_SHORT ).show()
+                println("record added successfully ")
             }
 
             .addOnFailureListener{
