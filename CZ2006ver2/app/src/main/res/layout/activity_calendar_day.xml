@@ -129,20 +129,21 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginVertical="15dp"
-        android:text="Tasks for the day:"
+        android:layout_marginLeft="20dp"
+        android:letterSpacing="0.05"
         android:lineSpacingExtra="3dp"
+        android:text="Tasks for the day:"
         android:textColor="@color/dBrown"
         android:textSize="16dp"
-        android:layout_marginLeft="40dp"
-        android:letterSpacing="0.05"
         android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@+id/cal_name_box" />
+        app:layout_constraintTop_toBottomOf="@+id/cal_name_box"
+        tools:layout_editor_absoluteX="40dp" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvCalander"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:layout_marginBottom="20dp"
         android:background="@drawable/homemiddlebox"
         app:layout_constraintBottom_toTopOf="@+id/edit_caretaker_btn"
@@ -160,28 +161,39 @@
         android:fontFamily="sans-serif-black"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
-        android:layout_marginBottom="10dp"
         android:text="Edit caretaker"
         app:cornerRadius="50dp"
-        app:layout_constraintBottom_toTopOf="@+id/edit_tasks_btn"
+        app:layout_constraintBottom_toTopOf="@+id/calenderday_addbutton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="MissingConstraints" />
 
-    <Button
-        android:id="@+id/edit_tasks_btn"
-        android:layout_width="220dp"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/button"
-        android:fontFamily="sans-serif-black"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/calenderday_addbutton"
+        android:layout_width="100dp"
+        android:layout_height="43dp"
+        android:layout_marginLeft="85dp"
         android:layout_marginBottom="20dp"
-        android:text="Edit tasks"
+        android:backgroundTint="@color/button"
+        android:text="Add"
         app:cornerRadius="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintStart_toStartOf="parent">
+
+    </com.google.android.material.button.MaterialButton>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/calenderday_deletebutton"
+        android:layout_width="100dp"
+        android:layout_height="43dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginBottom="20dp"
+        android:backgroundTint="@color/button"
+        android:text="Delete"
+        app:cornerRadius="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/calenderday_addbutton">
+
+    </com.google.android.material.button.MaterialButton>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
