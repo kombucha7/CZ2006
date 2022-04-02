@@ -125,6 +125,8 @@ class HomePage1 : AppCompatActivity() { //must tag user to elderly. when we crea
                 startActivity(intent)
             }
             home1_deletebutton.setOnClickListener {
+                val intent = Intent(this, HomePage5::class.java)
+                startActivity(intent)
                 todoAdapter.deleteDoneTodos()
             }
         }
@@ -248,14 +250,14 @@ class HomePage1 : AppCompatActivity() { //must tag user to elderly. when we crea
                             val myObject = document.toObject(taskObject::class.java)
                             if (myObject != null) {
                                 testList.add(myObject)
-                                println("myObject taskID is" + myObject.uid)
-                                println("myObject desciption is" + myObject.name)
+                                println("myObject taskID is " + myObject.uid)
+                                println("myObject desciption is " + myObject.name)
                                 println("myObject time is" + myObject.time)
+                                println("myObject elderID is " + elderUID)
                                 val todo =  Todo(myObject.name.toString(), myObject.time.toString() , myObject.uid.toString(), elderUID)
                                 todoAdapter.addTodo(todo)
                             }
                         }
-
                     }
                 }
         }

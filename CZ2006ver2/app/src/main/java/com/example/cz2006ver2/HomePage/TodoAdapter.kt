@@ -44,8 +44,6 @@ class TodoAdapter(private val todos: ArrayList<Todo>) : RecyclerView.Adapter<Tod
         }
         notifyDataSetChanged()
         deleteFromDB(deletedTasks)
-
-        println(deletedTasks)
     }
 
     private fun deleteFromDB(deletedTasks : ArrayList<Todo>){
