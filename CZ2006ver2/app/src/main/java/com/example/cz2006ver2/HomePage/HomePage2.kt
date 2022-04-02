@@ -92,7 +92,7 @@ class HomePage2 : AppCompatActivity() {
             val minutes: Int = cldr.get(Calendar.MINUTE)
             // time picker dialog
             picker = TimePickerDialog(this@HomePage2,
-                { tp, sHour, sMinute -> tvw.text = "$sHour:$sMinute" }, hour, minutes, true
+                { tp, sHour, sMinute -> tvw.text = String.format("%02d:%02d", sHour, sMinute) }, hour, minutes, true
             )
             picker.show()
             tvw.text = "Selected Time: " + tvw.text
@@ -115,7 +115,7 @@ class HomePage2 : AppCompatActivity() {
 
             val datePicker = DatePickerDialog(this@HomePage2,
                 { _, year, monthOfYear, dayOfMonth ->
-                    val date = "$year-$monthOfYear-$dayOfMonth"
+                    val date = String.format("%04d - %02d - %02d", year, monthOfYear, dayOfMonth)
                     tvw.text = date
                 }, yy, mm, dd
             )
