@@ -34,7 +34,7 @@ class HomePage2 : AppCompatActivity() {
         val name: String,
         val UID: String
     )
-    var curr_date : String = " "
+    var curr_date : String = "null"
 
     /**
      * Main class for HomePage2
@@ -75,7 +75,7 @@ class HomePage2 : AppCompatActivity() {
                 )
                 db.collection("careRecipient").document(elderUID).collection("task")
                     .document(taskuniqueID).set(uploadTask)
-                if(curr_date != " "){
+                if(curr_date != "null"){
                     intent.putExtra("key", elderUID)   //pass uid to next page
                     intent.putExtra("scheduled_date" , curr_date)
                     startActivity(intent)
@@ -88,7 +88,7 @@ class HomePage2 : AppCompatActivity() {
         }
 
         home2_back_button_word.setOnClickListener {
-            if(curr_date != " "){
+            if(curr_date != "null"){
                 val intent = Intent(this, CalendarDayActivity::class.java)
                 intent.putExtra("key", elderUID)
                 intent.putExtra("scheduled_date", curr_date)

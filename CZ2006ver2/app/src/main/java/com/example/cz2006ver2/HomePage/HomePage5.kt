@@ -18,14 +18,14 @@ class HomePage5 : AppCompatActivity() {
      *
      * @param savedInstanceState
      */
-    var curr_date : String = " "
+    var curr_date : String = "null"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home_page5)
         val elderUID = intent.getStringExtra("key").toString()
         curr_date = intent.getStringExtra("scheduled_date").toString()
         home5_returnbutton.setOnClickListener {
-            if(curr_date != " "){
+            if(curr_date != "null"){
 
                 val intent = Intent(this, CalendarDayActivity::class.java)
                 intent.putExtra("key", elderUID)
