@@ -199,12 +199,10 @@ class transport3 : AppCompatActivity() {
 
         back_btn_cal2.setOnClickListener {
             val back1 = Intent(this, trans1::class.java)
+            back1.putExtra("key", "un5zqQK0") // <<< elderUID get from intent
             startActivity(back1)
         }
-        back_word_cal2.setOnClickListener {
-            val back2 = Intent(this, trans1::class.java)
-            startActivity(back2)
-        }
+
         favouriteBusStop.setOnCheckedChangeListener { checkBox, isChecked ->
             val intent = Intent(this, transport4::class.java)
             if (isChecked){
