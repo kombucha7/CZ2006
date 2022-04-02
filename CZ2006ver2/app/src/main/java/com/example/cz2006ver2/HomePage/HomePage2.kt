@@ -51,20 +51,29 @@ class HomePage2 : AppCompatActivity() {
             val descview = findViewById<EditText>(R.id.home2_desc_edit)
             val timeview = findViewById<TextView>(R.id.home2_time_text)
             val dateview = findViewById<TextView>(R.id.home2_date_text)
-            intent.putExtra("desc", descview.text.toString())
-            intent.putExtra("time", timeview.text.toString())
-            intent.putExtra("date", dateview.text.toString())
+            if(descview.text.toString()=="" || timeview.text.toString()=="" || dateview.text.toString()=="") Toast.makeText(this, "Please fill out all fills", Toast.LENGTH_LONG).show()
+            else{
+                intent.putExtra("desc", descview.text.toString())
+                intent.putExtra("time", timeview.text.toString())
+                intent.putExtra("date", dateview.text.toString())
 
-            //adding data to database//
-            println(descview.text.toString())
-            val taskuniqueID = UUID.randomUUID().toString()
-            val db = FirebaseFirestore.getInstance()
-            val uploadTask = taskInfo(dateview.text.toString(),timeview.text.toString(),descview.text.toString(),taskuniqueID)
-            db.collection("careRecipient").document(elderUID).collection("task").document(taskuniqueID).set(uploadTask)
+                //adding data to database//
+                println(descview.text.toString())
+                val taskuniqueID = UUID.randomUUID().toString()
+                val db = FirebaseFirestore.getInstance()
+                val uploadTask = taskInfo(
+                    dateview.text.toString(),
+                    timeview.text.toString(),
+                    descview.text.toString(),
+                    taskuniqueID
+                )
+                db.collection("careRecipient").document(elderUID).collection("task")
+                    .document(taskuniqueID).set(uploadTask)
 
 
-            intent.putExtra("key", elderUID)   //pass uid to next page
-            startActivity(intent)
+                intent.putExtra("key", elderUID)   //pass uid to next page
+                startActivity(intent)
+                }
         }
 
         home2_back_button_word.setOnClickListener {
@@ -95,7 +104,6 @@ class HomePage2 : AppCompatActivity() {
                 { tp, sHour, sMinute -> tvw.text = String.format("%02d:%02d", sHour, sMinute) }, hour, minutes, true
             )
             picker.show()
-            tvw.text = "Selected Time: " + tvw.text
         })
     }
 
