@@ -50,6 +50,9 @@ class transport2 : AppCompatActivity() {
                             val busNum = services.getJSONObject(i).getString("ServiceNo")
                             list.add(busNum)
                         }
+                        if (list.isEmpty()){
+                            Toast.makeText(this@transport2, "Bus Stop not in service. Please enter another code", Toast.LENGTH_LONG).show()
+                        }
 
                         val arrayadapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, list)
                         listView.adapter = arrayadapter
