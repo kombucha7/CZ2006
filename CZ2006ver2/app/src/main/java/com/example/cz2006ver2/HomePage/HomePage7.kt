@@ -41,11 +41,11 @@ class HomePage7 : AppCompatActivity() {
         val tvdesc: TextView = findViewById(R.id.home7_user_desc_text)
         val tvtime: TextView = findViewById(R.id.home7_user_time_text)
         val tvdate: TextView = findViewById(R.id.home7_user_date_text)
-        val tvspin: TextView = findViewById(R.id.home7_user_reccuring_text)
+//        val tvspin: TextView = findViewById(R.id.home7_user_reccuring_text)
 
         tvdesc.text = desc
         tvtime.text = time
         tvdate.text = date
-        tvspin.text = spin
+//        tvspin.text = spin
     }
 }
