@@ -9,6 +9,7 @@ import android.util.Log
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import com.example.cz2006ver2.Calendar.CalendarDayActivity
 import com.example.cz2006ver2.R
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_home_page2.*
@@ -33,6 +34,7 @@ class HomePage2 : AppCompatActivity() {
         val name: String,
         val UID: String
     )
+    var curr_date : String = "null"
 
     /**
      * Main class for HomePage2
@@ -43,6 +45,8 @@ class HomePage2 : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home_page2)
         val elderUID = intent.getStringExtra("key").toString()      //pass UID to this page
+        curr_date = intent.getStringExtra("scheduled_date").toString()
+        println("curr_date is " + curr_date)
         Log.d(TAG,"home page 2 " + elderUID)
 
 
@@ -51,7 +55,9 @@ class HomePage2 : AppCompatActivity() {
             val descview = findViewById<EditText>(R.id.home2_desc_edit)
             val timeview = findViewById<TextView>(R.id.home2_time_text)
             val dateview = findViewById<TextView>(R.id.home2_date_text)
-            if(descview.text.toString()=="" || timeview.text.toString()=="" || dateview.text.toString()=="") Toast.makeText(this, "Please fill out all fills", Toast.LENGTH_LONG).show()
+
+
+            if(descview.text.toString()=="" || timeview.text.toString()=="" || dateview.text.toString()=="") Toast.makeText(this, "Please fill out all fields", Toast.LENGTH_LONG).show()
             else{
                 intent.putExtra("desc", descview.text.toString())
                 intent.putExtra("time", timeview.text.toString())
@@ -69,17 +75,30 @@ class HomePage2 : AppCompatActivity() {
                 )
                 db.collection("careRecipient").document(elderUID).collection("task")
                     .document(taskuniqueID).set(uploadTask)
-
-                intent.putExtra("key", elderUID)   //pass uid to next page
-                startActivity(intent)
+                if(curr_date != "null"){
+                    intent.putExtra("key", elderUID)   //pass uid to next page
+                    intent.putExtra("scheduled_date" , curr_date)
+                    startActivity(intent)
                 }
+                else{
+                    intent.putExtra("key", elderUID)   //pass uid to next page
+                }
+
+            }
         }
 
         home2_back_button_word.setOnClickListener {
-            val intent = Intent(this, HomePage1::class.java)
-            intent.putExtra("key", elderUID)
-            startActivity(intent)
-
+            if(curr_date != "null"){
+                val intent = Intent(this, CalendarDayActivity::class.java)
+                intent.putExtra("key", elderUID)
+                intent.putExtra("scheduled_date", curr_date)
+                startActivity(intent)
+            }
+            else{
+                val intent = Intent(this, HomePage1::class.java)
+                intent.putExtra("key", elderUID)
+                startActivity(intent)
+            }
         }
         timeclick()
         dateclick()
@@ -127,9 +146,7 @@ class HomePage2 : AppCompatActivity() {
                 }, yy, mm, dd
             )
             datePicker.datePicker.minDate = calendar.timeInMillis
-
             datePicker.show()  })
-
     }
 
 }
