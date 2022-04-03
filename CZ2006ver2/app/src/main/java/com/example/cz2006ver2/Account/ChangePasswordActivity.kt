@@ -19,8 +19,11 @@ import kotlinx.android.synthetic.main.activity_logout.*
  */
 class ChangePasswordActivity : AppCompatActivity() {
 
+    /**
+     * FirebaseAuthenticator Object with current user information
+     * To be used for re-authentication and password updating
+     */
     var user: FirebaseUser? = FirebaseAuth.getInstance().currentUser
-    //var newPassword:String = ""
 
     /**
      * Method used to start default activity
@@ -43,8 +46,16 @@ class ChangePasswordActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * Function to change password for current user
+     * Authenticates the user with email and current password
+     * Then checks if the new password entered matches with confirmed password field
+     * Finally updates the password if above conditions are met
+     *
+     * @return True if successful, false otherwise
+     */
     fun changePass():Boolean {
-        var newPassword:String = ""
+        var newPassword = ""
         var checky = false
         val emailadd: EditText = findViewById(R.id.changePW_CurEmail)
         val curpass: EditText = findViewById(R.id.changePW_CurPW)
