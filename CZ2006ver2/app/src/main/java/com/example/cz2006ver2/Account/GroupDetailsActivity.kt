@@ -29,11 +29,13 @@ class GroupDetailsActivity : AppCompatActivity() {
         // back btn
         groupDetails_BackText.setOnClickListener {
             val intent = Intent(this, AccountMainActivity::class.java)
+            intent.putExtra("key", elderUID)
             startActivity(intent)
         }
         // switch groups btn
         groupDetails_EditProfileButton.setOnClickListener {
             val intent = Intent(this, SwitchGroupActivity::class.java)
+            intent.putExtra("key", elderUID)
             startActivity(intent)
         }
     }
