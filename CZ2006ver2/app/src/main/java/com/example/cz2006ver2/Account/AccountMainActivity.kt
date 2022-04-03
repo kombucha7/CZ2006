@@ -23,8 +23,8 @@ class AccountMainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_account_main)
-        val elderUID = intent.getStringExtra("key")
-
+        val elderUID = intent.getStringExtra("key").toString()
+        println("accmain pageID:  " +  elderUID)
         //nav bar
         homeicon_page3.setOnClickListener{
             val intent = Intent(this, HomePage1::class.java)
@@ -63,6 +63,7 @@ class AccountMainActivity : AppCompatActivity() {
         }
         logout_btn.setOnClickListener{
             val intent = Intent(this, LogoutActivity::class.java)
+            intent.putExtra("key", elderUID)
             startActivity(intent)
         }
 

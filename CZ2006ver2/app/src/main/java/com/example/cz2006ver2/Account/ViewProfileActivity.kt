@@ -21,6 +21,7 @@ class ViewProfileActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_view_profile)
+        val elderUID = intent.getStringExtra("key").toString()
 
         //set the user's name and email to show
         val currentFirebaseUser =
@@ -47,13 +48,16 @@ class ViewProfileActivity : AppCompatActivity() {
 
         //back button to the landing page
         back_button_word.setOnClickListener{
-            val viewProfileBackBtn = Intent(this, AccountMainActivity::class.java)
-            startActivity(viewProfileBackBtn)
+            val intent = Intent(this, AccountMainActivity::class.java)
+            intent.putExtra("key", elderUID)
+            println("view profile pageID:  " +  elderUID)
+            startActivity(intent)
         }
 
         change_pw_btn.setOnClickListener{
-            val viewProfileChangeBtn = Intent(this, ChangePasswordActivity::class.java)
-            startActivity(viewProfileChangeBtn)
+            val intent = Intent(this, ChangePasswordActivity::class.java)
+            intent.putExtra("key", elderUID)
+            startActivity(intent)
         }
     }
 }

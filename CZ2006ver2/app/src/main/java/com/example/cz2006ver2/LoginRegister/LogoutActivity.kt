@@ -18,15 +18,17 @@ class LogoutActivity : AppCompatActivity() {
      * @param savedInstanceState to get prior version. If no data is supplies, then NULL.
      */
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_logout)
+        val elderUID = intent.getStringExtra("key").toString()
+        println(elderUID + " LOGOUT PAGE")
 
         logout_BackButton.setOnClickListener {
-            val logoutBack = Intent(this, AccountMainActivity::class.java)
-            startActivity(logoutBack)
+            val intent = Intent(this, AccountMainActivity::class.java)
+            intent.putExtra("key", elderUID)
+            startActivity(intent)
         }
 
         logout_ConfirmButton.setOnClickListener{

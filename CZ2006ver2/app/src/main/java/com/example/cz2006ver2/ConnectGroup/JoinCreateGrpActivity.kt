@@ -22,7 +22,7 @@ class JoinCreateGrpActivity : AppCompatActivity() {
         val currentFirebaseUser = FirebaseAuth.getInstance().currentUser
         val userID = currentFirebaseUser!!.uid
         val db = FirebaseFirestore.getInstance()
-
+        val elderUID = intent.getStringExtra("key").toString()
         //once we enter a code, check its validity, otherwise throw an error
         //1. add the elderuid to the user's array (carearray)
         //2. add the userid to the elder's subcollection
@@ -54,6 +54,7 @@ class JoinCreateGrpActivity : AppCompatActivity() {
         // back btn
         join_create_grp_BackText.setOnClickListener {
             val intent = Intent(this, AccountMainActivity::class.java)
+            intent.putExtra("key", elderUID)
             startActivity(intent)
         }
         // create code btn
