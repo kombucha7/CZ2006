@@ -109,7 +109,8 @@
                 android:layout_marginRight="50dp"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/PWText" />
+                app:layout_constraintTop_toBottomOf="@id/PWText"
+                android:inputType="textPassword" />
 
 
             <EditText
@@ -123,7 +124,8 @@
                 android:layout_marginRight="50dp"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/ConfirmPWText" />
+                app:layout_constraintTop_toBottomOf="@id/ConfirmPWText"
+                android:inputType="textPassword"/>
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/signuptext"
