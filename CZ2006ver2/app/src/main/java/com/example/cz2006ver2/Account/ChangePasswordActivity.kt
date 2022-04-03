@@ -42,37 +42,6 @@ class ChangePasswordActivity : AppCompatActivity() {
             }
         }
     }
-    fun changePass2(): Boolean {
-        var newPassword:String = ""
-        var checkclear = false
-        var checky = false
-        //val emailadd: EditText = findViewById(R.id.changePW_CurEmail)
-        //val curpass: EditText = findViewById(R.id.changePW_CurPW)
-        val newPass: EditText = findViewById(R.id.changePW_NewPW)
-        val newPassConfirm: EditText = findViewById(R.id.changePW_ReEnterNewPW)
-
-        if(checkclear && (newPass.text.toString() != newPassConfirm.text.toString())) {
-            Toast.makeText(this, "Passwords do not match", Toast.LENGTH_LONG).show()
-            return false
-        }
-        else{
-            newPassword = newPass.text.toString()
-            if(newPassword != "")
-            {user!!.updatePassword(newPassword)
-                .addOnCompleteListener { task ->
-                    if (task.isSuccessful) {
-                        Log.d(ContentValues.TAG, "User password updated.")
-                        checky = true
-                    }
-                    else {
-                        Toast.makeText(this, "Passwords update fail", Toast.LENGTH_LONG).show()
-                        //finish()
-                    }
-                }
-            }
-            return checky
-        }
-    }
 
     fun changePass():Boolean {
         var newPassword:String = ""
@@ -84,33 +53,33 @@ class ChangePasswordActivity : AppCompatActivity() {
         val creds = EmailAuthProvider.getCredential(emailadd.text.toString(), curpass.text.toString())
         user?.reauthenticate(creds)?.addOnCompleteListener {task1 ->
             if(task1.isSuccessful){
-            if(newPass.text.toString() == newPassConfirm.text.toString()) {
-                newPassword = newPass.text.toString()
-                if(newPassword != "") {
-                    user!!.updatePassword(newPassword)
-                    .addOnCompleteListener { task2 ->
-                        if (task2.isSuccessful) {
-                            Log.d(ContentValues.TAG, "User password updated.")
-                            checky = true
-                            finish()
-                        }
-                        else {
-                            Toast.makeText(this, "Passwords update fail", Toast.LENGTH_LONG).show()
-                            checky = false
+                if(newPass.text.toString() == newPassConfirm.text.toString()) {
+                    newPassword = newPass.text.toString()
+                    if(newPassword != "") {
+                        user!!.updatePassword(newPassword)
+                        .addOnCompleteListener { task2 ->
+                            if (task2.isSuccessful) {
+                                Log.d(ContentValues.TAG, "User password updated.")
+                                checky = true
+                                finish()
+                            }
+                            else {
+                                Toast.makeText(this, "Passwords update fail", Toast.LENGTH_LONG).show()
+                                checky = false
+                            }
                         }
                     }
                 }
-
-            }else{
-                Toast.makeText(this, "Passwords do not match", Toast.LENGTH_LONG).show()
-                checky = false
-            }}
+                else{
+                    Toast.makeText(this, "Passwords do not match", Toast.LENGTH_LONG).show()
+                    checky = false
+                }
+            }
             else{
                 Toast.makeText(this, "Email or Current Password is incorrect", Toast.LENGTH_LONG).show()
             }
 
         }
-        Log.d(ContentValues.TAG, "fuck you")
         return checky
     }
 }
