@@ -51,7 +51,6 @@ class ConnectPageActivity : AppCompatActivity() {
                 Toast.makeText(this@ConnectPageActivity, "Field cannot be empty.", Toast.LENGTH_SHORT ).show()
             }else {
                 enterGroupCode(groupCode.toString()) //in this func, we direct to same page if unsuccessful. look at func below
-                ///////////////////async function so we cant implement as normal func///////////////////////////////////////
 
             }
         }
@@ -106,6 +105,8 @@ class ConnectPageActivity : AppCompatActivity() {
         var userRef = db.collection("users").document(userID)
 
         // Atomically add a new region to the care array array field.
+
+        ///////////////////async function so we cant implement as normal func///////////////////////////////////////
         userRef.update("careArray", FieldValue.arrayUnion(elderKey))
         val docRef = db.collection("users").document(userID)
         docRef.get()
@@ -145,24 +146,4 @@ class ConnectPageActivity : AppCompatActivity() {
                 Toast.makeText(this@ConnectPageActivity, "record Failed to add ", Toast.LENGTH_SHORT ).show()
             }
     }
-
-//    fun addElderToUser(elderUID : String) {      //function for posting stuff
-//        //get instance of user
-//        val currentFirebaseUser = FirebaseAuth.getInstance().currentUser
-//        val userID = currentFirebaseUser!!.uid
-//        val db = FirebaseFirestore.getInstance()
-//
-//        val data =
-//            GroupNamePageActivity.elderInfo(elderUID) //check on top to find data that we add in. need to add more eventually
-//        val userCareRecipientArray = db.collection("users").document(userID)
-//
-//        userCareRecipientArray.update("careArray", FieldValue.arrayUnion(elderUID))
-//            .addOnSuccessListener {
-////                Toast.makeText(this@ConnectPageActivity, "record added successfully ", Toast.LENGTH_SHORT ).show()
-//            }
-//
-//            .addOnFailureListener{
-//                Toast.makeText(this@ConnectPageActivity, "record Failed to add ", Toast.LENGTH_SHORT ).show()
-//            }
-//    }
 }

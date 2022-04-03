@@ -33,7 +33,7 @@ class CalendarCaretakerActivity : AppCompatActivity() {
         schedule_date1.setText(curr_date)
         testFirestore("un5zqQK0") // we need to change this to get the elderUID later
 
-        val elderUID = "un5zqQK0"//create another 4 more for the other 4 careTakers. pass the elderUID as intent now is only hardcoded. Pass the date as intent too
+        val elderUID = "un5zqQK0"//pass the elderUID as intent now is only hardcoded. Pass the date as intent too
         val date = "2022-04-03"
 
         cal_caretaker1.setOnClickListener{
