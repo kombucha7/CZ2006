@@ -77,13 +77,13 @@ class GroupNamePageActivity : AppCompatActivity() {
 
 
 
-    fun saveElderInfo(elderName: String,elderKey : String) {
+    fun saveElderInfo(elderName: String,elderKey : String) {    //adding elder to database
         val currentFirebaseUser = FirebaseAuth.getInstance().currentUser
         val userID = currentFirebaseUser!!.uid
         //Toast.makeText(this, "" + currentFirebaseUser!!.uid, Toast.LENGTH_SHORT).show()   just for testing
         val db = FirebaseFirestore.getInstance()
 
-        val data = elderInfo(elderName) //check on top to find data that we add in. need to add more eventually
+        val data = elderInfo(elderName)
 
         db.collection("careRecipient").document(elderKey).set(data)
             .addOnSuccessListener {
@@ -96,7 +96,7 @@ class GroupNamePageActivity : AppCompatActivity() {
     }
 
 
-    fun addElderToUser(elderUID : String) {      //function for posting stuff
+    fun addElderToUser(elderUID : String) {      // add to the users array of carerecipient
         //get instance of user
         val currentFirebaseUser = FirebaseAuth.getInstance().currentUser
         val userID = currentFirebaseUser!!.uid
@@ -115,7 +115,7 @@ class GroupNamePageActivity : AppCompatActivity() {
             }
     }
 
-    fun addUserToElderSubCol(elderUID : String, userName: String?){  //not done yet!!!!
+    fun addUserToElderSubCol(elderUID : String, userName: String?){
         //get instance of user
         val currentFirebaseUser = FirebaseAuth.getInstance().currentUser
         val userID = currentFirebaseUser!!.uid
