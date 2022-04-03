@@ -33,6 +33,7 @@ class transport4 : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_transport4)
         val elderUID = intent.getStringExtra("key").toString()
+        println(elderUID)
 //        var busStopCodeList: MutableList<String> = ArrayList()
 //        val list: MutableList<String> = ArrayList()
 //        val busStopCode:String = intent.getStringExtra("BusStopCode").toString()
