@@ -46,7 +46,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/home3_mid_box"
         android:layout_width="318dp"
-        android:layout_height="414dp"
+        android:layout_height="320dp"
         android:layout_marginTop="36dp"
         android:background="@drawable/homemiddlebox"
         app:layout_constraintEnd_toEndOf="parent"
@@ -180,41 +180,7 @@
             android:layout_marginTop="20dp">
         </TextView>
 
-        <TextView
-            android:id="@+id/home3_recurring_text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/home3_user_date_text"
-            app:layout_constraintStart_toStartOf="parent"
-            android:fontFamily="@font/lato"
-            android:text="Recurring event?"
-            android:lineSpacingExtra="3dp"
-            android:textColor="@color/dBrown"
-            android:textSize="16dp"
-            android:textStyle="bold"
-            android:letterSpacing="0.05"
-            android:paddingLeft="35dp"
-            android:layout_marginTop="20dp">
-        </TextView>
 
-        <TextView
-            android:id="@+id/home3_user_reccuring_text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/home3_recurring_text"
-            app:layout_constraintStart_toStartOf="parent"
-            android:fontFamily="@font/lato"
-
-            android:lineSpacingExtra="3dp"
-            android:textColor="@color/button"
-            android:textSize="16dp"
-            android:textStyle="bold"
-            android:letterSpacing="0.05"
-            android:paddingLeft="35dp"
-            android:layout_marginTop="20dp">
-        </TextView>
 
 
 
@@ -231,7 +197,7 @@
         android:textSize="16dp"
         android:fontFamily="sans-serif-black"
         app:cornerRadius="50dp"
-        android:layout_marginVertical="20dp"
+        android:layout_marginVertical="30dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/home3_mid_box" />
