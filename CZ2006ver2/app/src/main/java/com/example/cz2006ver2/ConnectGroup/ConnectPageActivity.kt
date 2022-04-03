@@ -8,12 +8,14 @@ import android.text.TextUtils
 import android.util.Log
 import android.widget.Toast
 import com.example.cz2006ver2.HomePage.HomePage1
+import com.example.cz2006ver2.LoginRegister.RegisterActivity
 import com.example.cz2006ver2.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_connect_page.*
 import kotlinx.coroutines.delay
+import java.security.acl.Group
 import kotlin.random.Random
 
 /**
@@ -52,6 +54,17 @@ class ConnectPageActivity : AppCompatActivity() {
             }else {
                 enterGroupCode(groupCode.toString()) //in this func, we direct to same page if unsuccessful. look at func below
 
+            }
+        }
+        connectBack.setOnClickListener{
+            val temp = intent.getStringExtra("temp1")
+            if (temp == "0") {
+                val back_gs = Intent(this, GroupselectionActivity::class.java)
+                startActivity(back_gs)
+            }
+            else {
+                val back_reg = Intent(this, RegisterActivity::class.java)
+                startActivity(back_reg)
             }
         }
     }

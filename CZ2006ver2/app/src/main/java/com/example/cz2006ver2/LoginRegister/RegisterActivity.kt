@@ -102,6 +102,7 @@ class RegisterActivity : AppCompatActivity() {
                         Toast.makeText(this, "Successfully Registered", Toast.LENGTH_LONG).show()
                         val intent = Intent(this, ConnectPageActivity::class.java)
                         saveFireStore(name,email)
+                        intent.putExtra("temp1", "1")
                         startActivity(intent)
                         finish()
                     }else {

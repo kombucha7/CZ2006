@@ -90,6 +90,7 @@
         android:layout_marginRight="85dp"
         android:text="Enter"
         android:textSize="16dp"
+        android:textColor="@color/white"
         app:cornerRadius="50dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

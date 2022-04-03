@@ -63,6 +63,12 @@ class GroupselectionActivity : AppCompatActivity() {
             intent.putExtra("key", s5)
             startActivity(intent)
         }
+
+        add_grp_btn.setOnClickListener{
+            val intent = Intent(this, ConnectPageActivity::class.java)
+            intent.putExtra("temp1", "0")
+            startActivity(intent)
+        }
     }
 
     /**
