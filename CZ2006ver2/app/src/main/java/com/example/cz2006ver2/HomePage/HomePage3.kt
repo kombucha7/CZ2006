@@ -21,7 +21,7 @@ class HomePage3 : AppCompatActivity() {
      * Page to display and confirm inputs from HomePage2
      * @param savedInstanceState
      */
-    var curr_date : String = " "
+    var curr_date : String = "null"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home_page3)
@@ -30,7 +30,7 @@ class HomePage3 : AppCompatActivity() {
         Log.d(ContentValues.TAG,"home3" + elderUID)
 
         home3_returnbutton.setOnClickListener{
-            if(curr_date != " "){
+            if(curr_date != "null"){
                 val intent = Intent(this, CalendarDayActivity::class.java)
                 intent.putExtra("key", elderUID)
                 intent.putExtra("scheduled_date", curr_date)

@@ -82,6 +82,7 @@ class HomePage2 : AppCompatActivity() {
                 }
                 else{
                     intent.putExtra("key", elderUID)   //pass uid to next page
+                    startActivity(intent)
                 }
 
             }
