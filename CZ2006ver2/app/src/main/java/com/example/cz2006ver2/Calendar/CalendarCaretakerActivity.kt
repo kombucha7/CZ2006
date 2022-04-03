@@ -76,12 +76,14 @@ class CalendarCaretakerActivity : AppCompatActivity() {
 
         back_word_cal2.setOnClickListener{
             val cal2BackBtn = Intent(this, CalendarDayActivity::class.java)
+            intent.putExtra("key", elderUID)
             cal2BackBtn.putExtra("scheduled_date",curr_date)
             startActivity(cal2BackBtn)
         }
         // confirm btn
         cal_caretaker_changebtn.setOnClickListener{
             val calConfirmBtn = Intent(this, CalendarCaretakerActivity2::class.java)
+            intent.putExtra("key", elderUID)
             calConfirmBtn.putExtra("scheduled_date",curr_date)
             startActivity(calConfirmBtn)
         }
