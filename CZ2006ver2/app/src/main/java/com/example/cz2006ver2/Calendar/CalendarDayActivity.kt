@@ -110,7 +110,12 @@ class CalendarDayActivity : AppCompatActivity() {
             .get()
             .addOnSuccessListener { documents ->
                 println(documents.get("name").toString() + " THIS IS THE NAME")
-                user_name_cal.text = documents.get("name").toString()
+                if (documents.get("name") != null) {
+                    user_name_cal.text = documents.get("name").toString()
+                }
+                else{
+                    user_name_cal.text = "Not Specified"
+                }
             }
             .addOnFailureListener { exception ->
                 Log.w(ContentValues.TAG, "Error getting documents: ", exception)
