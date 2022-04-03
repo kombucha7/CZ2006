@@ -1,11 +1,14 @@
 package com.example.cz2006ver2.Calendar
 
+import android.content.ContentValues
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.cz2006ver2.HomePage.*
 import com.example.cz2006ver2.R
+import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.FirebaseFirestoreException
 import com.google.firebase.firestore.QuerySnapshot
@@ -26,9 +29,13 @@ class CalendarDayActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_calendar_day)
-        val elderUID = intent.getStringExtra("key")
+        val elderUID = intent.getStringExtra("key").toString()
         // calendar date
         val curr_date = intent.getStringExtra("scheduled_date").toString()
+
+        showCaretaker(elderUID,curr_date)
+
+
         //// RecyclerView initialisation ////
         CalenderTodoAdapter = CalenderTodoAdapter(arrayListOf())
         rvCalander.adapter = CalenderTodoAdapter
@@ -93,6 +100,20 @@ class CalendarDayActivity : AppCompatActivity() {
                         }
                     }
                 }
+            }
+    }
+
+    fun showCaretaker(elderUID: String, date: String) {
+        println(date)
+        val db = FirebaseFirestore.getInstance()
+        db.collection("careRecipient").document(elderUID).collection("caretakerDay").document(date)
+            .get()
+            .addOnSuccessListener { documents ->
+                println(documents.get("name").toString() + " THIS IS THE NAME")
+                user_name_cal.text = documents.get("name").toString()
+            }
+            .addOnFailureListener { exception ->
+                Log.w(ContentValues.TAG, "Error getting documents: ", exception)
             }
     }
 }

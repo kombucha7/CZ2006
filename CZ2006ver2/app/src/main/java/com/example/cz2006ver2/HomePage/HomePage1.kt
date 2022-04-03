@@ -40,7 +40,8 @@ class HomePage1 : AppCompatActivity() { //must tag user to elderly. when we crea
             val name: String? = null,
             val date: String? = null,
             val time: String? = null,
-            val uid: String? = null
+            val uid: String? = null,
+            val isChecked: Boolean? = null
         )
 
 //        private var layoutManager: RecyclerView.LayoutManager? = null
@@ -242,6 +243,7 @@ class HomePage1 : AppCompatActivity() { //must tag user to elderly. when we crea
                                 println("myObject desciption is " + myObject.name)
                                 println("myObject time is" + myObject.time)
                                 println("myObject elderID is " + elderUID)
+                                println("MyObject bool " + myObject.isChecked)
                                 val todo =  Todo(myObject.name.toString(), myObject.time.toString() , myObject.uid.toString(), elderUID)
                                 todoAdapter.addTodo(todo)
                             }

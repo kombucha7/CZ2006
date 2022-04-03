@@ -31,40 +31,47 @@ class CalendarCaretakerActivity : AppCompatActivity() {
         setContentView(R.layout.activity_calendar_caretaker)
         var curr_date = intent.getStringExtra("scheduled_date")
         schedule_date1.setText(curr_date)
-        testFirestore("un5zqQK0") // we need to change this to get the elderUID later
+        val elderUID = intent.getStringExtra("key").toString()
+        val date = intent.getStringExtra("scheduled_date").toString()
 
-        val elderUID = "un5zqQK0"//pass the elderUID as intent now is only hardcoded. Pass the date as intent too
-        val date = "2022-04-03"
+        testFirestore(elderUID) // we need to change this to get the elderUID later
+
+        println(elderUID + " " + date)
 
         cal_caretaker1.setOnClickListener{
             updateName(elderUID,date,cal_caretaker1)
-            val caretaker1 = Intent(this, CalendarCaretakerActivity2::class.java)
-            caretaker1.putExtra("name",cal_caretaker1.text.toString())
-            startActivity(caretaker1)
+            val intent = Intent(this, CalendarCaretakerActivity2::class.java)
+            intent.putExtra("scheduled_date",curr_date)
+            intent.putExtra("key", elderUID)
+            startActivity(intent)
         }
         cal_caretaker2.setOnClickListener{
             updateName(elderUID,date,cal_caretaker2)
-            val caretaker1 = Intent(this, CalendarCaretakerActivity2::class.java)
-            caretaker1.putExtra("name",cal_caretaker2.text.toString())
-            startActivity(caretaker1)
+            val intent = Intent(this, CalendarCaretakerActivity2::class.java)
+            intent.putExtra("scheduled_date",curr_date)
+            intent.putExtra("key", elderUID)
+            startActivity(intent)
         }
         cal_caretaker3.setOnClickListener{
             updateName(elderUID,date,cal_caretaker3)
-            val caretaker1 = Intent(this, CalendarCaretakerActivity2::class.java)
-            caretaker1.putExtra("name",cal_caretaker3.text.toString())
-            startActivity(caretaker1)
+            val intent = Intent(this, CalendarCaretakerActivity2::class.java)
+            intent.putExtra("scheduled_date",curr_date)
+            intent.putExtra("key", elderUID)
+            startActivity(intent)
         }
         cal_caretaker4.setOnClickListener{
             updateName(elderUID,date,cal_caretaker4)
-            val caretaker1 = Intent(this, CalendarCaretakerActivity2::class.java)
-            caretaker1.putExtra("name",cal_caretaker4.text.toString())
-            startActivity(caretaker1)
+            val intent = Intent(this, CalendarCaretakerActivity2::class.java)
+            intent.putExtra("scheduled_date",curr_date)
+            intent.putExtra("key", elderUID)
+            startActivity(intent)
         }
         cal_caretaker5.setOnClickListener{
             updateName(elderUID,date,cal_caretaker5)
-            val caretaker1 = Intent(this, CalendarCaretakerActivity2::class.java)
-            caretaker1.putExtra("name",cal_caretaker5.text.toString())
-            startActivity(caretaker1)
+            val intent = Intent(this, CalendarCaretakerActivity2::class.java)
+            intent.putExtra("scheduled_date",curr_date)
+            intent.putExtra("key", elderUID)
+            startActivity(intent)
         }
 
         back_word_cal2.setOnClickListener{
@@ -93,7 +100,6 @@ class CalendarCaretakerActivity : AppCompatActivity() {
                     for (document in querySnapshot.documents) {
                         nameList.add(document.get("name").toString())
                     }
-                    println("Caretaker names : " + nameList[1])
                     assignToEditTask(nameList)
                 }
             }

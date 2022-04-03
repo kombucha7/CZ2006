@@ -79,6 +79,7 @@
 
     <TextView
         android:id="@+id/groupDetails_CareRecipientName"
+        android:textColor="@color/dBrown"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
@@ -107,6 +108,7 @@
 
     <TextView
         android:id="@+id/groupDetails_GroupCode"
+        android:textColor="@color/dBrown"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"

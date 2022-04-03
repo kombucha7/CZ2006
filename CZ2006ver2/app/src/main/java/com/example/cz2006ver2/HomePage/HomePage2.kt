@@ -32,7 +32,7 @@ class HomePage2 : AppCompatActivity() {
         val date:String,
         val time:String,
         val name: String,
-        val UID: String
+        val UID: String,
     )
     var curr_date : String = "null"
 
