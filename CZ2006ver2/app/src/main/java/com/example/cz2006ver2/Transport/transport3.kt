@@ -161,9 +161,9 @@ class transport3 : AppCompatActivity() {
                     busNums.add(number)
 
 //                    val datetime = LocalDate.parse(timing1, DateTimeFormatter.ISO_OFFSET_TIME)
-                    val lis1 = listOf("1 min", "2 min", "3 min")
-                    val lis2 = listOf("4 min", "5 min", "6 min", "7 min")
-                    val lis3 = listOf("8 min", "9 min", "10 min", "11 min")
+                    val lis1 = listOf("1 min", "2 min", "3 min", "4 min","5 min","6 min", "8 min","9 min")
+                    val lis2 = listOf("10 min", "11 min", "12 min", "13 min","15 min", "16 min")
+                    val lis3 = listOf("18 min","19 min", "20 min","21 min", "22 min")
                     firstTiming.add(lis1.random())
                     secondTiming.add(lis2.random())
                     thirdTiming.add(lis3.random())
