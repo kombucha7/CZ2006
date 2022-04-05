@@ -79,14 +79,69 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/switchGroup_yourGroupText" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/switchGroup_caretakerList"
-        android:layout_width="match_parent"
+
+    <TextView
+        android:id="@+id/sg_group1"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:contextClickable="true"
-        app:layout_constraintTop_toBottomOf="@+id/switchGroup_textQuestion"
-        tools:layout_editor_absoluteX="1dp" />
+        android:layout_marginVertical="30dp"
+        android:layout_centerVertical = "true"
+        android:text=""
+        android:textColor="@color/dBrown"
+        android:textSize="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/switchGroup_textQuestion"/>
+
+    <TextView
+        android:id="@+id/sg_group2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="20dp"
+        android:layout_centerVertical = "true"
+        android:text=""
+        android:textColor="@color/dBrown"
+        android:textSize="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/sg_group1"/>
+
+    <TextView
+        android:id="@+id/sg_group3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="20dp"
+        android:layout_centerVertical = "true"
+        android:text=""
+        android:textColor="@color/dBrown"
+        android:textSize="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/sg_group2"/>
+    <TextView
+        android:id="@+id/sg_group4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="20dp"
+        android:layout_centerVertical = "true"
+        android:text=""
+        android:textColor="@color/dBrown"
+        android:textSize="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/sg_group3"/>
+    <TextView
+        android:id="@+id/sg_group5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="20dp"
+        android:layout_centerVertical = "true"
+        android:text=""
+        android:textColor="@color/dBrown"
+        android:textSize="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/sg_group4"/>
 
     <Button
         android:id="@+id/switchGroup_ConfirmButton"
@@ -104,7 +159,7 @@
         app:cornerRadius="50dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/switchGroup_caretakerList"
+        app:layout_constraintTop_toBottomOf="@+id/sg_group5"
         tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

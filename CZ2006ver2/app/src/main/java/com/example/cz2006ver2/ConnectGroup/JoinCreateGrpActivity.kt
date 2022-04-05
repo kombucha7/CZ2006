@@ -48,6 +48,9 @@ class JoinCreateGrpActivity : AppCompatActivity() {
                 .addOnFailureListener { exception ->
                     Log.d(ContentValues.TAG, "get failed with ", exception)
                 }
+            val intent = Intent(this, AccountMainActivity::class.java)
+            intent.putExtra("key", elderUID)
+            startActivity(intent)
         }
 
 
