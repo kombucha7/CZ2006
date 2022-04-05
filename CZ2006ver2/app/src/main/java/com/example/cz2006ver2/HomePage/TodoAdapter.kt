@@ -2,9 +2,6 @@ package com.example.cz2006ver2.HomePage
 
 import android.content.ContentValues.TAG
 import android.graphics.Paint.STRIKE_THRU_TEXT_FLAG
-import android.text.Spannable
-import android.text.SpannableString
-import android.text.style.BackgroundColorSpan
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -113,6 +110,7 @@ class TodoAdapter(private val todos: ArrayList<Todo>) : RecyclerView.Adapter<Tod
 //    }
 
     override fun onBindViewHolder(holder: TodoViewHolder, position: Int) {
+
         val curTodo = todos[position]
         holder.itemView.apply {
             tvTodoTitle.text = curTodo.title
@@ -129,5 +127,11 @@ class TodoAdapter(private val todos: ArrayList<Todo>) : RecyclerView.Adapter<Tod
 
     override fun getItemCount(): Int {
         return todos.size
+    }
+
+    fun clear() {
+        val size: Int = todos.size
+        todos.clear()
+        notifyItemRangeRemoved(0, size)
     }
 }

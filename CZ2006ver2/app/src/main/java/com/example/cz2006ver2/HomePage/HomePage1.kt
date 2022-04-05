@@ -53,7 +53,7 @@ class HomePage1 : AppCompatActivity() { //must tag user to elderly. when we crea
             setContentView(R.layout.activity_home_page1)
 
             var objlist: MutableList<taskObject> = ArrayList()
-            val elderUID = intent.getStringExtra("key")
+            val elderUID = intent.getStringExtra("key").toString()
             var testList: MutableList<String> = ArrayList()
             val LOG = " "
             Log.d(LOG, "this is the elderly key " + elderUID)
@@ -135,6 +135,8 @@ class HomePage1 : AppCompatActivity() { //must tag user to elderly. when we crea
             home1_completedbutton.setOnClickListener{
                 var completedTasks: ArrayList<Todo> = ArrayList()
                 completedTasks = todoAdapter.checkCompleted()
+                
+                updateCheckValue(completedTasks,elderUID)
             }
         }
 
@@ -221,6 +223,7 @@ class HomePage1 : AppCompatActivity() { //must tag user to elderly. when we crea
             //define taskObject type
             var testList: MutableList<taskObject> = ArrayList()
 
+
             val db = FirebaseFirestore.getInstance()
             FirebaseFirestore
                 .getInstance()
@@ -246,21 +249,15 @@ class HomePage1 : AppCompatActivity() { //must tag user to elderly. when we crea
         }
 
 
-        fun displayDocumentID(elderUID: String, list: MutableList<String>) { //func to test if can pull names of doc id
+        fun updateCheckValue(taskIDList: ArrayList<Todo>, elderUID: String) {
             val db = FirebaseFirestore.getInstance()
-            db.collection("careRecipient").document(elderUID).collection("task").get()
-                //db.collection("careRecipient").document(elderUID).collection("task").get()
-                .addOnCompleteListener(OnCompleteListener<QuerySnapshot?> { task ->
-                    if (task.isSuccessful) {
-                        for (document in task.result) {
-                            list.add(document.id)
-                            println(task.result)
-                        }
-                        Log.d(TAG, "the tasks we have " + list.toString())
-                        ///////////start code here to populate the fields after async call//////////
-                    } else {
-                        Log.d(TAG, "Error getting documents: ", task.exception)
-                    }
-                })
+
+            for (i in 0 until taskIDList.size) {
+                println("task + " + taskIDList[i].taskID)
+
+                db.collection("careRecipient").document(elderUID).collection("task").document(taskIDList[i].taskID.toString())
+                    .update("checked", true)
+            }
         }
+
 }
