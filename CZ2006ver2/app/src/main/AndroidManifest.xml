@@ -80,6 +80,9 @@
             android:name=".Calendar.CalendarDayActivity"
             android:exported="false" />
         <activity
+            android:name=".HomePage.HomePageCompletedActivity"
+            android:exported="false" />
+        <activity
             android:name=".HomePage.HomePage5"
             android:exported="false" />
         <activity

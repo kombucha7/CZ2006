@@ -90,7 +90,7 @@
         android:layout_width="0dp"
         android:layout_height="53dp"
         android:background="@drawable/roundededittextbeige"
-        android:padding="15dp"
+        android:paddingLeft="20dp"
         android:textColor="@color/dBrown"
         android:layout_marginVertical="13dp"
         android:layout_marginLeft="40dp"
@@ -133,7 +133,7 @@
         android:textColor="@color/dBrown"
         android:textSize="16dp"
         android:letterSpacing="0.05"
-        android:paddingLeft="35dp"
+        android:paddingLeft="20dp"
         android:gravity="left|center_vertical">
 
     </TextView>
@@ -170,7 +170,7 @@
         android:textColor="@color/dBrown"
         android:textSize="16dp"
         android:letterSpacing="0.05"
-        android:paddingLeft="35dp"
+        android:paddingLeft="20dp"
         android:gravity="left|center_vertical">
 
     </TextView>

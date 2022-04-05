@@ -134,8 +134,11 @@ class HomePage1 : AppCompatActivity() { //must tag user to elderly. when we crea
             }
             home1_completedbutton.setOnClickListener{
                 var completedTasks: ArrayList<Todo> = ArrayList()
-                completedTasks = todoAdapter.checkCompleted()
+                val intent = Intent(this, HomePageCompletedActivity::class.java)
+                intent.putExtra("key", elderUID)
+                startActivity(intent)
                 
+                completedTasks = todoAdapter.checkCompleted()
                 updateCheckValue(completedTasks,elderUID)
             }
         }
