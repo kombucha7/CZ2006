@@ -77,14 +77,18 @@ class TodoAdapter(private val todos: ArrayList<Todo>) : RecyclerView.Adapter<Tod
         }
     }
 
-    fun checkCompleted(){
+    fun checkCompleted(): ArrayList<Todo>{
+        var completedTasks: ArrayList<Todo> = ArrayList()
         for(i in 0 until todos.size){
            if(todos.get(i).isChecked){
+               completedTasks.add(todos.get(i))
                todos.get(i).completed = true
                notifyItemChanged(i)
                todos.get(i).isChecked = !todos.get(i).isChecked
            }
         }
+        println(completedTasks.size)
+        return completedTasks
     }
 //    fun setHighLightedText(tv: TextView, textToHighlight: String) {
 //            val tvt = tv.text.toString()

@@ -133,7 +133,8 @@ class HomePage1 : AppCompatActivity() { //must tag user to elderly. when we crea
                 }
             }
             home1_completedbutton.setOnClickListener{
-                todoAdapter.checkCompleted()
+                var completedTasks: ArrayList<Todo> = ArrayList()
+                completedTasks = todoAdapter.checkCompleted()
             }
         }
 
