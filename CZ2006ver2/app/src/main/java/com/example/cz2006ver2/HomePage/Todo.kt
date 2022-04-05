@@ -5,5 +5,6 @@ data class Todo(
     val deadline: String,
     val taskID: String,
     val elderUID: String,
+    var completed: Boolean,
     var isChecked: Boolean = false
 )

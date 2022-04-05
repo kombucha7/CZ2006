@@ -97,10 +97,10 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/home1_addbutton"
-        android:layout_width="100dp"
-        android:layout_height="43dp"
-        android:layout_marginLeft="85dp"
-        android:layout_marginBottom="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:layout_marginBottom="15dp"
         android:backgroundTint="@color/button"
         android:text="Add"
         app:cornerRadius="50dp"
@@ -111,15 +111,31 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/home1_deletebutton"
-        android:layout_width="100dp"
-        android:layout_height="43dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="15dp"
         android:backgroundTint="@color/button"
         android:text="Delete"
         app:cornerRadius="50dp"
         app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
         app:layout_constraintStart_toEndOf="@+id/home1_addbutton">
+
+    </com.google.android.material.button.MaterialButton>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/home1_completedbutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginBottom="15dp"
+        android:layout_marginRight="25dp"
+        android:backgroundTint="@color/button"
+        android:text="Completed"
+        app:cornerRadius="50dp"
+        app:layout_constraintLeft_toRightOf="@id/home1_deletebutton"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
+       >
 
     </com.google.android.material.button.MaterialButton>
 
