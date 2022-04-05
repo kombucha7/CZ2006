@@ -24,7 +24,14 @@ class ChangePasswordActivity : AppCompatActivity() {
      * To be used for re-authentication and password updating
      */
     var user: FirebaseUser? = FirebaseAuth.getInstance().currentUser
+
+    /**
+     * elderUID value to receive from previous page
+     * Used to pass to the next page
+     */
     val elderUID = intent.getStringExtra("key").toString()
+
+
     /**
      * Method used to start default activity
      * @param savedInstanceState to get prior version. If no data is supplies, then NULL.
