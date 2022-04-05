@@ -73,7 +73,7 @@ class HomePage2 : AppCompatActivity() {
                     timeview.text.toString(),
                     descview.text.toString(),
                     taskuniqueID,
-                    true
+                    false
                 )
                 db.collection("careRecipient").document(elderUID).collection("task")
                     .document(taskuniqueID).set(uploadTask)

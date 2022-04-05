@@ -76,29 +76,37 @@ class TodoAdapter(private val todos: ArrayList<Todo>) : RecyclerView.Adapter<Tod
             tvTodoTitle.paintFlags = tvTodoTitle.paintFlags and STRIKE_THRU_TEXT_FLAG.inv()
         }
     }
-    fun setHighLightedText(tv: TextView, textToHighlight: String, isChecked: Boolean) {
-        if(isChecked){
-            val tvt = tv.text.toString()
-            var ofe = tvt.indexOf(textToHighlight, 0)
-            val wordToSpan: Spannable = SpannableString(tv.text)
-            var ofs = 0
-            while (ofs < tvt.length && ofe != -1) {
-                ofe = tvt.indexOf(textToHighlight, ofs)
-                if (ofe == -1) break else {
-                    // set color here
-                    wordToSpan.setSpan(
-                        BackgroundColorSpan(-0x100),
-                        ofe,
-                        ofe + textToHighlight.length,
-                        Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
-                    )
-                    tv.setText(wordToSpan, TextView.BufferType.SPANNABLE)
-                }
-                ofs = ofe + 1
-            }
-        }
 
+    fun checkCompleted(){
+        for(i in 0 until todos.size){
+           if(todos.get(i).isChecked){
+               todos.get(i).completed = true
+               notifyItemChanged(i)
+               todos.get(i).isChecked = !todos.get(i).isChecked
+           }
+        }
     }
+//    fun setHighLightedText(tv: TextView, textToHighlight: String) {
+//            val tvt = tv.text.toString()
+//            var ofe = tvt.indexOf(textToHighlight, 0)
+//            val wordToSpan: Spannable = SpannableString(tv.text)
+//            var ofs = 0
+//            while (ofs < tvt.length && ofe != -1) {
+//                ofe = tvt.indexOf(textToHighlight, ofs)
+//                if (ofe == -1) break else {
+//                    // set color here
+//                    wordToSpan.setSpan(
+//                        BackgroundColorSpan(-0x100),
+//                        ofe,
+//                        ofe + textToHighlight.length,
+//                        Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+//                    )
+//                    tv.setText(wordToSpan, TextView.BufferType.SPANNABLE)
+//                }
+//                ofs = ofe + 1
+//            }
+//
+//    }
 
     override fun onBindViewHolder(holder: TodoViewHolder, position: Int) {
         val curTodo = todos[position]
@@ -106,9 +114,10 @@ class TodoAdapter(private val todos: ArrayList<Todo>) : RecyclerView.Adapter<Tod
             tvTodoTitle.text = curTodo.title
             tvDeadline.text = curTodo.deadline
             cbDone.isChecked = curTodo.isChecked
-            toggleStrikeThrough(tvTodoTitle, curTodo.isChecked)
+            toggleStrikeThrough(tvTodoTitle, curTodo.completed)
+//                setHighLightedText(tvTodoTitle,curTodo.title)
             cbDone.setOnCheckedChangeListener { _, isChecked ->
-                toggleStrikeThrough(tvTodoTitle, isChecked)
+//                toggleStrikeThrough(tvTodoTitle, isChecked)
                 curTodo.isChecked = !curTodo.isChecked
             }
         }

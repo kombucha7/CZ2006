@@ -41,7 +41,7 @@ class HomePage1 : AppCompatActivity() { //must tag user to elderly. when we crea
             val date: String? = null,
             val time: String? = null,
             val uid: String? = null,
-            var isChecked: Boolean? = null
+            var checked: Boolean = false,
         )
 
 //        private var layoutManager: RecyclerView.LayoutManager? = null
@@ -131,6 +131,9 @@ class HomePage1 : AppCompatActivity() { //must tag user to elderly. when we crea
                     intent.putExtra("key", elderUID)
                     startActivity(intent)
                 }
+            }
+            home1_completedbutton.setOnClickListener{
+                todoAdapter.checkCompleted()
             }
         }
 
@@ -232,8 +235,8 @@ class HomePage1 : AppCompatActivity() { //must tag user to elderly. when we crea
                                 println("myObject desciption is " + myObject.name)
                                 println("myObject time is" + myObject.time)
                                 println("myObject elderID is " + elderUID)
-                                println("MyObject bool " + myObject.isChecked)
-                                val todo =  Todo(myObject.name.toString(), myObject.time.toString() , myObject.uid.toString(), elderUID)
+                                println("MyObject bool " + myObject.checked)
+                                val todo =  Todo(myObject.name.toString(), myObject.time.toString() , myObject.uid.toString(), elderUID, myObject.checked)
                                 todoAdapter.addTodo(todo)
                             }
                         }
