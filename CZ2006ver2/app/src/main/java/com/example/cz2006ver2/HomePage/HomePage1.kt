@@ -41,7 +41,7 @@ class HomePage1 : AppCompatActivity() { //must tag user to elderly. when we crea
             val date: String? = null,
             val time: String? = null,
             val uid: String? = null,
-            val isChecked: Boolean? = null
+            var isChecked: Boolean? = null
         )
 
 //        private var layoutManager: RecyclerView.LayoutManager? = null
@@ -78,21 +78,10 @@ class HomePage1 : AppCompatActivity() { //must tag user to elderly. when we crea
             val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
             val todaysDate = current.format(formatter).toString()
             println(todaysDate + " todays date")
-            //////////////////////////////////////////////////////////////////////////////////////
 
-            ///////////////////testing///////////
-//            displayDocumentID(elderUID.toString(),testList)
-//            deleteTasks(elderUID.toString(),"e363e16c-26ba-4161-bafd-7d19467ae999")
+
             testFirestore(elderUID.toString(),todaysDate) //to see if i can convert into taskobject type
-            ////////////////////////////////////
 
-
-//            ///////////////recycler////////////////////
-//            layoutManager = LinearLayoutManager(this)
-//            home1scroll.layoutManager = layoutManager
-//            adapter = Home1Recyclerr()
-//            home1scroll.adapter = adapter
-//            //////////////////////////////////////////
             // recyclerView Clarence/////////////////////////////
             todoAdapter = TodoAdapter(arrayListOf())
 
