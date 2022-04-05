@@ -21,20 +21,21 @@ class JoinCreateGrp2Activity : AppCompatActivity() {
         setContentView(R.layout.activity_join_create_grp2)
 
         var cr1 = findViewById<TextView>(R.id.join_create_grp2_code)
-        val elderUID = getRandomString(8).toString()
-
-        cr1.text = elderUID
+        val elderUIDadd = getRandomString(8).toString()
+        val elderUID = intent.getStringExtra("key").toString()
+        cr1.text = elderUIDadd
 
         // back btn
         join_create_grp2_BackText.setOnClickListener {
             val intent = Intent(this, JoinCreateGrpActivity::class.java)
+            intent.putExtra("key", elderUID)
             startActivity(intent)
         }
          //enter btn
         join_create_grp2_enter.setOnClickListener{
             val intent = Intent(this, AccountMainActivity::class.java)
-            saveElderInfo(join_create_grp2_input.text.toString(),elderUID)
-            addElderToUser(elderUID)
+            saveElderInfo(join_create_grp2_input.text.toString(),elderUIDadd)
+            addElderToUser(elderUIDadd)
 
             val currentFirebaseUser = FirebaseAuth.getInstance().currentUser
             val userID = currentFirebaseUser!!.uid
@@ -46,7 +47,7 @@ class JoinCreateGrp2Activity : AppCompatActivity() {
                     if (document != null) {
                         println("persons name " + document.get("name").toString())
                         var personname = document.get("name".toString()).toString()
-                        addUserToElderSubCol(elderUID,personname)   //saving the caretaker data to elderly subcollection
+                        addUserToElderSubCol(elderUIDadd,personname)   //saving the caretaker data to elderly subcollection
                     } else {
                         Log.d(ContentValues.TAG, "No such document")
                     }
@@ -54,7 +55,7 @@ class JoinCreateGrp2Activity : AppCompatActivity() {
                 .addOnFailureListener { exception ->
                     Log.d(ContentValues.TAG, "get failed with ", exception)
                 }
-
+            intent.putExtra("key", elderUID)
             startActivity(intent)
         }
     }
@@ -80,7 +81,7 @@ class JoinCreateGrp2Activity : AppCompatActivity() {
 
         db.collection("careRecipient").document(elderKey).set(data)
             .addOnSuccessListener {
-                Toast.makeText(this@JoinCreateGrp2Activity, "record added successfully ", Toast.LENGTH_SHORT ).show()
+                Toast.makeText(this@JoinCreateGrp2Activity, "Care Recipient added successfully ", Toast.LENGTH_SHORT ).show()
             }
 
             .addOnFailureListener{

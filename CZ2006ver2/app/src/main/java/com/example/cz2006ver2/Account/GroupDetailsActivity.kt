@@ -23,9 +23,9 @@ class GroupDetailsActivity : AppCompatActivity() {
         setContentView(R.layout.activity_group_details)
 
         val elderUID = intent.getStringExtra("key").toString()
-        findCaretakerName(elderUID)
+        findCareRecipientName(elderUID)
         groupDetails_GroupCode.text = elderUID.toString()
-
+        findCaretakerNames(elderUID)
         // back btn
         groupDetails_BackText.setOnClickListener {
             val intent = Intent(this, AccountMainActivity::class.java)
@@ -41,7 +41,7 @@ class GroupDetailsActivity : AppCompatActivity() {
     }
 
 
-    fun findCaretakerName(elderUID: String) {
+    fun findCareRecipientName(elderUID: String) {
         val db = FirebaseFirestore.getInstance()
         db.collection("careRecipient").document(elderUID)
             .get()
@@ -53,4 +53,24 @@ class GroupDetailsActivity : AppCompatActivity() {
                 Log.w(ContentValues.TAG, "Error getting documents: ", exception)
             }
     }
+
+    fun findCaretakerNames(elderUID : String) {
+
+        var myList: ArrayList<String> = arrayListOf()
+        val db = FirebaseFirestore.getInstance()
+        db.collection("careRecipient").document(elderUID).collection("caretaker")
+            .get()
+            .addOnSuccessListener { documents ->
+                for (i in documents) {
+                    myList.add(i.get("name").toString())
+                }
+                var nameString = myList.joinToString(separator = ", ")
+                println("name string"  + nameString)
+                groupDetails_OtherCaretakers.text = nameString
+            }
+            .addOnFailureListener { exception ->
+                Log.w(ContentValues.TAG, "Error getting documents: ", exception)
+            }
+    }
+
 }

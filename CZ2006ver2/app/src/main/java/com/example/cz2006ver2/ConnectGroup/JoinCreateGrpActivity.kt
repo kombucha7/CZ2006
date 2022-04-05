@@ -63,6 +63,7 @@ class JoinCreateGrpActivity : AppCompatActivity() {
         // create code btn
         join_createCode.setOnClickListener{
             val intent = Intent(this, JoinCreateGrp2Activity::class.java)
+            intent.putExtra("key", elderUID)
             startActivity(intent)
         }
     }
