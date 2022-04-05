@@ -33,6 +33,7 @@ class HomePage2 : AppCompatActivity() {
         val time:String,
         val name: String,
         val UID: String,
+        val isChecked: Boolean,
     )
     var curr_date : String = "null"
 
@@ -71,7 +72,8 @@ class HomePage2 : AppCompatActivity() {
                     dateview.text.toString(),
                     timeview.text.toString(),
                     descview.text.toString(),
-                    taskuniqueID
+                    taskuniqueID,
+                    true
                 )
                 db.collection("careRecipient").document(elderUID).collection("task")
                     .document(taskuniqueID).set(uploadTask)
