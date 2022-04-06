@@ -54,7 +54,10 @@ class Transport4 : AppCompatActivity() {
             startActivity(back2)
         }
     }
-
+    /**
+     * Method used to get favourite bus stop code from FireStore
+     * @param elderKey Current care recipient's group code
+     */
     private fun getFavouriteBusStopCode(elderUID : String) {
         var busStopCodeList: MutableList<String> = ArrayList()
         val currentFirebaseUser = FirebaseAuth.getInstance().currentUser

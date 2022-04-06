@@ -45,11 +45,12 @@ class Transport3 : AppCompatActivity() {
     lateinit var wheelchair3: ArrayList<Int>
     lateinit var busStopDesc: String
 
+    /**
+     * At the start of this page, LTADataMall API is called to obtain the bus stop information.
+     * @param savedInstanceState to get prior version. If no data is supplies, then NULL.
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
-        /**
-         * Method used to start default activity. Link back to Search Page.
-         * @param savedInstanceState to get prior version. If no data is supplies, then NULL.
-         */
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_transport3)
         val elderUID = intent.getStringExtra("key").toString()
@@ -238,6 +239,13 @@ class Transport3 : AppCompatActivity() {
 //                            Toast.makeText(this@transport2, element.toString() + position, Toast.LENGTH_LONG).show()
         }
     }
+
+    /**
+     * Method used to save favourite bus stop code into FireStore
+     * @param elderKey Current care recipient's group code
+     * @param busStopCode Favourite Bus Stop Code to be saved
+     * @param busStopDesc Bus Stop Description
+     */
     private fun saveFavouriteBusStop(elderKey : String, busStopCode: String, busStopDesc:String){
 
         val currentFirebaseUser = FirebaseAuth.getInstance().currentUser
@@ -259,6 +267,12 @@ class Transport3 : AppCompatActivity() {
 
     }
 
+    /**
+     * Method used to populate each bus stop service information into the recyclerview list.
+     * @param elderKey Current care recipient's group code
+     * @param busStopCode Favourite Bus Stop Code to be saved
+     * @param busStopDesc Bus Stop Description
+     */
     private fun getUserdata() {
         for (i in 0 until busNums.size){
             val bus = BusInfo(busNums[i], firstTiming[i], secondTiming[i], thirdTiming[i], color1[i], color2[i], color3[i],

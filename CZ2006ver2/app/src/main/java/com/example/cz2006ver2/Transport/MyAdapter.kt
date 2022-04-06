@@ -9,6 +9,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.cz2006ver2.R
 import com.google.android.material.imageview.ShapeableImageView
 
+/**
+ * This class is to set up each component in the recyclerview list under bus information page(Transport 3)
+ */
 class MyAdapter(private val busList: ArrayList<BusInfo>) : RecyclerView.Adapter<MyAdapter.MyViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
