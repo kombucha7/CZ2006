@@ -178,20 +178,5 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cal_caretaker4" />
 
-    <Button
-        android:id="@+id/cal_caretaker_changebtn"
-        android:layout_width="231dp"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/button"
-        android:paddingTop="13dp"
-        android:paddingBottom="13dp"
-        android:text="Confirm"
-        android:textSize="16dp"
-        android:fontFamily="sans-serif-black"
-        android:layout_marginTop="30dp"
-        app:cornerRadius="50dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cal_caretaker5" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
