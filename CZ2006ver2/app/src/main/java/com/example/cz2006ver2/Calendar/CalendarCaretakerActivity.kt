@@ -80,13 +80,7 @@ class CalendarCaretakerActivity : AppCompatActivity() {
             cal2BackBtn.putExtra("scheduled_date",curr_date)
             startActivity(cal2BackBtn)
         }
-        // confirm btn
-        cal_caretaker_changebtn.setOnClickListener{
-            val calConfirmBtn = Intent(this, CalendarCaretakerActivity2::class.java)
-            intent.putExtra("key", elderUID)
-            calConfirmBtn.putExtra("scheduled_date",curr_date)
-            startActivity(calConfirmBtn)
-        }
+
     }
     fun testFirestore(elderUID: String){
         //define taskObject type

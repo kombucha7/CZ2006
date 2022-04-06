@@ -152,11 +152,11 @@ class ConnectPageActivity : AppCompatActivity() {
 
         db.collection("careRecipient").document(elderUID).collection("caretaker").document(userID).set(data)
             .addOnSuccessListener {
-//                Toast.makeText(this@ConnectPageActivity, "record added successfully ", Toast.LENGTH_SHORT ).show()
+                println("Record added successfully")
             }
 
             .addOnFailureListener{
-                Toast.makeText(this@ConnectPageActivity, "record Failed to add ", Toast.LENGTH_SHORT ).show()
+                println("Record failed to add")
             }
     }
 }

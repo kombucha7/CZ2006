@@ -87,11 +87,11 @@ class GroupNamePageActivity : AppCompatActivity() {
 
         db.collection("careRecipient").document(elderKey).set(data)
             .addOnSuccessListener {
-                Toast.makeText(this@GroupNamePageActivity, "record added successfully ", Toast.LENGTH_SHORT ).show()
+                println("Record added successfully")
             }
 
-            .addOnFailureListener{
-                Toast.makeText(this@GroupNamePageActivity, "record Failed to add ", Toast.LENGTH_SHORT ).show()
+            .addOnFailureListener{ Toast.makeText(this@GroupNamePageActivity, "record Failed to add ", Toast.LENGTH_SHORT ).show()
+                println("Record failed to add")
             }
     }
 
@@ -107,11 +107,11 @@ class GroupNamePageActivity : AppCompatActivity() {
 
         userCareRecipientArray.update("careArray", FieldValue.arrayUnion(elderUID))
             .addOnSuccessListener {
-                Toast.makeText(this@GroupNamePageActivity, "record added successfully ", Toast.LENGTH_SHORT ).show()
+                println("Record added successfully")
             }
 
             .addOnFailureListener{
-                Toast.makeText(this@GroupNamePageActivity, "record Failed to add ", Toast.LENGTH_SHORT ).show()
+                println("Record failed to add")
             }
     }
 
@@ -125,11 +125,11 @@ class GroupNamePageActivity : AppCompatActivity() {
 
         db.collection("careRecipient").document(elderUID).collection("caretaker").document(userID).set(data)
             .addOnSuccessListener {
-                Toast.makeText(this@GroupNamePageActivity, "record added successfully ", Toast.LENGTH_SHORT ).show()
+                println("Record added successfully")
             }
 
             .addOnFailureListener{
-                Toast.makeText(this@GroupNamePageActivity, "record Failed to add ", Toast.LENGTH_SHORT ).show()
+                println("Record failed to add")
             }
     }
 

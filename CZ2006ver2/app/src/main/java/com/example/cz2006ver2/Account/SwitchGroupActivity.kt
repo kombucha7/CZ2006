@@ -39,11 +39,6 @@ class SwitchGroupActivity : AppCompatActivity() {
             intent.putExtra("key", elderUID)
             startActivity(intent)
         }
-        switchGroup_ConfirmButton.setOnClickListener {
-            val intent = Intent(this, GroupDetailsActivity::class.java)
-            intent.putExtra("key", elderUID)
-            startActivity(intent)
-        }
 
         getFirestore()
 

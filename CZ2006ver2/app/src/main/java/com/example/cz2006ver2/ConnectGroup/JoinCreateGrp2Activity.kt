@@ -81,11 +81,11 @@ class JoinCreateGrp2Activity : AppCompatActivity() {
 
         db.collection("careRecipient").document(elderKey).set(data)
             .addOnSuccessListener {
-                Toast.makeText(this@JoinCreateGrp2Activity, "Care Recipient added successfully ", Toast.LENGTH_SHORT ).show()
+                println("Care recipient added successfully")
             }
 
             .addOnFailureListener{
-                Toast.makeText(this@JoinCreateGrp2Activity, "record Failed to add ", Toast.LENGTH_SHORT ).show()
+                println("Record failed to add")
             }
     }
 
@@ -102,11 +102,11 @@ class JoinCreateGrp2Activity : AppCompatActivity() {
 
         userCareRecipientArray.update("careArray", FieldValue.arrayUnion(elderUID))
             .addOnSuccessListener {
-                Toast.makeText(this@JoinCreateGrp2Activity, "record added successfully ", Toast.LENGTH_SHORT ).show()
+                println("Record added successfully")
             }
 
             .addOnFailureListener{
-                Toast.makeText(this@JoinCreateGrp2Activity, "record Failed to add ", Toast.LENGTH_SHORT ).show()
+                println("Record failed to add")
             }
     }
 
@@ -120,11 +120,11 @@ class JoinCreateGrp2Activity : AppCompatActivity() {
 
         db.collection("careRecipient").document(elderUID).collection("caretaker").document(userID).set(data)
             .addOnSuccessListener {
-                Toast.makeText(this@JoinCreateGrp2Activity, "record added successfully ", Toast.LENGTH_SHORT ).show()
+                println("Record added successfully")
             }
 
             .addOnFailureListener{
-                Toast.makeText(this@JoinCreateGrp2Activity, "record Failed to add ", Toast.LENGTH_SHORT ).show()
+                println("Record failed to add")
             }
     }
 }
