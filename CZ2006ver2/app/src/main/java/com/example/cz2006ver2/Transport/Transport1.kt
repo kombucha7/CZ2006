@@ -30,7 +30,7 @@ import kotlinx.android.synthetic.main.activity_trans1.*
  * This is the primary Transport Class which shows the User's Current Location.
  * User has option to search for bus routes/carpark and also go to favourites.
  */
-class trans1 : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerClickListener{
+class Transport1 : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerClickListener{
 
     private lateinit var mMap: GoogleMap
     private lateinit var binding: ActivityTrans1Binding
@@ -67,7 +67,7 @@ class trans1 : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerClickL
         }
 
         transporticon_page2.setOnClickListener{
-            val transp1 = Intent(this, trans1::class.java)
+            val transp1 = Intent(this, Transport1::class.java)
             transp1.putExtra("key", elderUID)
             startActivity(transp1)
         }
@@ -78,22 +78,22 @@ class trans1 : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerClickL
             startActivity(accnt)
         }
         imageView6.setOnClickListener{
-            val searchpage = Intent(this, transport2::class.java)
+            val searchpage = Intent(this, Transport2::class.java)
             searchpage.putExtra("key", elderUID)
             startActivity(searchpage)
         }
         imageView10.setOnClickListener{
-            val searchpage1 = Intent(this, transport2::class.java)
+            val searchpage1 = Intent(this, Transport2::class.java)
             searchpage1.putExtra("key", elderUID)
             startActivity(searchpage1)
         }
         imageView9.setOnClickListener{
-            val favpage = Intent(this, transport4::class.java)
+            val favpage = Intent(this, Transport4::class.java)
             favpage.putExtra("key", elderUID)
             startActivity(favpage)
         }
         imageView11.setOnClickListener{
-            val favpage1 = Intent(this, transport4::class.java)
+            val favpage1 = Intent(this, Transport4::class.java)
             favpage1.putExtra("key", elderUID)
             startActivity(favpage1)
         }

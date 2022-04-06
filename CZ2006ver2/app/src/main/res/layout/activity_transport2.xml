@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
-    tools:context=".Transport.transport2">
+    tools:context=".Transport.Transport2">
     <ImageView
         android:id="@+id/account_main_header"
         android:layout_width="match_parent"

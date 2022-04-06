@@ -8,7 +8,7 @@ import com.example.cz2006ver2.Calendar.CalendarMainActivity
 import com.example.cz2006ver2.ConnectGroup.JoinCreateGrpActivity
 import com.example.cz2006ver2.HomePage.HomePage1
 import com.example.cz2006ver2.LoginRegister.LogoutActivity
-import com.example.cz2006ver2.Transport.trans1
+import com.example.cz2006ver2.Transport.Transport1
 import kotlinx.android.synthetic.main.activity_account_main.*
 
 /**
@@ -37,7 +37,7 @@ class AccountMainActivity : AppCompatActivity() {
             startActivity(intent)
         }
         transporticon_page3.setOnClickListener{
-            val intent = Intent(this, trans1::class.java)
+            val intent = Intent(this, Transport1::class.java)
             intent.putExtra("key", elderUID)
             startActivity(intent)
         }

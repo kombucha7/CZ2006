@@ -4,7 +4,6 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
-import android.util.Log
 import android.widget.*
 import com.android.volley.Response
 import com.android.volley.toolbox.JsonObjectRequest
@@ -17,7 +16,7 @@ import org.json.JSONObject
 /**
  * Class to search for bus stop and bus number information.
  */
-class transport2 : AppCompatActivity() {
+class Transport2 : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         /**
          * Method used to start default activity. Link back to main Transport Page.
@@ -32,7 +31,7 @@ class transport2 : AppCompatActivity() {
         searchButton.setOnClickListener{
             var busStopCode: String = busStopCodeInput.text.toString()
             if(TextUtils.isEmpty(busStopCode)){
-                Toast.makeText(this@transport2, "Please enter a valid Bus Stop Code", Toast.LENGTH_LONG).show()
+                Toast.makeText(this@Transport2, "Please enter a valid Bus Stop Code", Toast.LENGTH_LONG).show()
             }else {
                 //do something
                 val queue = Volley.newRequestQueue(this)
@@ -51,7 +50,7 @@ class transport2 : AppCompatActivity() {
                             list.add(busNum)
                         }
                         if (list.isEmpty()){
-                            Toast.makeText(this@transport2, "Bus Stop not in service. Please enter another code", Toast.LENGTH_LONG).show()
+                            Toast.makeText(this@Transport2, "Bus Stop not in service. Please enter another code", Toast.LENGTH_LONG).show()
                         }
 
                         val arrayadapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, list)
@@ -59,7 +58,7 @@ class transport2 : AppCompatActivity() {
 
                         listView.setOnItemClickListener { parent, view, position, id ->
                             val element = parent.getItemAtPosition(position) // The item that was clicked
-                            val intent = Intent(this, transport3::class.java)
+                            val intent = Intent(this, Transport3::class.java)
 //                            Toast.makeText(this@transport2, element.toString() + position, Toast.LENGTH_LONG).show()
                             intent.putExtra("key", elderUID)
                             intent.putExtra("BusStopCode", busStopCode)
@@ -96,12 +95,12 @@ class transport2 : AppCompatActivity() {
         }
 
         back_btn_cal2.setOnClickListener {
-            val back1 = Intent(this, trans1::class.java)
+            val back1 = Intent(this, Transport1::class.java)
             back1.putExtra("key", elderUID)
             startActivity(back1)
         }
         back_word_cal2.setOnClickListener {
-            val back2 = Intent(this, trans1::class.java)
+            val back2 = Intent(this, Transport1::class.java)
             back2.putExtra("key", elderUID)
             startActivity(back2)
         }

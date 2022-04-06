@@ -28,13 +28,13 @@
             android:exported="false" />
         <activity
             android:windowSoftInputMode="adjustPan"
-            android:name=".Transport.transport2"
+            android:name=".Transport.Transport2"
             android:exported="false" />
         <activity
-            android:name=".Transport.transport4"
+            android:name=".Transport.Transport4"
             android:exported="false" />
         <activity
-            android:name=".Transport.transport3"
+            android:name=".Transport.Transport3"
             android:exported="false" />
         <!--
              TODO: Before you run your application, you need a Google Maps API key.
@@ -52,7 +52,7 @@
             android:value="AIzaSyCNoR7AIF4jdZf373KbA1K_St9Eyy09GmA" />
 
         <activity
-            android:name=".Transport.trans1"
+            android:name=".Transport.Transport1"
             android:exported="false"
             android:label="@string/title_activity_trans1" />
         <activity

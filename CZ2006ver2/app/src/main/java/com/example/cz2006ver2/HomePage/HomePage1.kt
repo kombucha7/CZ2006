@@ -9,14 +9,10 @@ import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.cz2006ver2.Account.AccountMainActivity
 import com.example.cz2006ver2.Calendar.CalendarMainActivity
-import com.example.cz2006ver2.Home1Recyclerr
 import com.example.cz2006ver2.R
-import com.example.cz2006ver2.Transport.trans1
-import com.google.android.gms.tasks.OnCompleteListener
-import com.google.android.material.snackbar.Snackbar
+import com.example.cz2006ver2.Transport.Transport1
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.FirebaseFirestoreException
@@ -111,7 +107,7 @@ class HomePage1 : AppCompatActivity() { //must tag user to elderly. when we crea
             }
 
             transporticon_page1.setOnClickListener {
-                val intent = Intent(this, trans1::class.java)
+                val intent = Intent(this, Transport1::class.java)
                 intent.putExtra("key", elderUID)
                 startActivity(intent)
             }

@@ -15,7 +15,7 @@
         app:layout_constraintBottom_toTopOf="@+id/calendar_toolbar_background"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:context=".Transport.trans1" />
+        tools:context=".Transport.Transport1" />
 <ImageView
 android:id="@+id/calendar_main_header"
 android:layout_width="match_parent"

@@ -12,21 +12,19 @@ import androidx.recyclerview.widget.RecyclerView
 import com.android.volley.Response
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
-import com.example.cz2006ver2.ConnectGroup.GroupNamePageActivity
 import com.example.cz2006ver2.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_transport3.*
 import org.json.JSONArray
 import org.json.JSONObject
-import java.util.*
 import kotlin.collections.ArrayList
 import kotlin.collections.HashMap
 
 /**
  * Class that is used to display information from the Search Page.
  */
-class transport3 : AppCompatActivity() {
+class Transport3 : AppCompatActivity() {
 
     data class busStopFav(
         val favourited: Boolean,
@@ -204,19 +202,19 @@ class transport3 : AppCompatActivity() {
 
 
         back_btn_cal2.setOnClickListener {
-            val back1 = Intent(this, trans1::class.java)
+            val back1 = Intent(this, Transport1::class.java)
             back1.putExtra("key", elderUID) // <<< elderUID get from intent
             startActivity(back1)
         }
 
         back_word_cal2.setOnClickListener{
-            val back2 = Intent(this, trans1::class.java)
+            val back2 = Intent(this, Transport1::class.java)
             back2.putExtra("key", elderUID) // <<< elderUID get from intent
             startActivity(back2)
         }
 
         favouriteBusStop.setOnCheckedChangeListener { checkBox, isChecked ->
-            val intent = Intent(this, transport4::class.java)
+            val intent = Intent(this, Transport4::class.java)
             if (isChecked){
                 Toast.makeText(this, "Bus Stop is in Favourites", Toast.LENGTH_SHORT).show()
                 println("Bus Stop desc before passing onto saveBusStop function " + busStopDesc)
@@ -256,7 +254,7 @@ class transport3 : AppCompatActivity() {
             }
 
             .addOnFailureListener{
-                Toast.makeText(this@transport3, "record Failed to add ", Toast.LENGTH_SHORT ).show()
+                Toast.makeText(this@Transport3, "record Failed to add ", Toast.LENGTH_SHORT ).show()
             }
 
     }

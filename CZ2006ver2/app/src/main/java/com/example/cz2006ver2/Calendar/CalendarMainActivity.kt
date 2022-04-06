@@ -7,9 +7,8 @@ import kotlinx.android.synthetic.main.activity_calendar_main.*
 import java.util.*
 import com.example.cz2006ver2.Account.AccountMainActivity
 import com.example.cz2006ver2.HomePage.HomePage1
-import com.example.cz2006ver2.HomePage.TodoAdapter
 import com.example.cz2006ver2.R
-import com.example.cz2006ver2.Transport.trans1
+import com.example.cz2006ver2.Transport.Transport1
 
 /**
  * This class allows users to view the calendar along with which caretakers are on duty for certain dates. User can click on every date for more information.
@@ -39,7 +38,7 @@ class CalendarMainActivity : AppCompatActivity() {
             startActivity(intent)
         }
         transporticon_page2.setOnClickListener{
-            val intent = Intent(this, trans1::class.java)
+            val intent = Intent(this, Transport1::class.java)
             intent.putExtra("key", elderUID)
             startActivity(intent)
         }

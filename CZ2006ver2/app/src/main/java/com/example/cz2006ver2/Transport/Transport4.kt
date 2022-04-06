@@ -7,22 +7,17 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.ArrayAdapter
 import android.widget.ListView
-import android.widget.Toast
-import com.example.cz2006ver2.HomePage.HomePage1
-import com.example.cz2006ver2.HomePage.Todo
 import com.example.cz2006ver2.R
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.FirebaseFirestoreException
 import com.google.firebase.firestore.QuerySnapshot
-import kotlinx.android.synthetic.main.activity_test_transport_api.*
 import kotlinx.android.synthetic.main.activity_transport2.*
 
 /**
  * Class used for user's favourite bus stop and bus numbers
  */
-class transport4 : AppCompatActivity() {
+class Transport4 : AppCompatActivity() {
     /**
      * Method used to start default activity. Link back to main Transport Page.
      * @param savedInstanceState to get prior version. If no data is supplies, then NULL.
@@ -49,12 +44,12 @@ class transport4 : AppCompatActivity() {
 //
         getFavouriteBusStopCode(elderUID)
         back_btn_cal2.setOnClickListener {
-            val back1 = Intent(this, trans1::class.java)
+            val back1 = Intent(this, Transport1::class.java)
             back1.putExtra("key", elderUID)
             startActivity(back1)
         }
         back_word_cal2.setOnClickListener {
-            val back2 = Intent(this, trans1::class.java)
+            val back2 = Intent(this, Transport1::class.java)
             back2.putExtra("key", elderUID)
             startActivity(back2)
         }
