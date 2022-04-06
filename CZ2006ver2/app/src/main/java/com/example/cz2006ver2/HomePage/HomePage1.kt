@@ -52,9 +52,7 @@ class HomePage1 : AppCompatActivity() { //must tag user to elderly. when we crea
             super.onCreate(savedInstanceState)
             setContentView(R.layout.activity_home_page1)
 
-            var objlist: MutableList<taskObject> = ArrayList()
             val elderUID = intent.getStringExtra("key").toString()
-            var testList: MutableList<String> = ArrayList()
             val LOG = " "
             Log.d(LOG, "this is the elderly key " + elderUID)
 
@@ -77,17 +75,15 @@ class HomePage1 : AppCompatActivity() { //must tag user to elderly. when we crea
             val current = LocalDateTime.now()
             val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
             val todaysDate = current.format(formatter).toString()
-            println(todaysDate + " todays date")
 
 
-            testFirestore(elderUID.toString(),todaysDate) //to see if i can convert into taskobject type
+            testFirestore(elderUID,todaysDate) //to see if i can convert into taskobject type
 
-            // recyclerView Clarence/////////////////////////////
+            /////// Recycler View Adapter initialisation ///////
             todoAdapter = TodoAdapter(arrayListOf())
-
             rvTodoItems.adapter = todoAdapter
             rvTodoItems.layoutManager = LinearLayoutManager(this)
-            ///////////////////////////////////////////////////
+            ////////////////////////////////////////////////////
 
 
             home1_addbutton.setOnClickListener {
@@ -223,10 +219,6 @@ class HomePage1 : AppCompatActivity() { //must tag user to elderly. when we crea
 
 
         fun testFirestore(elderUID: String, date: String){
-            //define taskObject type
-            var testList: MutableList<taskObject> = ArrayList()
-
-
             val db = FirebaseFirestore.getInstance()
             FirebaseFirestore
                 .getInstance()
@@ -237,12 +229,6 @@ class HomePage1 : AppCompatActivity() { //must tag user to elderly. when we crea
                         for (document in querySnapshot.documents) {
                             val myObject = document.toObject(taskObject::class.java)
                             if (myObject != null) {
-                                testList.add(myObject)
-                                println("myObject taskID is " + myObject.uid)
-                                println("myObject desciption is " + myObject.name)
-                                println("myObject time is" + myObject.time)
-                                println("myObject elderID is " + elderUID)
-                                println("MyObject bool " + myObject.checked)
                                 val todo =  Todo(myObject.name.toString(), myObject.time.toString() , myObject.uid.toString(), elderUID, myObject.checked)
                                 todoAdapter.addTodo(todo)
                             }

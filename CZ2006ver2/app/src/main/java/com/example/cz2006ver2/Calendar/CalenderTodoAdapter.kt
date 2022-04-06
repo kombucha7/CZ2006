@@ -57,7 +57,7 @@ class CalenderTodoAdapter(private val todos: ArrayList<CalenderTodo>) : Recycler
                     .collection("task").document(deletedTasks.get(i).taskID)
                 println("dofref is " + docRef)
                 docRef.delete().addOnSuccessListener { task ->
-                    Log.w(TAG, "Deleted1111111111")
+                    Log.w(TAG, "Deleted111")
                 }
             }
             return true
@@ -82,7 +82,7 @@ class CalenderTodoAdapter(private val todos: ArrayList<CalenderTodo>) : Recycler
             cbDone.isChecked = curTodo.isChecked
             toggleStrikeThrough(tvTodoTitle, curTodo.isChecked)
             cbDone.setOnCheckedChangeListener { _, isChecked ->
-                toggleStrikeThrough(tvTodoTitle, isChecked)
+//                toggleStrikeThrough(tvTodoTitle, isChecked)
                 curTodo.isChecked = !curTodo.isChecked
             }
         }
