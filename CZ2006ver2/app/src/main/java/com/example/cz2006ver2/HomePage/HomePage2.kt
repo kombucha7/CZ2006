@@ -45,17 +45,22 @@ class HomePage2 : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home_page2)
-        val elderUID = intent.getStringExtra("key").toString()      //pass UID to this page
+        val elderUID = intent.getStringExtra("key").toString() //pass UID to this page
         curr_date = intent.getStringExtra("scheduled_date").toString()
         Log.d(TAG,"home page 2 " + elderUID)
 
-
+        if(curr_date != "null"){
+            val dateview: TextView = findViewById(R.id.home2_date_text)
+            dateview.text = curr_date
+        }
+        else
+            dateclick()
+        timeclick()
         home2_create_button.setOnClickListener {
             val intent = Intent(this, HomePage3::class.java)
             val descview = findViewById<EditText>(R.id.home2_desc_edit)
             val timeview = findViewById<TextView>(R.id.home2_time_text)
-            val dateview = findViewById<TextView>(R.id.home2_date_text)
-
+            val dateview: TextView = findViewById(R.id.home2_date_text)
 
             if(descview.text.toString()=="" || timeview.text.toString()=="" || dateview.text.toString()=="") Toast.makeText(this, "Please fill out all fields", Toast.LENGTH_LONG).show()
             else{
@@ -76,7 +81,7 @@ class HomePage2 : AppCompatActivity() {
                 )
                 db.collection("careRecipient").document(elderUID).collection("task")
                     .document(taskuniqueID).set(uploadTask)
-                if(curr_date != "null"){
+                if(curr_date != "null") {
                     intent.putExtra("key", elderUID)   //pass uid to next page
                     intent.putExtra("scheduled_date" , curr_date)
                     startActivity(intent)
@@ -85,7 +90,6 @@ class HomePage2 : AppCompatActivity() {
                     intent.putExtra("key", elderUID)   //pass uid to next page
                     startActivity(intent)
                 }
-
             }
         }
 
@@ -102,8 +106,6 @@ class HomePage2 : AppCompatActivity() {
                 startActivity(intent)
             }
         }
-        timeclick()
-        dateclick()
     }
 
     /**
