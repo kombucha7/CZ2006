@@ -76,7 +76,7 @@ class CalendarCaretakerActivity : AppCompatActivity() {
 
         back_word_cal2.setOnClickListener{
             val cal2BackBtn = Intent(this, CalendarDayActivity::class.java)
-            intent.putExtra("key", elderUID)
+            cal2BackBtn.putExtra("key", elderUID)
             cal2BackBtn.putExtra("scheduled_date",curr_date)
             startActivity(cal2BackBtn)
         }
