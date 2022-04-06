@@ -143,23 +143,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/sg_group4"/>
 
-    <Button
-        android:id="@+id/switchGroup_ConfirmButton"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginVertical="50dp"
-        android:layout_marginLeft="85dp"
-        android:layout_marginRight="85dp"
-        android:backgroundTint="@color/button"
-        android:fontFamily="sans-serif-black"
-        android:paddingTop="13dp"
-        android:paddingBottom="13dp"
-        android:text="CONFIRM"
-        android:textSize="16dp"
-        app:cornerRadius="50dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sg_group5"
-        tools:ignore="MissingConstraints" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>
