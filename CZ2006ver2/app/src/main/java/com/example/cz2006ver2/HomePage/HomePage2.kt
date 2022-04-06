@@ -47,7 +47,6 @@ class HomePage2 : AppCompatActivity() {
         setContentView(R.layout.activity_home_page2)
         val elderUID = intent.getStringExtra("key").toString()      //pass UID to this page
         curr_date = intent.getStringExtra("scheduled_date").toString()
-        println("curr_date is " + curr_date)
         Log.d(TAG,"home page 2 " + elderUID)
 
 

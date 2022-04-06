@@ -57,14 +57,12 @@ class TodoAdapter(private val todos: ArrayList<Todo>) : RecyclerView.Adapter<Tod
                     .collection("task").document(deletedTasks.get(i).taskID)
                 println("dofref is " + docRef)
                 docRef.delete().addOnSuccessListener { task ->
-                    Log.w(TAG, "Deleted1111111111")
+                    Log.w(TAG, "Deleted1")
                 }
             }
             return true
         }
-
     }
-
 
     private fun toggleStrikeThrough(tvTodoTitle: TextView, isChecked: Boolean) {
         if(isChecked) {
@@ -76,17 +74,42 @@ class TodoAdapter(private val todos: ArrayList<Todo>) : RecyclerView.Adapter<Tod
 
     fun checkCompleted(): ArrayList<Todo>{
         var completedTasks: ArrayList<Todo> = ArrayList()
-        for(i in 0 until todos.size){
-           if(todos.get(i).isChecked){
-               completedTasks.add(todos.get(i))
-               todos.get(i).completed = true
-               notifyItemChanged(i)
-               todos.get(i).isChecked = !todos.get(i).isChecked
-           }
+        for(i in 0 until todos.size) {
+            if (todos.get(i).isChecked) {
+                completedTasks.add(todos.get(i))
+                todos.get(i).completed = true
+                notifyItemChanged(i)
+                todos.get(i).isChecked = !todos.get(i).isChecked
+            }
         }
-        println(completedTasks.size)
         return completedTasks
     }
+
+    override fun onBindViewHolder(holder: TodoViewHolder, position: Int) {
+
+        val curTodo = todos[position]
+        holder.itemView.apply {
+            tvTodoTitle.text = curTodo.title
+            tvDeadline.text = curTodo.deadline
+            cbDone.isChecked = curTodo.isChecked
+            toggleStrikeThrough(tvTodoTitle, curTodo.completed)
+            cbDone.setOnCheckedChangeListener { _, isChecked ->
+//                toggleStrikeThrough(tvTodoTitle, isChecked)
+                curTodo.isChecked = !curTodo.isChecked
+            }
+        }
+    }
+
+    override fun getItemCount(): Int {
+        return todos.size
+    }
+
+//    fun clear() {
+//        val size: Int = todos.size
+//        todos.clear()
+//        notifyItemRangeRemoved(0, size)
+//    }
+
 //    fun setHighLightedText(tv: TextView, textToHighlight: String) {
 //            val tvt = tv.text.toString()
 //            var ofe = tvt.indexOf(textToHighlight, 0)
@@ -109,29 +132,4 @@ class TodoAdapter(private val todos: ArrayList<Todo>) : RecyclerView.Adapter<Tod
 //
 //    }
 
-    override fun onBindViewHolder(holder: TodoViewHolder, position: Int) {
-
-        val curTodo = todos[position]
-        holder.itemView.apply {
-            tvTodoTitle.text = curTodo.title
-            tvDeadline.text = curTodo.deadline
-            cbDone.isChecked = curTodo.isChecked
-            toggleStrikeThrough(tvTodoTitle, curTodo.completed)
-//                setHighLightedText(tvTodoTitle,curTodo.title)
-            cbDone.setOnCheckedChangeListener { _, isChecked ->
-//                toggleStrikeThrough(tvTodoTitle, isChecked)
-                curTodo.isChecked = !curTodo.isChecked
-            }
-        }
-    }
-
-    override fun getItemCount(): Int {
-        return todos.size
-    }
-
-    fun clear() {
-        val size: Int = todos.size
-        todos.clear()
-        notifyItemRangeRemoved(0, size)
-    }
 }
