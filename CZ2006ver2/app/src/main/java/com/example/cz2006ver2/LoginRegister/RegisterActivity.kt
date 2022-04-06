@@ -131,11 +131,11 @@ class RegisterActivity : AppCompatActivity() {
 
         db.collection("users").document(userID).set(data)
             .addOnSuccessListener {
-                Toast.makeText(this@RegisterActivity, "Record added successfully ", Toast.LENGTH_SHORT ).show()
+                println("Record added successfully")
             }
 
             .addOnFailureListener{
-                Toast.makeText(this@RegisterActivity, "record Failed to add ", Toast.LENGTH_SHORT ).show()
+                println("Record failed to add")
             }
     }
 

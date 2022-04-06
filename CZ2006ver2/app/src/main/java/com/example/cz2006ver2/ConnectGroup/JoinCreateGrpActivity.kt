@@ -116,11 +116,11 @@ class JoinCreateGrpActivity : AppCompatActivity() {
 
         db.collection("careRecipient").document(elderUID).collection("caretaker").document(userID).set(data)
             .addOnSuccessListener {
-                Toast.makeText(this@JoinCreateGrpActivity, "record added successfully ", Toast.LENGTH_SHORT ).show()
+                println("Record added successfully")
             }
 
             .addOnFailureListener{
-                Toast.makeText(this@JoinCreateGrpActivity, "record Failed to add ", Toast.LENGTH_SHORT ).show()
+                println("Record failed to add")
             }
     }
 }
