@@ -14,13 +14,30 @@ import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_home_page8.*
 import java.util.*
 
+/**
+ * Page to edit tasks in
+ *
+ */
 class HomePage8 : AppCompatActivity() {
 
+    /**
+     * Data class to symbolise information in a task
+     *
+     * @property datetimeTask date and time of a task in string format
+     * @property description description of a task
+     * @property name name of a task
+     */
     data class taskInfo(
         val datetimeTask: String,
         val description: String,
         val name: String
     )
+
+    /**
+     * function that contains main functionalities of the page
+     *
+     * @param savedInstanceState
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home_page8)

@@ -17,11 +17,16 @@ import kotlinx.android.synthetic.main.activity_home_page3.*
 class HomePage3 : AppCompatActivity() {
 
     /**
+     * Variable to represent the current date saved as a string
+     * Initialised as "null"
+     */
+    var curr_date : String = "null"
+
+    /**
      * Main function for HomePage3 Logic
      * Page to display and confirm inputs from HomePage2
      * @param savedInstanceState
      */
-    var curr_date : String = "null"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home_page3)
@@ -59,7 +64,6 @@ class HomePage3 : AppCompatActivity() {
         val desc = intent.getStringExtra("desc")
         val time = intent.getStringExtra("time")
         val date = intent.getStringExtra("date")
-        val spin = intent.getStringExtra("spin")
 
         val tvdesc: TextView = findViewById(R.id.home3_user_desc_text)
         val tvtime: TextView = findViewById(R.id.home3_user_time_text)

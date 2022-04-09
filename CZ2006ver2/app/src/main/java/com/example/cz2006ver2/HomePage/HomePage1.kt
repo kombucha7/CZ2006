@@ -32,7 +32,16 @@ import java.time.format.DateTimeFormatter
 
 class HomePage1 : AppCompatActivity() { //must tag user to elderly. when we create their profile then we assign user to them?
 
-        data class taskObject(
+    /**
+     * data class to symbolise a task object
+     *
+     * @property name name of the task
+     * @property date date of the task
+     * @property time time of the task
+     * @property uid uid of the caretakee to assign the task to
+     * @property checked flag for whether the task is checked
+     */
+    data class taskObject(
             val name: String? = null,
             val date: String? = null,
             val time: String? = null,
@@ -42,8 +51,17 @@ class HomePage1 : AppCompatActivity() { //must tag user to elderly. when we crea
 
 //        private var layoutManager: RecyclerView.LayoutManager? = null
 //        private var adapter: RecyclerView.Adapter<Home1Recyclerr.ViewHolder>? = null
-        private lateinit var todoAdapter: TodoAdapter
-        @RequiresApi(Build.VERSION_CODES.O)
+    /**
+     * adapter object for use in recyclerview
+     */
+    private lateinit var todoAdapter: TodoAdapter
+
+    /**
+     * main function that contains necessary code for running homepage1 and its buttons
+     *
+     * @param savedInstanceState
+     */
+    @RequiresApi(Build.VERSION_CODES.O)
         override fun onCreate(savedInstanceState: Bundle?) {
             super.onCreate(savedInstanceState)
             setContentView(R.layout.activity_home_page1)
