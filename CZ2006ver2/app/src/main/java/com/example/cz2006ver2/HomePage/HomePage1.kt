@@ -38,7 +38,7 @@ class HomePage1 : AppCompatActivity() { //must tag user to elderly. when we crea
      * @property name name of the task
      * @property date date of the task
      * @property time time of the task
-     * @property uid uid of the caretakee to assign the task to
+     * @property uid uid of the care recipient to assign the task to
      * @property checked flag for whether the task is checked
      */
     data class taskObject(
