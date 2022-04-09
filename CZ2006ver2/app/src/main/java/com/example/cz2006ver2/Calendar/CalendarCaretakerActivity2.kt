@@ -7,11 +7,11 @@ import com.example.cz2006ver2.R
 import kotlinx.android.synthetic.main.activity_calendar_caretaker2.*
 
 /**
- * This class displays the confirmation of caretaker changes and the date.
+ * This class displays the confirmation of caretaker changes and the current date the user is on.
  */
 class CalendarCaretakerActivity2 : AppCompatActivity() {
     /**
-     * Method obtains the date in order to display in the page
+     * Method obtains the date in order to display in the page and back button functionality
      * @param savedInstanceState to get prior version. If no data is supplies, then NULL.
      */
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -15,10 +15,9 @@ import com.example.cz2006ver2.Transport.Transport1
  */
 class CalendarMainActivity : AppCompatActivity() {
 
-//    private lateinit var calendarView: CalendarView
-//    private lateinit var myDate: TextView
     /**
      * Method used to display an interactive calendar. Users choose a particular date to see more details
+     *
      * @param savedInstanceState to get prior version. If no data is supplies, then NULL.
      */
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -53,7 +52,9 @@ class CalendarMainActivity : AppCompatActivity() {
 
     }
     /**
-     * Method used to transition to the CalendarDayActivity page for any particular date that user chose.
+     * Method used to transition to the CalendarDayActivity page for any particular date that user chose
+     *
+     * @param elderUID unique ID for each care recipient
      */
     fun getDate(elderUID : String) {
         val calendar1 = Calendar.getInstance()

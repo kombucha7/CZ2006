@@ -20,12 +20,19 @@ import org.w3c.dom.Text
  */
 class CalendarCaretakerActivity : AppCompatActivity() {
     /**
-     * Method used to change caretakers.
-     * @param savedInstanceState to get prior version. If no data is supplies, then NULL.
+     * data class to store a date
+     *
+     * @property name date in string form
      */
     data class dateName(
         val name: String
     )
+
+    /**
+     * main function that contains necessary code for running calendarCaretakerActivity and its buttons
+     *
+     * @param savedInstanceState
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_calendar_caretaker)
@@ -82,6 +89,12 @@ class CalendarCaretakerActivity : AppCompatActivity() {
         }
 
     }
+
+    /**
+     * Function to test connection to the firebase
+     *
+     * @param elderUID unique ID for each care recipient
+     */
     fun testFirestore(elderUID: String){
         //define taskObject type
         var nameList: MutableList<String> = ArrayList()
@@ -101,6 +114,13 @@ class CalendarCaretakerActivity : AppCompatActivity() {
             }
     }
 
+    /**
+     * Function to update name of caretaker based on the care recipient
+     *
+     * @param elderUID unique ID for each care recipient
+     * @param date date that the user is currently on
+     * @param pos TextView used to store the caretaker name
+     */
     fun updateName(elderUID: String, date: String, pos: TextView) {
         val caretaker = dateName(pos.text.toString())
         val db = FirebaseFirestore.getInstance()
@@ -108,6 +128,11 @@ class CalendarCaretakerActivity : AppCompatActivity() {
             .document(date).set(caretaker)
     }
 
+    /**
+     * Function to store the list of caretakers that can be assigned
+     *
+     * @param nameList contains names of caretakers
+     */
     fun assignToEditTask(nameList: MutableList<String>){
         var cr1 = findViewById<TextView>(R.id.cal_caretaker1)
         val cr2 = findViewById<TextView>(R.id.cal_caretaker2)

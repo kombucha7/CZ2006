@@ -76,6 +76,12 @@ class CalendarDayActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * Function to test connection to the firebase
+     *
+     * @param elderUID unique ID for each care recipient
+     * @param date current date the user is on
+     */
     fun testFirestore(elderUID: String, date: String){
         //define taskObject type
         var testList: MutableList<HomePage1.taskObject> = ArrayList()
@@ -103,6 +109,12 @@ class CalendarDayActivity : AppCompatActivity() {
             }
     }
 
+    /**
+     * Function to display the caretaker assigned for that day
+     *
+     * @param elderUID unique ID for each care recipient
+     * @param date current date the user is on
+     */
     fun showCaretaker(elderUID: String, date: String) {
         println(date)
         val db = FirebaseFirestore.getInstance()

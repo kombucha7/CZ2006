@@ -7,11 +7,12 @@ import com.example.cz2006ver2.R
 import kotlinx.android.synthetic.main.activity_calendar_task.*
 
 /**
- * This class allows creating, editing and deleting of tasks for the day.
+ * This class allows creating, completing and deleting of tasks for the day.
  */
 class CalendarTaskActivity : AppCompatActivity() {
     /**
      * Method used to modify tasks.
+     *
      * @param savedInstanceState to get prior version. If no data is supplies, then NULL.
      */
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,11 +28,5 @@ class CalendarTaskActivity : AppCompatActivity() {
             calDayBackBtn.putExtra("scheduled_date",curr_date)
             startActivity(calDayBackBtn)
         }
-        // confirm button
-//        cal_task_btn.setOnClickListener {
-//            val intent = Intent(this, CalendarDayActivity::class.java)
-//            intent.putExtra("scheduled_date",curr_date)
-//            startActivity(intent)
-//        }
     }
 }
