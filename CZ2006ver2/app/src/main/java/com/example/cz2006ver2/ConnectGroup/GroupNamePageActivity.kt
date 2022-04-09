@@ -27,7 +27,10 @@ class GroupNamePageActivity : AppCompatActivity() {
     data class userNameInfo(        //data that we are passing in, add on to userInfo if want to ask for more
         val name: String? = null,
     )
-
+    /**
+     * Method used to start default activity. Allows user to enter in name for the elderly that they are taking care of
+     * @param savedInstanceState to get prior version. If no data is supplies, then NULL.
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_group_name_page)
@@ -75,9 +78,14 @@ class GroupNamePageActivity : AppCompatActivity() {
     }
 
 
+    /**
+     * Function to add the elderly's information into Firestore
+     *
+     * @param elderUID String which represents the ID the elderly is tagged to
+     * @param elderName String which represents the name of the elderly
+     */
 
-
-    fun saveElderInfo(elderName: String,elderKey : String) {    //adding elder to database
+    fun saveElderInfo(elderName: String,elderUID : String) {    //adding elder to database
         val currentFirebaseUser = FirebaseAuth.getInstance().currentUser
         val userID = currentFirebaseUser!!.uid
         //Toast.makeText(this, "" + currentFirebaseUser!!.uid, Toast.LENGTH_SHORT).show()   just for testing
@@ -85,7 +93,7 @@ class GroupNamePageActivity : AppCompatActivity() {
 
         val data = elderInfo(elderName)
 
-        db.collection("careRecipient").document(elderKey).set(data)
+        db.collection("careRecipient").document(elderUID).set(data)
             .addOnSuccessListener {
                 println("Record added successfully")
             }
@@ -95,7 +103,11 @@ class GroupNamePageActivity : AppCompatActivity() {
             }
     }
 
-
+    /**
+     * Function to add the elderly's information into Firestore
+     *
+     * @param elderUID String which represents the ID the elderly is tagged to
+     */
     fun addElderToUser(elderUID : String) {      // add to the users array of carerecipient
         //get instance of user
         val currentFirebaseUser = FirebaseAuth.getInstance().currentUser
@@ -115,6 +127,12 @@ class GroupNamePageActivity : AppCompatActivity() {
             }
     }
 
+    /**
+     * Function to add the elderly's information into Firestore
+     *
+     * @param elderUID String which represents the ID the elderly is tagged to
+     * @param userName String which represents the name of the user tagged to the elderly
+     */
     fun addUserToElderSubCol(elderUID : String, userName: String?){
         //get instance of user
         val currentFirebaseUser = FirebaseAuth.getInstance().currentUser
@@ -132,29 +150,5 @@ class GroupNamePageActivity : AppCompatActivity() {
                 println("Record failed to add")
             }
     }
-
-
-    fun displayUserName(){        //function for getting stuff
-        val currentFirebaseUser = FirebaseAuth.getInstance().currentUser    //getting the user id value
-        val userID = currentFirebaseUser!!.uid
-        val TAG = "myLogTag"
-        val db = FirebaseFirestore.getInstance()
-        val docRef = db.collection("users").document(userID)
-        docRef.get()
-            .addOnSuccessListener { document ->
-                if (document != null) {
-                    Log.d(TAG, document.get("name").toString())
-
-                } else {
-                    Log.d(TAG, "No such document")
-                }
-            }
-            .addOnFailureListener { exception ->
-                Log.d(TAG, "get failed with ", exception)
-            }
-
-    }
-
-
 
 }

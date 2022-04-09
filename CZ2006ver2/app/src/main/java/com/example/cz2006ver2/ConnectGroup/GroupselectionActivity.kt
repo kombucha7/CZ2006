@@ -72,7 +72,7 @@ class GroupselectionActivity : AppCompatActivity() {
     }
 
     /**
-     * sample firestore to create group collection
+     * Function to get the list of elderlies tagged to the particular user logged in
      */
     fun getFirestore() {
         var cr1 = findViewById<TextView>(R.id.gs_group1)

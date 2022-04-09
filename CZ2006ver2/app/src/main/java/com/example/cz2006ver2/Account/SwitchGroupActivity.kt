@@ -71,6 +71,10 @@ class SwitchGroupActivity : AppCompatActivity() {
     }
 
 
+    /**
+     * Function to get the elderUID
+     *
+     */
 
     fun getFirestore() {
         var cr1 = findViewById<TextView>(R.id.sg_group1)

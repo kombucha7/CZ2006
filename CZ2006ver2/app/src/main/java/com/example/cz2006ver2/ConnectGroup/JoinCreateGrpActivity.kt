@@ -68,7 +68,13 @@ class JoinCreateGrpActivity : AppCompatActivity() {
         }
     }
 
-    fun enterGroupCode(groupCode: String) {
+    /**
+     * Function to add the elderly's information into Firestore
+     *
+     * @param length which gives the
+     */
+
+    fun enterGroupCode(elderUID: String) {
         //verify if the code exists
         //add it to the user's careRecipient list
         val TAG = "Test "
@@ -76,12 +82,12 @@ class JoinCreateGrpActivity : AppCompatActivity() {
         val userID = currentFirebaseUser!!.uid
         val db = FirebaseFirestore.getInstance()
 
-        val docRef = db.collection("careRecipient").document(groupCode)
+        val docRef = db.collection("careRecipient").document(elderUID)
         docRef.get()
             .addOnSuccessListener { document ->
                 if (document.exists()) {
                     Log.d(TAG, " carerecipient found and adding to user's database")        //if it is successful, add elderKey to user's array
-                    addElderKeyToUser(groupCode)
+                    addElderKeyToUser(elderUID)
                 } else {
                     Log.d(TAG, "No such document")                                      //if unsuccessful, just start intent at this page again
                     val intent = Intent(this, ConnectPageActivity::class.java)
@@ -93,7 +99,7 @@ class JoinCreateGrpActivity : AppCompatActivity() {
             }
     }
 
-    fun addElderKeyToUser(elderKey : String) {      //function for posting stuff
+    fun addElderKeyToUser(elderUID : String) {      //function for posting stuff
         val currentFirebaseUser = FirebaseAuth.getInstance().currentUser
         val userID = currentFirebaseUser!!.uid
         //Toast.makeText(this, "" + currentFirebaseUser!!.uid, Toast.LENGTH_SHORT).show()   just for testing
@@ -102,7 +108,7 @@ class JoinCreateGrpActivity : AppCompatActivity() {
         var userRef = db.collection("users").document(userID)
 
 // Atomically add a new region to the care array array field.
-        userRef.update("careArray", FieldValue.arrayUnion(elderKey))
+        userRef.update("careArray", FieldValue.arrayUnion(elderUID))
 
     }
 

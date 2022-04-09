@@ -16,6 +16,12 @@ import kotlinx.android.synthetic.main.activity_join_create_grp2.*
 import kotlin.random.Random
 
 class JoinCreateGrp2Activity : AppCompatActivity() {
+
+    /**
+     * Method used to start default activity. Allows users to create a new elderly group while logged in
+     * @param savedInstanceState to get prior version. If no data is supplies, then NULL.
+     */
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_join_create_grp2)
@@ -60,6 +66,12 @@ class JoinCreateGrp2Activity : AppCompatActivity() {
         }
     }
 
+    /**
+     * Function to generate elderUID
+     *
+     * @param length which represents how lnog u want the code to be
+     */
+
     fun getRandomString(length: Int): String? {
         val chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRST1234567890-=!@#$%^&*()_+".toCharArray()
         val sb = StringBuilder()
@@ -71,7 +83,14 @@ class JoinCreateGrp2Activity : AppCompatActivity() {
         return sb.toString()
     }
 
-    fun saveElderInfo(elderName: String,elderKey : String) {    //adding elder to database
+    /**
+     * Function to add the elderly's information into Firestore
+     *
+     * @param elderName which represents the name of the elderly
+     * @param elderUID which represets the ID tagged to each elderly
+     */
+
+    fun saveElderInfo(elderName: String,elderUID : String) {    //adding elder to database
         val currentFirebaseUser = FirebaseAuth.getInstance().currentUser
         val userID = currentFirebaseUser!!.uid
         //Toast.makeText(this, "" + currentFirebaseUser!!.uid, Toast.LENGTH_SHORT).show()   just for testing
@@ -79,7 +98,7 @@ class JoinCreateGrp2Activity : AppCompatActivity() {
 
         val data = GroupNamePageActivity.elderInfo(elderName)
 
-        db.collection("careRecipient").document(elderKey).set(data)
+        db.collection("careRecipient").document(elderUID).set(data)
             .addOnSuccessListener {
                 println("Care recipient added successfully")
             }
@@ -89,6 +108,11 @@ class JoinCreateGrp2Activity : AppCompatActivity() {
             }
     }
 
+    /**
+     * Function to add the elderly's information into the user's account in Firestore
+     *
+     * @param elderUID which represents the ID tagged to a specific elderly
+     */
 
     fun addElderToUser(elderUID : String) {      // add to the users array of carerecipient
         //get instance of user
@@ -109,6 +133,14 @@ class JoinCreateGrp2Activity : AppCompatActivity() {
                 println("Record failed to add")
             }
     }
+
+    /**
+     * Function to add the elderly's information into the user's account in Firestore
+     *
+     * @param elderUID which represents the ID tagged to a specific elderly
+     * @param userName which represents the name tagged to a caretaker which is added to the elderly's subcollection
+     */
+
 
     fun addUserToElderSubCol(elderUID : String, userName: String?){
         //get instance of user

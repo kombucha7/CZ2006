@@ -73,7 +73,7 @@ class HomePage1 : AppCompatActivity() { //must tag user to elderly. when we crea
             val todaysDate = current.format(formatter).toString()
 
 
-            testFirestore(elderUID,todaysDate) //to see if i can convert into taskobject type
+            taskInfoFirestoreToObj(elderUID,todaysDate) //to see if i can convert into taskobject type
 
             /////// Recycler View Adapter initialisation ///////
             todoAdapter = TodoAdapter(arrayListOf())
@@ -135,37 +135,6 @@ class HomePage1 : AppCompatActivity() { //must tag user to elderly. when we crea
             }
         }
 
-        /**
-         * Function to return name of caretakee from Firebase
-         *
-         * @param elderUID ID of the caretakee
-         * @param setText TextView to output the name in
-         * @return A string representing the Caretakee's Name
-         */
-        fun getElderlyName(
-            elderUID: String,
-            setText: TextView
-        ) {        //function for getting stuff
-            val TAG = "myLogTag"
-            val test = " "
-            val db = FirebaseFirestore.getInstance()
-            val docRef = db.collection("careRecipient").document(elderUID)
-            docRef.get()
-                .addOnSuccessListener { document ->
-                    if (document != null) {
-                        val test = document.get("name").toString()
-                        Log.d(TAG, ":${test}")
-                        if (test != "null") {
-                            setText.text = test
-                        }
-                    } else {
-                        Log.d(TAG, "No such document")
-                    }
-                }
-                .addOnFailureListener { exception ->
-                    Log.d(TAG, "get failed with ", exception)
-                }
-        }
 
         /**
          * Function to show the UserName of the caretaker
@@ -193,28 +162,14 @@ class HomePage1 : AppCompatActivity() { //must tag user to elderly. when we crea
                 }
         }
 
-        /**
-         * Displays the List of tasks tagged to a specific caretakee
-         *
-         * @param elderUID ID of the specific caretakee
-         */
-        fun displayTaskList(elderUID: String, list: MutableList<taskObject>) {
-            val db = FirebaseFirestore.getInstance()
-            db.collection("careRecipient").document(elderUID).collection("task")
-                .get()
-                .addOnSuccessListener { documents ->
-                    for (document in documents) {
-                        Log.d(TAG, "our task attributes " +"${document.id} => ${document.data}")
-                    }
-                }
-                .addOnFailureListener { exception ->
-                    Log.w(TAG, "Error getting documents: ", exception)
-                }
-        }
 
-
-
-        fun testFirestore(elderUID: String, date: String){
+    /**
+     * Function to get information from firestore and convert it to a taskInfo object
+     *
+     * @param elderUID String which represents the ID the elderly is tagged to
+     * @param date String of current date of today so we can display under daily task
+     */
+        fun taskInfoFirestoreToObj(elderUID: String, date: String){
             val db = FirebaseFirestore.getInstance()
             FirebaseFirestore
                 .getInstance()
@@ -233,7 +188,12 @@ class HomePage1 : AppCompatActivity() { //must tag user to elderly. when we crea
                 }
         }
 
-
+    /**
+     * Function to check whether checkbox is completed
+     *
+     * @param elderUID which represents the ID the elderly is tagged to
+     * @param taskIDList List of tasks by ID
+     */
         fun updateCheckValue(taskIDList: ArrayList<Todo>, elderUID: String) {
             val db = FirebaseFirestore.getInstance()
 

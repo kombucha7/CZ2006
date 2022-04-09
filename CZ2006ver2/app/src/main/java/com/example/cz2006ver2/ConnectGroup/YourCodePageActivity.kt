@@ -15,22 +15,26 @@ class YourCodePageActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_your_code_page)
         val TAG = "myLogTag"
-        val elderKey = getRandomString(8)   //pass this to the next page to add to firestore as UID for elderly
+        val elderUID = getRandomString(8)   //pass this to the next page to add to firestore as UID for elderly
 
         var cr1 = findViewById<TextView>(R.id.yourCodeGeneratedCode)
-        cr1.text = elderKey
+        cr1.text = elderUID
 
 
         yourCodeNextButton.setOnClickListener{
-            Log.d(TAG, "Key" + elderKey)    //for testing if match DB UID
+            Log.d(TAG, "Key" + elderUID)    //for testing if match DB UID
             val intent = Intent(this, GroupNamePageActivity::class.java)
-            intent.putExtra("key", elderKey)
+            intent.putExtra("key", elderUID)
             startActivity(intent)
         }
 
 
     }
-
+    /**
+     * Function to add the elderly's information into Firestore
+     *
+     * @param length which gives the length of code that we want to generate
+     */
     fun getRandomString(length: Int): String? {
         val chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRST1234567890-=!@#$%^&*()_+".toCharArray()
         val sb = StringBuilder()

@@ -40,6 +40,11 @@ class GroupDetailsActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * Function to find the name of the care recipients
+     *
+     * @param elderUID which represents the ID tagged to a specific elderly
+     */
 
     fun findCareRecipientName(elderUID: String) {
         val db = FirebaseFirestore.getInstance()
@@ -53,6 +58,12 @@ class GroupDetailsActivity : AppCompatActivity() {
                 Log.w(ContentValues.TAG, "Error getting documents: ", exception)
             }
     }
+
+    /**
+     * Function to find the names of care recipients which is placed in a string format
+     *
+     * @param elderUID which represents the ID tagged to a specific elderly
+     */
 
     fun findCaretakerNames(elderUID : String) {
 

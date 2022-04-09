@@ -74,10 +74,10 @@ class ConnectPageActivity : AppCompatActivity() {
      * Includes functionality to verify authenticity of code
      * Verification is done against saved data on firebase
      *
-     * @param groupCode
+     * @param elderUID String
      */
     //As for people that just registered and have a group code as well
-    fun enterGroupCode(groupCode: String) {
+    fun enterGroupCode(elderUID: String) {
         //verify if the code exists
         //add it to the user's careRecipient list
         val TAG = "Test "
@@ -85,12 +85,12 @@ class ConnectPageActivity : AppCompatActivity() {
         val userID = currentFirebaseUser!!.uid
         val db = FirebaseFirestore.getInstance()
 
-        val docRef = db.collection("careRecipient").document(groupCode)
+        val docRef = db.collection("careRecipient").document(elderUID)
         docRef.get()
             .addOnSuccessListener { document ->
                 if (document.exists()) {
                     Log.d(TAG, " carerecipient found and adding to user's database")        //if it is successful, add elderKey to user's array
-                    addElderKeyToUser(groupCode)
+                    addElderKeyToUser(elderUID)
                 } else {
                     Log.d(TAG, "No such document")                                      //if unsuccessful, just start intent at this page again
                     Toast.makeText(this@ConnectPageActivity, "Group does not exist ", Toast.LENGTH_SHORT ).show()
@@ -104,12 +104,12 @@ class ConnectPageActivity : AppCompatActivity() {
     }
 
     /**
-     * Function to add care recipient to a group
+     * Function to add care recipient to the array under user
      * Data is uploaded unto firebase
      *
-     * @param elderKey
+     * @param elderUID ID that represents specific elderly
      */
-    fun addElderKeyToUser(elderKey : String) {      //function for posting stuff
+    fun addElderKeyToUser(elderUID : String) {      //function for posting stuff
         val currentFirebaseUser = FirebaseAuth.getInstance().currentUser
         val userID = currentFirebaseUser!!.uid
         //Toast.makeText(this, "" + currentFirebaseUser!!.uid, Toast.LENGTH_SHORT).show()   just for testing
@@ -120,14 +120,14 @@ class ConnectPageActivity : AppCompatActivity() {
         // Atomically add a new region to the care array array field.
 
         ///////////////////async function so we cant implement as normal func///////////////////////////////////////
-        userRef.update("careArray", FieldValue.arrayUnion(elderKey))
+        userRef.update("careArray", FieldValue.arrayUnion(elderUID))
         val docRef = db.collection("users").document(userID)
         docRef.get()
             .addOnSuccessListener { document ->
                 if (document != null) {
                     println("persons name " + document.get("name").toString())
                     var personName = document.get("name").toString()
-                    addUserToElderSubCol(elderKey.toString(), personName)   //saving the caretaker data to elderly subcollection
+                    addUserToElderSubCol(elderUID.toString(), personName)   //saving the caretaker data to elderly subcollection
                 } else {
                     Log.d(ContentValues.TAG, "No such document")
                 }
@@ -137,11 +137,18 @@ class ConnectPageActivity : AppCompatActivity() {
             }
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         val intent = Intent(this,HomePage1::class.java)
-        intent.putExtra("key", elderKey.toString())
+        intent.putExtra("key", elderUID.toString())
         startActivity(intent)
 
     }
 
+    /**
+     * Function to add care recipient to the array under user
+     * Data is uploaded unto firebase
+     *
+     * @param elderUID ID that represents specific elderly
+     * @param userName name of the user to be reflected under elderly
+     */
     fun addUserToElderSubCol(elderUID : String, userName: String?){  //not done yet!!!!
         //get instance of user
         val currentFirebaseUser = FirebaseAuth.getInstance().currentUser
