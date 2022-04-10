@@ -65,14 +65,17 @@ class GroupNamePageActivity : AppCompatActivity() {
         groupnameNextButton.setOnClickListener{
             elderName = findViewById(R.id.groupNameField)
             val elderNameString = elderName.text.toString()     //convert to string at this stage
-            if (elderUID != null) {
+            if (elderUID != null && elderNameString.length > 0) {
                 saveElderInfo(elderNameString,elderUID)
                 addElderToUser(elderUID)
-            }
-            val intent = Intent(this, HomePage1::class.java)
-            intent.putExtra("key", elderUID)
+                val intent = Intent(this, HomePage1::class.java)
+                intent.putExtra("key", elderUID)
 
-            startActivity(intent)
+                startActivity(intent)
+            }
+            else{
+                Toast.makeText(this, "Please enter a valid name", Toast.LENGTH_LONG).show()
+            }
         }
 
     }
