@@ -1,3 +1,4 @@
-# DEMO
+# HOTOME App
 
-### Let's get this bread 
+<p>Application for collaboration between multiple caretakers of an elder. 
+Built in Kotlin with firebase and google maps integration.</p>
